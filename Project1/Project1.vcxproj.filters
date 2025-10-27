@@ -37,27 +37,266 @@
     <Filter Include="07.Component">
       <UniqueIdentifier>{d47d1502-b309-41a5-bf10-1bfff0b9d9e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Share\01.Timer">
+      <UniqueIdentifier>{a0cce5a4-dcd7-4fe5-bd87-0f2dc8a44889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Share\02.Object">
+      <UniqueIdentifier>{f325903c-1b10-4e21-b90d-b0209bd0baff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Share\03.SharedPtr">
+      <UniqueIdentifier>{bea9c31d-4cfd-49eb-9ba2-0ed52bd2fdbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Asset\01.Mesh">
+      <UniqueIdentifier>{7c7b487b-f4c0-447d-97cd-6c09b3a77057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\01.HLSL">
+      <UniqueIdentifier>{3b519ffd-3302-4217-afdb-28882f9c7b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\02.Shader Class">
+      <UniqueIdentifier>{4914a639-5805-418c-b9e5-c2592d3103b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\03.ConstantBuffer">
+      <UniqueIdentifier>{70b0869d-18c6-4cbe-a781-f9954ca81111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Scene\01.Input">
+      <UniqueIdentifier>{4a3e1285-8691-4f30-867a-4201a9658d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.Component\01.SceneComponent">
+      <UniqueIdentifier>{1b393727-daae-4373-a21b-33321d8c6b96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\03.ConstantBuffer\01.Transform">
+      <UniqueIdentifier>{249bc565-eeae-4ca2-830f-344edb258c33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="inlcude\main.cpp">
+    <ClCompile Include="include\main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="inlcude\GameManager\GameManager.cpp">
+    <ClCompile Include="include\GameManager\Device\Device.cpp">
+      <Filter>01.GameManager\01.Device</Filter>
+    </ClCompile>
+    <ClCompile Include="include\GameManager\GameManager.cpp">
       <Filter>01.GameManager</Filter>
     </ClCompile>
-    <ClCompile Include="inlcude\GameManager\Device\Device.cpp">
-      <Filter>01.GameManager\01.Device</Filter>
+    <ClCompile Include="include\Share\Object\Object.cpp">
+      <Filter>02.Share\02.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Share\Timer\Timer.cpp">
+      <Filter>02.Share\01.Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Mesh\Mesh.cpp">
+      <Filter>03.Asset\01.Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Mesh\MeshManager.cpp">
+      <Filter>03.Asset\01.Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Mesh\StaticMesh.cpp">
+      <Filter>03.Asset\01.Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Asset.cpp">
+      <Filter>03.Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\AssetManager.cpp">
+      <Filter>03.Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\GraphicShader.cpp">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\ComputeShader.cpp">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\ColorMeshShader.cpp">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\Shader.cpp">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ConstantBuffer\Transform\TransformCBuffer.cpp">
+      <Filter>04.Shader\03.ConstantBuffer\01.Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderManager.cpp">
+      <Filter>04.Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ConstantBuffer\ConstantBufferData.cpp">
+      <Filter>04.Shader\03.ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ConstantBuffer\ConstantBuffer.cpp">
+      <Filter>04.Shader\03.ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Scene\Input\Input.cpp">
+      <Filter>05.Scene\01.Input</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Scene\Scene.cpp">
+      <Filter>05.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Scene\SceneMain.cpp">
+      <Filter>05.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Scene\SceneManager.cpp">
+      <Filter>05.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\BulletObject.cpp">
+      <Filter>06.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\PlayerObject.cpp">
+      <Filter>06.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\SceneObject.cpp">
+      <Filter>06.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\Component.cpp">
+      <Filter>07.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\SceneComponent\StaticMeshComponent.cpp">
+      <Filter>07.Component\01.SceneComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\SceneComponent\SceneComponent.cpp">
+      <Filter>07.Component\01.SceneComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\SceneComponent\MeshComponent.cpp">
+      <Filter>07.Component\01.SceneComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Vector3D.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Vector4D.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inlcude\GameInfo.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="inlcude\GameManager\GameManager.h">
-      <Filter>01.GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="inlcude\GameManager\Device\Device.h">
+    <ClInclude Include="include\GameManager\Device\Device.h">
       <Filter>01.GameManager\01.Device</Filter>
     </ClInclude>
+    <ClInclude Include="include\GameManager\GameManager.h">
+      <Filter>01.GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector2D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector3D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector4D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EngineMath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrix.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Share\SharedPtr\SharedPtr.h">
+      <Filter>02.Share\03.SharedPtr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Share\Object\Object.h">
+      <Filter>02.Share\02.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Share\Timer\Timer.h">
+      <Filter>02.Share\01.Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Mesh\StaticMesh.h">
+      <Filter>03.Asset\01.Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Mesh\Mesh.h">
+      <Filter>03.Asset\01.Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Mesh\MeshManager.h">
+      <Filter>03.Asset\01.Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Asset.h">
+      <Filter>03.Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\AssetManager.h">
+      <Filter>03.Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\ColorMeshShader.h">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\ComputeShader.h">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\GraphicShader.h">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\Shader.h">
+      <Filter>04.Shader\02.Shader Class</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ConstantBuffer\Transform\TransformCBuffer.h">
+      <Filter>04.Shader\03.ConstantBuffer\01.Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderManager.h">
+      <Filter>04.Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ConstantBuffer\ConstantBufferData.h">
+      <Filter>04.Shader\03.ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ConstantBuffer\ConstantBuffer.h">
+      <Filter>04.Shader\03.ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ConstantBuffer\CBufferContainer.h">
+      <Filter>04.Shader\03.ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\Input\Input.h">
+      <Filter>05.Scene\01.Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\SceneManager.h">
+      <Filter>05.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\SceneMain.h">
+      <Filter>05.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\Scene.h">
+      <Filter>05.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\SceneObject.h">
+      <Filter>06.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\PlayerObject.h">
+      <Filter>06.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\BulletObject.h">
+      <Filter>06.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\Component.h">
+      <Filter>07.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\SceneComponent\MeshComponent.h">
+      <Filter>07.Component\01.SceneComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\SceneComponent\SceneComponent.h">
+      <Filter>07.Component\01.SceneComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h">
+      <Filter>07.Component\01.SceneComponent</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Project1.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\ClassDiagram.cd">
+      <Filter>헤더 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="bin\Shader\ColorMesh.fx">
+      <Filter>04.Shader\01.HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="bin\Shader\Share.fx">
+      <Filter>04.Shader\01.HLSL</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
