@@ -31,8 +31,13 @@
     <ClCompile Include="include\GameManager\Device\Device.cpp" />
     <ClCompile Include="include\GameManager\GameManager.cpp" />
     <ClCompile Include="include\main.cpp" />
-    <ClCompile Include="include\Object\BulletObject.cpp" />
-    <ClCompile Include="include\Object\PlayerObject.cpp" />
+    <ClCompile Include="include\Object\Bullet\BulletObject.cpp" />
+    <ClCompile Include="include\Object\Bullet\TalonR.cpp" />
+    <ClCompile Include="include\Object\Bullet\TornadoBullet.cpp" />
+    <ClCompile Include="include\Object\Player\PlayerObject.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="include\Object\SceneObject.cpp" />
     <ClCompile Include="include\Scene\Input\Input.cpp" />
     <ClCompile Include="include\Scene\Scene.cpp" />
@@ -66,8 +71,13 @@
     <ClInclude Include="include\GameManager\Device\Device.h" />
     <ClInclude Include="include\GameManager\GameManager.h" />
     <ClInclude Include="include\Matrix.h" />
-    <ClInclude Include="include\Object\BulletObject.h" />
-    <ClInclude Include="include\Object\PlayerObject.h" />
+    <ClInclude Include="include\Object\Bullet\BulletObject.h" />
+    <ClInclude Include="include\Object\Bullet\TalonR.h" />
+    <ClInclude Include="include\Object\Bullet\TornadoBullet.h" />
+    <ClInclude Include="include\Object\Player\PlayerObject.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="include\Object\SceneObject.h" />
     <ClInclude Include="include\Scene\Input\Input.h" />
     <ClInclude Include="include\Scene\Scene.h" />

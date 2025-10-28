@@ -1,5 +1,15 @@
 ﻿#pragma once
-class CSceneMain
+#include "Scene.h"
+
+class CSceneMain : public CScene
 {
+	friend class CSceneManager;
+
+protected:
+	CSceneMain();
+	virtual ~CSceneMain();
+
+public:
+	virtual bool Init();
 };
 

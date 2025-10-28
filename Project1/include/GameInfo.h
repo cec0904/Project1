@@ -11,6 +11,8 @@
 #include <functional>
 #include <string>
 
+#include "Share/SharedPtr/SharedPtr.h"
+
 // DX를 사용하기 위한 헤더
 #include <d3d11.h>
 #include <d3dcompiler.h>

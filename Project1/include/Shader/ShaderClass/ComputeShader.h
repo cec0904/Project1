@@ -1,5 +1,7 @@
 ﻿#pragma once
-class CComputeShader
+#include "Shader.h"
+class CComputeShader :
+	public CShader
 {
 };
 

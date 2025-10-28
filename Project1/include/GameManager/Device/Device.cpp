@@ -34,7 +34,7 @@ bool CDevice::Init(HWND hWnd, unsigned int Width, unsigned int Height, bool Wind
 	unsigned int Flag = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
 
 
-#ifdef DEBUG
+#ifdef _DEBUG
 	Flag |= D3D11_CREATE_DEVICE_DEBUG;
 #endif // DEBUG
 
@@ -144,7 +144,7 @@ bool CDevice::Init(HWND hWnd, unsigned int Width, unsigned int Height, bool Wind
 
 	ID3D11Texture2D* BackBuffer = nullptr;
 
-	if (FAILED(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)BackBuffer)))
+	if (FAILED(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&BackBuffer)))
 	{
 		return false;
 	}
@@ -191,6 +191,8 @@ bool CDevice::Init(HWND hWnd, unsigned int Width, unsigned int Height, bool Wind
 	VP.MaxDepth = 1.f;	// 깊이 버퍼 0~1로 표현한다. 그러므로 1을 넣어준다.
 	mContext->RSSetViewports(1, &VP);
 
+
+	
 	return true;
 }
 

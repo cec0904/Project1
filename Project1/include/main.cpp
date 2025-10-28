@@ -14,4 +14,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	CGameManager::GetInst()->Run();
 
+	return 0;
+
 }

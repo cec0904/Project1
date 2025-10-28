@@ -4,8 +4,21 @@
 
 #include "Device/Device.h"
 #include "../Share/Timer/Timer.h"
+
 #include "../Share/SharedPtr/SharedPtr.h"
 #include "../Share/Object/Object.h"
+
+
+#include "../Asset/AssetManager.h"
+#include "../Asset/Mesh/Mesh.h"
+#include "../Asset/Mesh/MeshManager.h"
+#include "../Shader/ShaderManager.h"
+#include "../Shader/ShaderClass/Shader.h"
+#include "../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
+#include "../Scene/SceneManager.h"
+
+
+
 
 bool CGameManager::mLoop = true;
 
@@ -41,6 +54,27 @@ bool CGameManager::Init(HINSTANCE hInst)
 	// 게임 초기화
 	if (!CDevice::GetInst()->Init(mhWnd, 1280, 720, true))
 	{
+		MessageBox(nullptr, L"Device Init Failed", L"Error", MB_OK);
+		return false;
+	}
+	
+	if (!CShaderManager::GetInst()->Init())
+	{
+		MessageBox(nullptr, L"ShaderManager Init Failed", L"Error", MB_OK);
+		return false;
+	}
+
+	if (!CAssetManager::GetInst()->Init())
+	{
+		MessageBox(nullptr, L"AssetManager Init Failed", L"Error", MB_OK);
+		return false;
+	}
+
+	CTimer::Init();
+
+	if (!CSceneManager::GetInst()->Init())
+	{
+		MessageBox(nullptr, L"SceneManager Init Failed", L"Error", MB_OK);
 		return false;
 	}
 	
@@ -75,7 +109,7 @@ int CGameManager::Run()
 
 	return (int)msg.wParam;
 
-	return 0;
+	
 }
 
 void CGameManager::Logic()
@@ -89,15 +123,17 @@ void CGameManager::Logic()
 
 void CGameManager::Input(float DeltaTime)
 {
-	//CSceneManager::GetInst()->Input(DeltaTime);
+	CSceneManager::GetInst()->Input(DeltaTime);
 }
 
 void CGameManager::Update(float DeltaTime)
 {
+	CSceneManager::GetInst()->Update(DeltaTime);
 }
 
 void CGameManager::Collision(float DeltaTime)
 {
+	CSceneManager::GetInst()->Collision(DeltaTime);
 }
 
 void CGameManager::Render(float DeltaTime)
@@ -182,6 +218,7 @@ LRESULT CGameManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 {
 	switch (message)
 	{
+	
 	case WM_DESTROY:
 		mLoop = false;
 		PostQuitMessage(0);

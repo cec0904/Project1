@@ -67,6 +67,12 @@
     <Filter Include="04.Shader\03.ConstantBuffer\01.Transform">
       <UniqueIdentifier>{249bc565-eeae-4ca2-830f-344edb258c33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="06.Object\01.Player">
+      <UniqueIdentifier>{cd375512-1b59-4a74-b3b2-d35b909a0fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Object\02.Bullet">
+      <UniqueIdentifier>{7c36ae9b-1ba4-432e-bec2-6df2bcaf5b81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -135,12 +141,6 @@
     <ClCompile Include="include\Scene\SceneManager.cpp">
       <Filter>05.Scene</Filter>
     </ClCompile>
-    <ClCompile Include="include\Object\BulletObject.cpp">
-      <Filter>06.Object</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Object\PlayerObject.cpp">
-      <Filter>06.Object</Filter>
-    </ClCompile>
     <ClCompile Include="include\Object\SceneObject.cpp">
       <Filter>06.Object</Filter>
     </ClCompile>
@@ -161,6 +161,18 @@
     </ClCompile>
     <ClCompile Include="include\Vector4D.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\Player\PlayerObject.cpp">
+      <Filter>06.Object\01.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\Bullet\BulletObject.cpp">
+      <Filter>06.Object\02.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\Bullet\TornadoBullet.cpp">
+      <Filter>06.Object\02.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\Bullet\TalonR.cpp">
+      <Filter>06.Object\02.Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -257,12 +269,6 @@
     <ClInclude Include="include\Object\SceneObject.h">
       <Filter>06.Object</Filter>
     </ClInclude>
-    <ClInclude Include="include\Object\PlayerObject.h">
-      <Filter>06.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Object\BulletObject.h">
-      <Filter>06.Object</Filter>
-    </ClInclude>
     <ClInclude Include="include\Component\Component.h">
       <Filter>07.Component</Filter>
     </ClInclude>
@@ -274,6 +280,18 @@
     </ClInclude>
     <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h">
       <Filter>07.Component\01.SceneComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\Player\PlayerObject.h">
+      <Filter>06.Object\01.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\Bullet\BulletObject.h">
+      <Filter>06.Object\02.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\Bullet\TornadoBullet.h">
+      <Filter>06.Object\02.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\Bullet\TalonR.h">
+      <Filter>06.Object\02.Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

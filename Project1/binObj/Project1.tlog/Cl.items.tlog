@@ -3,9 +3,18 @@ E:\SVN\Windows\Project1\Project1\include\Asset\AssetManager.cpp;E:\SVN\Windows\P
 E:\SVN\Windows\Project1\Project1\include\Asset\Mesh\Mesh.cpp;E:\SVN\Windows\Project1\Project1\binObj\Mesh.obj
 E:\SVN\Windows\Project1\Project1\include\Asset\Mesh\MeshManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\MeshManager.obj
 E:\SVN\Windows\Project1\Project1\include\Asset\Mesh\StaticMesh.cpp;E:\SVN\Windows\Project1\Project1\binObj\StaticMesh.obj
+E:\SVN\Windows\Project1\Project1\include\Component\Component.cpp;E:\SVN\Windows\Project1\Project1\binObj\Component.obj
+E:\SVN\Windows\Project1\Project1\include\Component\SceneComponent\MeshComponent.cpp;E:\SVN\Windows\Project1\Project1\binObj\MeshComponent.obj
+E:\SVN\Windows\Project1\Project1\include\Component\SceneComponent\SceneComponent.cpp;E:\SVN\Windows\Project1\Project1\binObj\SceneComponent.obj
+E:\SVN\Windows\Project1\Project1\include\Component\SceneComponent\StaticMeshComponent.cpp;E:\SVN\Windows\Project1\Project1\binObj\StaticMeshComponent.obj
 E:\SVN\Windows\Project1\Project1\include\GameManager\Device\Device.cpp;E:\SVN\Windows\Project1\Project1\binObj\Device.obj
 E:\SVN\Windows\Project1\Project1\include\GameManager\GameManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\GameManager.obj
 E:\SVN\Windows\Project1\Project1\include\main.cpp;E:\SVN\Windows\Project1\Project1\binObj\main.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Bullet\BulletObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\BulletObject.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TalonR.cpp;E:\SVN\Windows\Project1\Project1\binObj\TalonR.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TornadoBullet.cpp;E:\SVN\Windows\Project1\Project1\binObj\TornadoBullet.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\PlayerObject.obj
+E:\SVN\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\SceneObject.obj
 E:\SVN\Windows\Project1\Project1\include\Scene\Input\Input.cpp;E:\SVN\Windows\Project1\Project1\binObj\Input.obj
 E:\SVN\Windows\Project1\Project1\include\Scene\Scene.cpp;E:\SVN\Windows\Project1\Project1\binObj\Scene.obj
 E:\SVN\Windows\Project1\Project1\include\Scene\SceneMain.cpp;E:\SVN\Windows\Project1\Project1\binObj\SceneMain.obj
@@ -19,5 +28,6 @@ E:\SVN\Windows\Project1\Project1\include\Shader\ShaderClass\GraphicShader.cpp;E:
 E:\SVN\Windows\Project1\Project1\include\Shader\ShaderClass\Shader.cpp;E:\SVN\Windows\Project1\Project1\binObj\Shader.obj
 E:\SVN\Windows\Project1\Project1\include\Shader\ShaderManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\ShaderManager.obj
 E:\SVN\Windows\Project1\Project1\include\Share\Object\Object.cpp;E:\SVN\Windows\Project1\Project1\binObj\Object.obj
-E:\SVN\Windows\Project1\Project1\include\Share\SharedPtr\SharedPtr.cpp;E:\SVN\Windows\Project1\Project1\binObj\SharedPtr.obj
 E:\SVN\Windows\Project1\Project1\include\Share\Timer\Timer.cpp;E:\SVN\Windows\Project1\Project1\binObj\Timer.obj
+E:\SVN\Windows\Project1\Project1\include\Vector3D.cpp;E:\SVN\Windows\Project1\Project1\binObj\Vector3D.obj
+E:\SVN\Windows\Project1\Project1\include\Vector4D.cpp;E:\SVN\Windows\Project1\Project1\binObj\Vector4D.obj
