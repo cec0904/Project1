@@ -73,6 +73,9 @@
     <Filter Include="06.Object\02.Bullet">
       <UniqueIdentifier>{7c36ae9b-1ba4-432e-bec2-6df2bcaf5b81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="07.Component\02.NonSceneComponent">
+      <UniqueIdentifier>{11e5f003-f75a-466d-a8eb-7613e1a2cd45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -173,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="include\Object\Bullet\TalonR.cpp">
       <Filter>06.Object\02.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp">
+      <Filter>07.Component\02.NonSceneComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="include\Object\Bullet\TalonR.h">
       <Filter>06.Object\02.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h">
+      <Filter>07.Component\02.NonSceneComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

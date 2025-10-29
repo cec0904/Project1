@@ -35,6 +35,10 @@ bool CSceneObject::Init(const char* FileName)
 
 void CSceneObject::PreUpdate(float DeltaTime)
 {
+	// NonSceneComponent 호출하기
+	
+
+
 	mRootComponent->PreUpdate(DeltaTime);
 }
 

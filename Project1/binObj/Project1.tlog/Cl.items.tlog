@@ -4,6 +4,7 @@ E:\SVN\Windows\Project1\Project1\include\Asset\Mesh\Mesh.cpp;E:\SVN\Windows\Proj
 E:\SVN\Windows\Project1\Project1\include\Asset\Mesh\MeshManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\MeshManager.obj
 E:\SVN\Windows\Project1\Project1\include\Asset\Mesh\StaticMesh.cpp;E:\SVN\Windows\Project1\Project1\binObj\StaticMesh.obj
 E:\SVN\Windows\Project1\Project1\include\Component\Component.cpp;E:\SVN\Windows\Project1\Project1\binObj\Component.obj
+E:\SVN\Windows\Project1\Project1\include\Component\NonSceneComponent\MovementComponent.cpp;E:\SVN\Windows\Project1\Project1\binObj\MovementComponent.obj
 E:\SVN\Windows\Project1\Project1\include\Component\SceneComponent\MeshComponent.cpp;E:\SVN\Windows\Project1\Project1\binObj\MeshComponent.obj
 E:\SVN\Windows\Project1\Project1\include\Component\SceneComponent\SceneComponent.cpp;E:\SVN\Windows\Project1\Project1\binObj\SceneComponent.obj
 E:\SVN\Windows\Project1\Project1\include\Component\SceneComponent\StaticMeshComponent.cpp;E:\SVN\Windows\Project1\Project1\binObj\StaticMeshComponent.obj

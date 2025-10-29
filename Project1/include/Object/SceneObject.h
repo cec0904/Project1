@@ -19,6 +19,11 @@ protected:
 	string mName;
 	// 내가 어떤 컴포넌트를 가지고 있을것인가
 	CSharedPtr<class CSceneComponent> mRootComponent;
+
+
+	// NonSceneComponent
+	vector<CSharedPtr<class CComponent>> mNonSceneComponent;
+
 	float mLifeTime = 0.f;
 
 public:

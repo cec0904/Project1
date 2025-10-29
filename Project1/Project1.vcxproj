@@ -25,6 +25,7 @@
     <ClCompile Include="include\Asset\Mesh\MeshManager.cpp" />
     <ClCompile Include="include\Asset\Mesh\StaticMesh.cpp" />
     <ClCompile Include="include\Component\Component.cpp" />
+    <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\MeshComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\SceneComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\StaticMeshComponent.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="include\Asset\Mesh\MeshManager.h" />
     <ClInclude Include="include\Asset\Mesh\StaticMesh.h" />
     <ClInclude Include="include\Component\Component.h" />
+    <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h" />
     <ClInclude Include="include\Component\SceneComponent\MeshComponent.h" />
     <ClInclude Include="include\Component\SceneComponent\SceneComponent.h" />
     <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h" />

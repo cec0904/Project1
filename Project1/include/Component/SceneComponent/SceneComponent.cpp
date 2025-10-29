@@ -156,6 +156,14 @@ void CSceneComponent::PreRender()
 {
 	CComponent::PreRender();
 
+	// 행렬을 미리 계산해준다.
+	mmatScale.Scaling(mWorldScale);
+	mmatRot.Rotation(mWorldRot);
+	mmatTranslate.Translation(mWorldPos);
+
+	// 크기 * 자전 * 이동
+	mmatWorld = mmatScale * mmatRot * mmatTranslate;
+
 	vector<CSharedPtr<CSceneComponent>>::iterator iter;
 	vector<CSharedPtr<CSceneComponent>>::iterator iterEnd = mChildList.end();
 
