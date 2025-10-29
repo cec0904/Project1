@@ -489,6 +489,7 @@ void CInput::UpdateBind(float DeltaTime)
 			iter->second->Alt == mAlt[EInputType::Hold] &&
 			iter->second->Shift == mShift[EInputType::Hold])
 		{
+			iter->second->KeyHold = true;
 			size_t Size = iter->second->FunctionList[EInputType::Hold].size();
 
 			for (size_t i = 0; i < Size; i++)

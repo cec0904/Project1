@@ -1,6 +1,17 @@
 ﻿#include "Matrix.h"
 #include "Vector3D.h"
 
+FVector3D FVector3D::Zero = { 0.f, 0.f, 0.f };
+FVector3D FVector3D::One = { 1.f, 1.f, 1.f };
+FVector3D FVector3D::Axis[EAxis::End] =
+{
+	{1.f, 0.f, 0.f},
+	{0.f, 1.f, 0.f},
+	{0.f, 0.f, 1.f}
+};
+
+
+
 #pragma region Construction
 FVector3D::FVector3D()
 {

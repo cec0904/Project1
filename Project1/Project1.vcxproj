@@ -26,6 +26,7 @@
     <ClCompile Include="include\Asset\Mesh\StaticMesh.cpp" />
     <ClCompile Include="include\Component\Component.cpp" />
     <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp" />
+    <ClCompile Include="include\Component\SceneComponent\CameraComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\MeshComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\SceneComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\StaticMeshComponent.cpp" />
@@ -40,6 +41,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="include\Object\SceneObject.cpp" />
+    <ClCompile Include="include\Scene\CameraManager\CamerManager.cpp" />
     <ClCompile Include="include\Scene\Input\Input.cpp" />
     <ClCompile Include="include\Scene\Scene.cpp" />
     <ClCompile Include="include\Scene\SceneMain.cpp" />
@@ -65,6 +67,7 @@
     <ClInclude Include="include\Asset\Mesh\StaticMesh.h" />
     <ClInclude Include="include\Component\Component.h" />
     <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h" />
+    <ClInclude Include="include\Component\SceneComponent\CameraComponent.h" />
     <ClInclude Include="include\Component\SceneComponent\MeshComponent.h" />
     <ClInclude Include="include\Component\SceneComponent\SceneComponent.h" />
     <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h" />
@@ -81,6 +84,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="include\Object\SceneObject.h" />
+    <ClInclude Include="include\Scene\CameraManager\CamerManager.h" />
     <ClInclude Include="include\Scene\Input\Input.h" />
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Scene\SceneMain.h" />

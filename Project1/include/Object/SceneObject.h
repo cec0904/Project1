@@ -81,6 +81,14 @@ public:
 			SAFE_DELETE(Component);
 			return nullptr;
 		}
+
+		class CSceneComponent* Com = dynamic_cast<CSceneComponent*>(Component);
+
+		if (!Com)
+		{
+			mNonSceneComponent.emplace_back(Component);
+		}
+
 		return Component;
 	}
 

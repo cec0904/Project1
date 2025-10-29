@@ -119,6 +119,12 @@ struct FVector3D
 
 #pragma endregion
 
+#pragma region StaticVariable
+	static FVector3D Zero;
+	static FVector3D One;
+	static FVector3D Axis[EAxis::End];
+
+#pragma endregion
 
 
 };

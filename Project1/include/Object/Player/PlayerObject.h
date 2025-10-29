@@ -24,6 +24,11 @@ protected:
 	CSharedPtr<class CSceneComponent> mRotationPivot;
 	CSharedPtr<class CStaticMeshComponent> mSub;
 
+	// MovementComponent
+	CSharedPtr<class CMovementComponent> mMovement;
+
+
+
 	//실습1 
 	//위성 반대편 방향에 하나더 출력해보기 
 	CSharedPtr<class CStaticMeshComponent> mSub1;
