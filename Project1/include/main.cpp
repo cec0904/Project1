@@ -1,4 +1,4 @@
-﻿#include "/SVN/Windows/Project1/Project1/include/GameManager/GameManager.h"
+﻿#include "GameManager/GameManager.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,

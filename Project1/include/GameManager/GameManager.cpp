@@ -142,6 +142,8 @@ void CGameManager::Render(float DeltaTime)
 	CDevice::GetInst()->ClearDepthStencil(1.f, 0);
 	CDevice::GetInst()->SetTarget();
 
+	CSceneManager::GetInst()->Render();
+
 	CDevice::GetInst()->Render();
 }
 

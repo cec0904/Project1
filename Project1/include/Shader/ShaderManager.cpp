@@ -60,11 +60,24 @@ bool CShaderManager::CreateConstantBuffer(const string& Name, int Size, int Regi
 
 CConstantBuffer* CShaderManager::FindCBuffer(const string& Name)
 {
-    return nullptr;
+    auto iter = mCBufferMap.find(Name);
+    if (iter == mCBufferMap.end())
+    {
+        return nullptr;
+    }
+
+    return (CConstantBuffer*)iter->second.Get();
 }
 
 void CShaderManager::ReleaseCBuffer(const string& Name)
 {
+    auto iter = mCBufferMap.find(Name);
+    if (iter != mCBufferMap.end())
+    {
+        mCBufferMap.erase(iter);
+    }
+
+    
 }
 
 bool CShaderManager::Init()
