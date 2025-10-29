@@ -8,7 +8,7 @@
 
 struct VS_Input_Color
 {
-    float3 Pos : POSITIONT; // POSITION 0번 레지스터 
+    float3 Pos : POSITION; // POSITION 0번 레지스터 
     float4 Color : COLOR;   // COLOR 0번 레지스터 
 };
 
@@ -20,7 +20,7 @@ struct VS_Output_Color
     
     // SV를 붙여줘야 레스터라이즈 단계에서 애가 위치값이다. 를 인식한다. 
     // 만약 SV를 안붙이고 일반 POSITION 이라고 한다면 레스터라이즈 단계에서 이게 사용할 위치값인지 아닌지 모른다. 
-    float4 Pos : SV_Position;   // SV_POSITION 0번 레지스터 
+    float4 Pos : SV_POSITION; // SV_POSITION 0번 레지스터 
     float4 Color : COLOR;       // COLOR 0번 레지스터 
 };
 

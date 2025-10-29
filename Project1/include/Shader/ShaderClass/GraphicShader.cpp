@@ -25,6 +25,24 @@ CGraphicShader::~CGraphicShader()
 	SAFE_RELEASE(mGSBlob);
 }
 
+bool CGraphicShader::Init()
+{
+	return true;
+}
+
+void CGraphicShader::SetShader()
+{
+	// 내가 출력에 사용하고자 하는 쉐이더를 지정해준다.
+	// 생성한 쉐이더들을 사용할거라고 지정해준다.
+	CDevice::GetInst()->GetContext()->VSSetShader(mVS, nullptr, 0);
+	CDevice::GetInst()->GetContext()->PSSetShader(mPS, nullptr, 0);
+	CDevice::GetInst()->GetContext()->HSSetShader(mHS, nullptr, 0);
+	CDevice::GetInst()->GetContext()->DSSetShader(mDS, nullptr, 0);
+	CDevice::GetInst()->GetContext()->GSSetShader(mGS, nullptr, 0);
+
+	CDevice::GetInst()->GetContext()->IASetInputLayout(mInputLayout);
+}
+
 void CGraphicShader::AddInputLayoutDesc(const char* Sementic, unsigned int SementicIndex, DXGI_FORMAT Fmt, unsigned int InputSlot, unsigned int Size, D3D11_INPUT_CLASSIFICATION InputSlotClass, unsigned int InstanceDataStepRate)
 {
 	D3D11_INPUT_ELEMENT_DESC Desc = {};
@@ -240,20 +258,6 @@ bool CGraphicShader::LoadGeometryShader(const char* EntryName, const TCHAR* File
 	return true;
 }
 
-bool CGraphicShader::Init()
-{
-	return true;
-}
 
-void CGraphicShader::SetShader()
-{
-	// 내가 출력에 사용하고자 하는 쉐이더를 지정해준다.
-	// 생성한 쉐이더들을 사용할거라고 지정해준다.
-	CDevice::GetInst()->GetContext()->VSSetShader(mVS, nullptr, 0);
-	CDevice::GetInst()->GetContext()->PSSetShader(mPS, nullptr, 0);
-	CDevice::GetInst()->GetContext()->HSSetShader(mHS, nullptr, 0);
-	CDevice::GetInst()->GetContext()->DSSetShader(mDS, nullptr, 0);
-	CDevice::GetInst()->GetContext()->GSSetShader(mGS, nullptr, 0);
 
-	CDevice::GetInst()->GetContext()->IASetInputLayout(mInputLayout);
-}
+

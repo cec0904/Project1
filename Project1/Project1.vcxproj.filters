@@ -183,11 +183,11 @@
     <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp">
       <Filter>07.Component\02.NonSceneComponent</Filter>
     </ClCompile>
-    <ClCompile Include="include\Scene\CameraManager\CamerManager.cpp">
-      <Filter>05.Scene\02.CameraManager</Filter>
-    </ClCompile>
     <ClCompile Include="include\Component\SceneComponent\CameraComponent.cpp">
       <Filter>07.Component\01.SceneComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Scene\CameraManager\CameraManager.cpp">
+      <Filter>05.Scene\02.CameraManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,11 +311,11 @@
     <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h">
       <Filter>07.Component\02.NonSceneComponent</Filter>
     </ClInclude>
-    <ClInclude Include="include\Scene\CameraManager\CamerManager.h">
-      <Filter>05.Scene\02.CameraManager</Filter>
-    </ClInclude>
     <ClInclude Include="include\Component\SceneComponent\CameraComponent.h">
       <Filter>07.Component\01.SceneComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\CameraManager\CameraManager.h">
+      <Filter>05.Scene\02.CameraManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

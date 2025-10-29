@@ -41,7 +41,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="include\Object\SceneObject.cpp" />
-    <ClCompile Include="include\Scene\CameraManager\CamerManager.cpp" />
+    <ClCompile Include="include\Scene\CameraManager\CameraManager.cpp" />
     <ClCompile Include="include\Scene\Input\Input.cpp" />
     <ClCompile Include="include\Scene\Scene.cpp" />
     <ClCompile Include="include\Scene\SceneMain.cpp" />
@@ -84,7 +84,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="include\Object\SceneObject.h" />
-    <ClInclude Include="include\Scene\CameraManager\CamerManager.h" />
+    <ClInclude Include="include\Scene\CameraManager\CameraManager.h" />
     <ClInclude Include="include\Scene\Input\Input.h" />
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Scene\SceneMain.h" />
@@ -127,6 +127,10 @@
     <FxCompile Include="bin\Shader\Share.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">

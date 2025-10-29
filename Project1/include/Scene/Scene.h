@@ -14,6 +14,10 @@ protected:
 protected:
 	// 입력
 	class CInput* mInput = nullptr;
+
+	// 카메라 매니저
+	class CCameraManager* mCameraManager = nullptr;
+
 	// 오브젝트
 	list<CSharedPtr<class CSceneObject>> mObjList;
 
@@ -21,6 +25,11 @@ public:
 	class CInput* GetInput() const
 	{
 		return mInput;
+	}
+
+	class CCameraManager* GetCameraManager() const
+	{
+		return mCameraManager;
 	}
 
 public:

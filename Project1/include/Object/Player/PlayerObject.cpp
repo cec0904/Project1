@@ -42,12 +42,16 @@ bool CPlayerObject::Init()
 	// 컴포넌트 하나 등록해줄것이다.
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
+	mMovement = CreateComponent<CMovementComponent>();
 
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
 
 	mRoot->SetWorldPos(0.f, 0.f, 5.5f);
 	SetRootComponent(mRoot);
+
+	mMovement->SetUpdateComponent(mRoot);
+	mMovement->SetMoveSpeed(500.f);
 
 	// 위성 만들기
 	mRotationPivot = CreateComponent<CSceneComponent>();

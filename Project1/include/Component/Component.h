@@ -13,6 +13,30 @@ protected:
 	CComponent(CComponent&& Com);
 	virtual ~CComponent();
 
+protected:
+	class CScene* mScene = nullptr;
+	class CSceneObject* mOwnerObject = nullptr;
+	string mName;
+
+public:
+	class CScene* GetScene() const
+	{
+		return mScene;
+	}
+	class CSceneObject* GetOwner() const
+	{
+		return mOwnerObject;
+	}
+	const char* GetName() const
+	{
+		// c_str() 함수는 string이 가지고 있는 문자열 포인터를 반환한다.
+		return mName.c_str();
+	}
+	void SetName(const string& Name)
+	{
+		mName = Name;
+	}
+
 	// 시점 함수
 public:
 	virtual bool Init();

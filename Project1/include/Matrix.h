@@ -62,7 +62,16 @@ __declspec(align(16)) union  FMatrix
 		memcpy(v, _v, sizeof(FVector4D) * 4);
 	}
 
-	//연사자 
+	//연산자 
+	
+	// 접근
+	FVector4D& operator [] (int Index)
+	{
+		assert(0 <= Index && Index < 4);
+		return v[Index];
+	}
+
+
 	//대입연산자 
 
 	const FMatrix& operator = (const FMatrix& _m)

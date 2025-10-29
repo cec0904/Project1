@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <math.h>
 #include "EngineMath.h"
 
 struct FVector4D
@@ -14,7 +15,10 @@ struct FVector4D
 	}
 
 	FVector4D(float _x, float _y, float _z, float _w)
-		: x(_x), y(_y), z(_z), w(_w)
+		: x(_x),
+		y(_y),
+		z(_z),
+		w(_w)
 	{
 	}
 
@@ -27,7 +31,7 @@ struct FVector4D
 		: x(_v.x), y(_v.y), z(_v.z), w(_v.w)
 	{
 	}
-#pragma endregion
+#pragma endregion Construction
 
 #pragma region Equal
 
@@ -64,7 +68,7 @@ struct FVector4D
 		w = (float)Value;
 		return *this;
 	}
-#pragma endregion 
+#pragma endregion Eqial
 
 #pragma region Plus
 	FVector4D operator + (const FVector4D& _v)	const
@@ -165,13 +169,13 @@ struct FVector4D
 
 #pragma region Minus
 
-	FVector4D operator - (const FVector4D& _v)	const
+	FVector4D operator - (const FVector4D& v)	const
 	{
 		FVector4D result;
-		result.x = x - _v.x;
-		result.y = y - _v.y;
-		result.z = z - _v.z;
-		result.w = w - _v.w;
+		result.x = x - v.x;
+		result.y = y - v.y;
+		result.z = z - v.z;
+		result.w = w - v.w;
 		return result;
 	}
 

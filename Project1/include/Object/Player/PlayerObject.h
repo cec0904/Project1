@@ -49,9 +49,9 @@ protected:
 	float mSkill4Time = 2.f;
 	float mSkill4TimeAcc = 0.f;
 	float mSkill4ReadyTime = 2.f;	// 확장, 축소하는데 걸리는 시간. 
-	float mSkill4MaxRange = 4.f;
-	float mSkill4Range = 2.f;
-	float mSkill4RangeLength = 2.f;
+	float mSkill4MaxRange = 400.f;
+	float mSkill4Range = 200.f;
+	float mSkill4RangeLength = 200.f;
 	//스킬 다시 작아지는 시간 
 	ESkill4State mSkill4State = ESkill4State::Expansion;
 
