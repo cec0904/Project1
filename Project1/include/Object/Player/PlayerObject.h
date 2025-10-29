@@ -26,7 +26,7 @@ protected:
 
 	//실습1 
 	//위성 반대편 방향에 하나더 출력해보기 
-	CSharedPtr<class CStaticMeshComponent> mSub2;
+	CSharedPtr<class CStaticMeshComponent> mSub1;
 
 	// 총알용 오브젝트 
 	//스킬 1
@@ -50,7 +50,7 @@ protected:
 	//스킬 다시 작아지는 시간 
 	ESkill4State mSkill4State = ESkill4State::Expansion;
 
-	float mPiviotRotationSpeed = 180.f;
+	float mPivotRotationSpeed = 180.f;
 
 public:
 	virtual bool Init();
@@ -60,8 +60,8 @@ private:
 	void MoveUp(float DeltaTime);
 	void MoveDown(float DeltaTime);
 
-	void RoationZ(float DeltaTime);
-	void RoationZInv(float DeltaTime);
+	void RotationZ(float DeltaTime);
+	void RotationZInv(float DeltaTime);
 
 	void Fire(float DeltaTime);
 

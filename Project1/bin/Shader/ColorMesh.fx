@@ -44,11 +44,11 @@ VS_Output_Color ColorMeshVS(VS_Input_Color input)
 //VS_Output_Color
 PS_Output_Single ColorMeshPS(VS_Output_Color input)
 {
-    PS_Output_Single ouput = (PS_Output_Single)0;
+    PS_Output_Single output = (PS_Output_Single)0;
     
-    ouput.Color = input.Color;
+    output.Color = input.Color;
     
-    return ouput;
+    return output;
 }
 
 // 속성

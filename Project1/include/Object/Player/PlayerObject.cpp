@@ -41,6 +41,58 @@ bool CPlayerObject::Init()
 	mRoot = CreateComponent<CStaticMeshComponent>();
 
 	mRoot->SetMesh("CenterRect");
+	mRoot->SetShader("ColorMeshShader");
+
+	mRoot->SetWorldPos(0.f, 0.f, 5.5f);
+	SetRootComponent(mRoot);
+
+	// 위성 만들기
+	mRotationPivot = CreateComponent<CSceneComponent>();
+	mSub = CreateComponent<CStaticMeshComponent>();
+	mSub1 = CreateComponent<CStaticMeshComponent>();
+
+	mRoot->AddChild(mRotationPivot);
+	mRotationPivot->AddChild(mSub);
+	mRotationPivot->AddChild(mSub1);
+
+	// 위성1
+	mSub->SetMesh("CenterRect");
+	mSub->SetShader("ColorMeshShader");
+	mSub->SetRelativePos(-mSkill4Range, 0.f, 0.f);
+	mSub->SetRelativeScale(0.5f, 0.5f, 1.f);
+
+	// 위성2
+	mSub1->SetMesh("CenterRect");
+	mSub1->SetShader("ColorMeshShader");
+	mSub1->SetRelativePos(-mSkill4Range, 0.f, 0.f);
+	mSub1->SetRelativeScale(0.5f, 0.5f, 1.f);
+
+	// 입력
+	mScene->GetInput()->AddBindKey("MoveUP", 'W');
+	mScene->GetInput()->AddBindFunction("MoveUp", EInputType::Hold, this, &CPlayerObject::MoveUp);
+
+	mScene->GetInput()->AddBindKey("MoveDown", 'S');
+	mScene->GetInput()->AddBindFunction("MoveDown", EInputType::Hold, this, &CPlayerObject::MoveDown);
+
+
+	// 회전
+	mScene->GetInput()->AddBindKey("RotationZ", 'D');
+	mScene->GetInput()->AddBindFunction("RotationZ", EInputType::Hold, this, &CPlayerObject::RotationZ);
+
+	mScene->GetInput()->AddBindKey("RotationZ", 'D');
+	mScene->GetInput()->AddBindFunction("RotationZ", EInputType::Hold, this, &CPlayerObject::RotationZ);
+
+
+	// 총알 발사
+	mScene->GetInput()->AddBindKey("Fire", VK_SPACE);
+	mScene->GetInput()->AddBindFunction("Fire", EInputType::Hold, this, &CPlayerObject::Fire);
+
+	// 스킬1
+	mScene->GetInput()->AddBindKey("Skill1", '1');
+	mScene->GetInput()->ChangeKeyCtrl("Skill1", true);
+
+	mScene->GetInput()->AddBindFunction("Skill1", EInputType::Hold, this, &CPlayerObject::Skill1);
+	mScene->GetInput()->AddBindFunction("Skill1", EInputType::Up, this, &CPlayerObject::Skill1Fire);
 
 	return true;
 }
@@ -48,21 +100,38 @@ bool CPlayerObject::Init()
 void CPlayerObject::Update(float DeltaTime)
 {
 	CSceneObject::Update(DeltaTime);
+
+	// 위성을 돌려주면 될 것 같다.
+	FVector3D Rot = mRotationPivot->GetRelativeRotation();
+	Rot.z += DeltaTime * mPivotRotationSpeed;
+	mRotationPivot->SetRelativeRotationZ(Rot.z);
+
+	if (mSkill3Enable)
+	{
+		Skill3Update(DeltaTime);
+	}
+
+	if (mSkill4Enable)
+	{
+		Skill4Update(DeltaTime);
+	}
 }
 
 void CPlayerObject::MoveUp(float DeltaTime)
 {
+	FVector3D Pos = mRootComponent->GetWorldPosition();
+	FVector3D Dir = mRootComponent->GetAxis(EAxis::Y);
 }
 
 void CPlayerObject::MoveDown(float DeltaTime)
 {
 }
 
-void CPlayerObject::RoationZ(float DeltaTime)
+void CPlayerObject::RotationZ(float DeltaTime)
 {
 }
 
-void CPlayerObject::RoationZInv(float DeltaTime)
+void CPlayerObject::RotationZInv(float DeltaTime)
 {
 }
 
