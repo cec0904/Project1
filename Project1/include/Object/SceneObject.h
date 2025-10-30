@@ -76,6 +76,10 @@ public:
 	{
 		T* Component = new T;
 
+		Component->mScene = mScene;
+		Component->mOwnerObject = this;
+
+
 		if (!Component->Init())
 		{
 			SAFE_DELETE(Component);

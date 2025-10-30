@@ -18,15 +18,18 @@ struct FVector3D
 	FVector3D(FVector3D&& _v);
 	FVector3D(const DirectX::XMVECTOR& v);
 
-#pragma endregion
+#pragma endregion Construction
 
 #pragma region Equal
 
 	const FVector3D& operator = (const FVector3D& _v);
+
+	const FVector3D& operator = (const DirectX::XMVECTOR& v);
+
 	const FVector3D& operator = (float Value);
 	const FVector3D& operator = (double Value);
 	const FVector3D& operator = (int Value);
-#pragma endregion 
+#pragma endregion Equal
 
 #pragma region Plus
 	FVector3D operator + (const FVector3D& _v)	const;

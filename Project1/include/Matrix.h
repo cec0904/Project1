@@ -245,12 +245,12 @@ __declspec(align(16)) union  FMatrix
 
 	void Translation(const FVector2D& _v)
 	{
-		m = DirectX::XMMatrixTranslation(_v.x, _v.y, 0);
+		m = DirectX::XMMatrixTranslation(_v.x, _v.y, 0.f);
 	}
 
 	void Translation(float x, float y)
 	{
-		m = DirectX::XMMatrixTranslation(x, y, 0);
+		m = DirectX::XMMatrixTranslation(x, y, 0.f);
 	}
 
 	//static

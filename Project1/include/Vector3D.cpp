@@ -1,5 +1,5 @@
-﻿#include "Matrix.h"
-#include "Vector3D.h"
+﻿#include "Vector3D.h"
+#include "Matrix.h"
 
 FVector3D FVector3D::Zero = { 0.f, 0.f, 0.f };
 FVector3D FVector3D::One = { 1.f, 1.f, 1.f };
@@ -46,6 +46,12 @@ const FVector3D& FVector3D::operator = (const FVector3D& _v)
 	x = _v.x;
 	y = _v.y;
 	z = _v.z;
+	return *this;
+}
+
+const FVector3D& FVector3D::operator=(const DirectX::XMVECTOR& v)
+{
+	DirectX::XMStoreFloat3((DirectX::XMFLOAT3*)this, v);
 	return *this;
 }
 
@@ -238,11 +244,11 @@ const FVector3D& FVector3D::operator -- () //전위
 
 const FVector3D& FVector3D::operator -- (int) //후위
 {
-	FVector3D temp = { x, y, z };
+	
 	x -= 1.f;
 	y -= 1.f;
 	z -= 1.f;
-	return temp;
+	return *this;
 }
 #pragma endregion
 
@@ -388,6 +394,7 @@ const FVector3D& FVector3D::operator /= (int Value)
 float FVector3D::Length() const
 {
 	//피타고라스를 이용해서 벡터의 크기를 구했다
+	// sqrtf : 루트값 구해주는 기능
 	return sqrtf(x * x + y * y + z * z);
 }
 
@@ -405,20 +412,37 @@ void FVector3D::Normalize() //해당 vector을 단위백터로 만들어준다. 
 	z /= size;
 }
 
-static FVector3D Normalize(const FVector3D& _v)	//벡터가 들어오면 단위벡터를 만들어서 내보내준다. 
+FVector3D FVector3D::Normalize(const FVector3D& v)
 {
 	FVector3D result;
-
-	float size = _v.Length();
+	float size = v.Length();
 
 	if (size == 0.f)
+	{
 		return result;
+	}
 
-	result.x = _v.x / size;
-	result.y = _v.y / size;
-	result.z = _v.z / size;
+	result.x = v.x / size;
+	result.y = v.y / size;
+	result.z = v.z / size;
 	return result;
+	
 }
+
+//static FVector3D Normalize(const FVector3D& _v)	//벡터가 들어오면 단위벡터를 만들어서 내보내준다. 
+//{
+//	FVector3D result;
+//
+//	float size = _v.Length();
+//
+//	if (size == 0.f)
+//		return result;
+//
+//	result.x = _v.x / size;
+//	result.y = _v.y / size;
+//	result.z = _v.z / size;
+//	return result;
+//}
 
 float FVector3D::Dot(const FVector3D& _v) const
 {

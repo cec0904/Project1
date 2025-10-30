@@ -2,18 +2,19 @@
 
 #include "../../resource.h"
 
-#include "Device/Device.h"
 #include "../Share/Timer/Timer.h"
+#include "Device/Device.h"
+#include "../Asset/AssetManager.h"
+#include "../Shader/ShaderManager.h"
 
 #include "../Share/SharedPtr/SharedPtr.h"
 #include "../Share/Object/Object.h"
 
 
-#include "../Asset/AssetManager.h"
-#include "../Asset/Mesh/Mesh.h"
 #include "../Asset/Mesh/MeshManager.h"
-#include "../Shader/ShaderManager.h"
+#include "../Asset/Mesh/Mesh.h"
 #include "../Shader/ShaderClass/Shader.h"
+
 #include "../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
 #include "../Scene/SceneManager.h"
 
@@ -85,7 +86,7 @@ bool CGameManager::Init(HINSTANCE hInst)
 
 int CGameManager::Run()
 {
-	MSG msg = {};	// 운영체제가 만들어 주는 메세지를 전달 받기 위한 구조체
+	MSG msg;	// 운영체제가 만들어 주는 메세지를 전달 받기 위한 구조체
 	// PeekMessage : 메세지큐의 메세지를 얻어오는 함수
 	// 이 함수는 메세지큐가 비어있을 경우 바로 빠져나오면서 0 을 반환한다.
 	// 메세지큐에 메세지가 있다면 해당 메세지를 가져온다.

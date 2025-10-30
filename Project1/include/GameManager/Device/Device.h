@@ -25,6 +25,9 @@ class CDevice
 	// 이 해상도는 CreateWindow에서 사용한 윈도우 크기가 아닌, 실제 클라이언트 영역의 해상도이다.
 	// 윈도우의 클라이언트 영역이랑은 해상도가 다를 수 있다.
 	FResolution mRS;
+
+
+	// 창 모드 여부
 	bool mWindowMode = true;
 
 	// 화면에 그려질 녀석

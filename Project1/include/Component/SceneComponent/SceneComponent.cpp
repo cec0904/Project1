@@ -33,6 +33,10 @@ void CSceneComponent::AddChild(CSceneComponent* Child)
 
 bool CSceneComponent::Init()
 {
+	if (!CComponent::Init())
+	{
+		return false;
+	}
 	return true;
 }
 
@@ -307,15 +311,49 @@ void CSceneComponent::SetRelativeRotation(const FVector3D& Rot)
 		mWorldRot = mRelativeRot;
 	}
 
+	// 축 회전
+	FVector3D Axis[EAxis::End] =
+	{
+		FVector3D(1.f, 0.f, 0.f),
+		FVector3D(0.f, 1.f, 0.f),
+		FVector3D(0.f, 0.f, 1.f)
+	};
+
+	FMatrix matRot;
+	matRot.Rotation(mWorldRot);
+
+	// 회전된 축 구하기
+	mAxis[EAxis::X] = Axis[EAxis::X].TransformNormal(matRot);
+	mAxis[EAxis::Y] = Axis[EAxis::Y].TransformNormal(matRot);
+	mAxis[EAxis::Z] = Axis[EAxis::Z].TransformNormal(matRot);
+
+	mAxis[EAxis::X].Normalize();
+	mAxis[EAxis::Y].Normalize();
+	mAxis[EAxis::Z].Normalize();
+
 	size_t Size = mChildList.size();
 
 	for (size_t i = 0; i < Size; ++i)
 	{
-		//자식의 월드 위치 = 자식의 상대 위치를 내 월드 회전값으로 횐전한 값 + 내 월드 위치 
-		mChildList[i]->mWorldPos = mChildList[i]->mRelativePos.GetRotation(mWorldRot) + mWorldPos;
+		////자식의 월드 위치 = 자식의 상대 위치를 내 월드 회전값으로 횐전한 값 + 내 월드 위치 
+		//mChildList[i]->mWorldPos = mChildList[i]->mRelativePos.GetRotation(mWorldRot) + mWorldPos;
 
-		//자식의 월드 회전 = 자식의 상대회전 + 내 월드회전 
-		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativeRot + mWorldRot);
+		////자식의 월드 회전 = 자식의 상대회전 + 내 월드회전 
+		//mChildList[i]->SetWorldRotation(mChildList[i]->mRelativeRot + mWorldRot);
+
+
+		FVector3D ParentRot = GetWorldRotation();
+
+		FMatrix matRot;
+		matRot.Rotation(ParentRot);
+
+		// 행렬의 41, 42, 43 에 부모의 위치를 넣어 부모의 위치를 중심으로
+		// 회전하는 행렬을 만들어 준다.
+		memcpy(&matRot._41, &mWorldPos, sizeof(FVector3D));
+
+		mChildList[i]->mWorldPos = mChildList[i]->mRelativePos.TransformCoord(matRot);
+
+		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativePos + mWorldRot);
 	}
 }
 
@@ -360,7 +398,7 @@ void CSceneComponent::SetRelativePos(const FVector3D& Pos)
 
 	if (mParent)
 	{
-		//251025 수정 
+		 
 		//mWorldPos = mRelativePos + mParent->mWorldPos;
 		FVector3D ParentRot = mParent->GetWorldRotation();
 		FMatrix matRot;
@@ -480,12 +518,37 @@ void CSceneComponent::SetWorldRotation(const FVector3D& Rot)
 
 	for (size_t i = 0; i < Size; ++i)
 	{
-		//자식의 월드 회전 = 자식의 상대 회전 + 내 월드 회전 
-		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativeRot + mWorldRot);
+		////자식의 월드 회전 = 자식의 상대 회전 + 내 월드 회전 
+		//mChildList[i]->SetWorldRotation(mChildList[i]->mRelativeRot + mWorldRot);
 
-		// 회전 시킨만큼 자식의 위치에도 영향을 주어야한다. 
-		// 자식의 상대 위치에 내 월드만큼 회전을 시키고 + 내 위치만큼 이동
-		mChildList[i]->SetWorldPos(mChildList[i]->mRelativePos.GetRotation(mWorldRot) + mWorldPos);
+		//// 회전 시킨만큼 자식의 위치에도 영향을 주어야한다. 
+		//// 자식의 상대 위치에 내 월드만큼 회전을 시키고 + 내 위치만큼 이동
+		//mChildList[i]->SetWorldPos(mChildList[i]->mRelativePos.GetRotation(mWorldRot) + mWorldPos);
+
+		// 이전 수식
+		// 문제점 : 부모가 회전했을 때 자식이 부모의 회전축을 중심으로 회전하지 않는다. 공전이 아니다.
+		// mChildList[i]->SetWorldPos(
+		//	mChildList[i]->mRelativePos.GetRotation(mWorldRot) + mWorldPos);
+
+
+
+
+		FVector3D ParentRot = GetWorldRotation();
+
+		FMatrix matRot;
+		matRot.Rotation(ParentRot);
+
+		// 행렬의 41, 42, 43 에 부모의 위치를 넣어 부모의 위치를 중심으로
+		// 회전하는 행렬을 만들어 준다.
+		memcpy(&matRot._41, &mWorldPos, sizeof(FVector3D));
+
+		mChildList[i]->mWorldPos = mChildList[i]->mRelativePos.TransformCoord(matRot);
+
+		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativePos + mWorldRot);
+
+
+		
+		
 	}
 }
 
@@ -526,20 +589,58 @@ void CSceneComponent::SetWorldRotationAxis(float Angle, const FVector3D& Axis)
 
 void CSceneComponent::SetWorldPos(const FVector3D& Pos)
 {
+	//mWorldPos = Pos;
+
+	//if (mParent)
+	//{
+	//	FVector3D ParentRot = mParent->mWorldRot;
+
+	//	FMatrix matRot;
+	//	matRot.Rotation(ParentRot);
+
+	//	//회전 행렬이 나왔다.
+	//	// 성분중에 _41, _42, _43이 이동을 담당하는 부분이니까 부모의위치를 넣어서 부모의 위치를 중심으로 회전하는 행렬를 만들줄것이다. 
+	//	memcpy(&matRot._41, &mParent->mWorldPos, sizeof(FVector3D));
+
+	//	// matRot -> 회전과 이동을 동시에 가지고있는 행렬이 되었다. 
+	//	mWorldPos = mRelativePos.TransformCoord(matRot);
+	//}
+	//else
+	//{
+	//	mRelativePos = mWorldPos;
+	//}
+
+	//size_t Size = mChildList.size();
+
+	//for (size_t i = 0; i < Size; ++i)
+	//{
+	//	mChildList[i]->SetWorldPos(mChildList[i]->mRelativePos + mWorldPos);
+	//}
+
+
+	// 위 수식이 잘못된 이유
+	// 자식의 월드 위치 = 자식의 상대 위치 + 부모의 월드 위치 -> 이 수식은 부모의 회전량을 반영하지 못한다.
+	// 근데 위의 수식으로는 부모의 회전량을 못 받은 로컬 위치를 사용했기 때문에
+	// 부모의 월드 위치가 변한만큼 자식의 월드 위치도 변해야 한다.
+	// mChildList[i]->SetWorldPos(mChildList[i]->mWorldPos + Step);
+
+
+
+	// 수정
+
 	mWorldPos = Pos;
 
 	if (mParent)
 	{
-		FVector3D ParentRot = mParent->mWorldRot;
+		FVector3D ParentRot = GetWorldRotation();
 
 		FMatrix matRot;
 		matRot.Rotation(ParentRot);
 
-		//회전 행렬이 나왔다.
-		// 성분중에 _41, _42, _43이 이동을 담당하는 부분이니까 부모의위치를 넣어서 부모의 위치를 중심으로 회전하는 행렬를 만들줄것이다. 
-		memcpy(&matRot._41, &mParent->mWorldPos, sizeof(FVector3D));
+		// 행렬의 41, 42, 43 에 부모의 위치를 넣어 부모의 위치를 중심으로
+		// 회전하는 행렬을 만들어 준다.
+		memcpy(&matRot._41, &mWorldPos, sizeof(FVector3D));
 
-		// matRot -> 회전과 이동을 동시에 가지고있는 행렬이 되었다. 
 		mWorldPos = mRelativePos.TransformCoord(matRot);
 	}
 	else
@@ -549,7 +650,7 @@ void CSceneComponent::SetWorldPos(const FVector3D& Pos)
 
 	size_t Size = mChildList.size();
 
-	for (size_t i = 0; i < Size; ++i)
+	for (size_t i = 0; i < Size; i++)
 	{
 		mChildList[i]->SetWorldPos(mChildList[i]->mRelativePos + mWorldPos);
 	}
@@ -741,5 +842,5 @@ void CSceneComponent::ComputeTransform()
 	SetWorldRotation(mRelativeRot + mParent->mWorldRot);
 	SetWorldPos(mRelativePos + mParent->mWorldPos);
 
-	if (!mParent) return;
+	// if (!mParent) return;
 }

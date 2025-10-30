@@ -1,6 +1,9 @@
 ﻿#include "MeshComponent.h"
 #include "../../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
 
+#include "../../Scene/Scene.h"
+#include "../../Scene/CameraManager/CameraManager.h"
+
 CMeshComponent::CMeshComponent()
 	: CSceneComponent()
 {
@@ -17,7 +20,8 @@ CMeshComponent::CMeshComponent(const CMeshComponent& Com)
 CMeshComponent::CMeshComponent(CMeshComponent&& Com)
 	: CSceneComponent(Com)
 {
-	mTransformCBuffer = Com.mTransformCBuffer->Clone();
+	mTransformCBuffer = Com.mTransformCBuffer;
+	Com.mTransformCBuffer = nullptr;
 }
 
 CMeshComponent::~CMeshComponent()
@@ -27,10 +31,12 @@ CMeshComponent::~CMeshComponent()
 
 bool CMeshComponent::Init()
 {
+	CSceneComponent::Init();
 	return true;
 }
 bool CMeshComponent::Init(const char* FileName)
 {
+	CSceneComponent::Init();
 	return true;
 }
 void CMeshComponent::PreUpdate(float DeltaTime)
@@ -59,8 +65,15 @@ void CMeshComponent::Render()
 
 	mTransformCBuffer->SetWorldMatrix(mmatWorld);
 
-	FMatrix matProj = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(90.f), 1280.f / 720.f, 0.5f, 1000.f);
+	FMatrix matView, matProj;
+	matView = mScene->GetCameraManager()->GetViewMatrix();
+	matProj = mScene->GetCameraManager()->GetProjMatrix();
+
+	mTransformCBuffer->SetViewMatrix(matView);
 	mTransformCBuffer->SetProjMatrix(matProj);
+
+	/*FMatrix matProj = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(90.f), 1280.f / 720.f, 0.5f, 1000.f);
+	mTransformCBuffer->SetProjMatrix(matProj);*/
 
 	mTransformCBuffer->UpdateBuffer();
 }

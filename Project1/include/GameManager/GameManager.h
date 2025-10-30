@@ -3,6 +3,9 @@
 
 class CGameManager
 {
+
+	DECLARE_SINGLETONE(CGameManager)
+
 private:
 	static bool mLoop;
 	HINSTANCE mhInst = 0;
@@ -45,11 +48,6 @@ private:
 	// 전역함수로 넣어야 하기 때문에
 	// static을 추가해준다.
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
-private:
-	DECLARE_SINGLETONE(CGameManager)
-
-
 
 };
 

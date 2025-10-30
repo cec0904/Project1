@@ -21,6 +21,7 @@ protected:
 	FVector3D mVelocity;
 	// 한 프레임당 이동할 거리 벡터
 	FVector3D mMoveStep;
+
 	float mSpeed = 1.f;
 
 	// 이동 초기화 여부

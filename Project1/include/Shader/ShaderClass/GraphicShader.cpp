@@ -40,14 +40,21 @@ void CGraphicShader::SetShader()
 	CDevice::GetInst()->GetContext()->DSSetShader(mDS, nullptr, 0);
 	CDevice::GetInst()->GetContext()->GSSetShader(mGS, nullptr, 0);
 
+
+	// 정점은 이렇게 생겼다고
+	// 사용할 입력 레이아웃 지정해 줘야한다.
 	CDevice::GetInst()->GetContext()->IASetInputLayout(mInputLayout);
 }
 
 void CGraphicShader::AddInputLayoutDesc(const char* Sementic, unsigned int SementicIndex, DXGI_FORMAT Fmt, unsigned int InputSlot, unsigned int Size, D3D11_INPUT_CLASSIFICATION InputSlotClass, unsigned int InstanceDataStepRate)
 {
+	// 초기화
 	D3D11_INPUT_ELEMENT_DESC Desc = {};
 
+	// 시멘틱 인덱스
 	Desc.SemanticIndex = SementicIndex;
+
+	// 시멘틱 이름
 	Desc.SemanticName = Sementic;
 
 	Desc.Format = Fmt;
@@ -65,9 +72,13 @@ void CGraphicShader::AddInputLayoutDesc(const char* Sementic, unsigned int Semen
 	mveDesc.emplace_back(Desc);
 }
 
+// 입력 레이아웃 생성
 bool CGraphicShader::CreateInputLayout()
 {
 	// 레이아웃
+	// pShaderBytecodeWithInputSignature ??
+	// dx11 에서 제공하는 컴파일러로 컴파일 해야한다. 
+	// 컴파일하는 함수 만들어 줘야한다. 
 	if (FAILED(CDevice::GetInst()->GetDevice()->CreateInputLayout(&mveDesc[0], (UINT)mveDesc.size(), mVSBlob->GetBufferPointer(), mVSBlob->GetBufferSize(), &mInputLayout)))
 	{
 		return false;

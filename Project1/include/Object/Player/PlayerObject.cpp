@@ -2,6 +2,7 @@
 
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
 #include "../../Component/NonSceneComponent/MovementComponent.h"
+#include "../../Component/SceneComponent/CameraComponent.h"
 
 
 #include "../../Scene/Scene.h"
@@ -43,15 +44,21 @@ bool CPlayerObject::Init()
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
 	mMovement = CreateComponent<CMovementComponent>();
+	mCamera = CreateComponent<CCameraComponent>();
 
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
 
 	mRoot->SetWorldPos(0.f, 0.f, 5.5f);
+	mRoot->SetWorldScale(100.f, 100.f, 0.f);
 	SetRootComponent(mRoot);
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveSpeed(500.f);
+
+	// 카메라 세팅
+	mCamera->SetProjectionType(ECameraProjectionType::Ortho);
+	mRoot->AddChild(mCamera);
 
 	// 위성 만들기
 	mRotationPivot = CreateComponent<CSceneComponent>();
@@ -75,7 +82,7 @@ bool CPlayerObject::Init()
 	mSub1->SetRelativeScale(0.5f, 0.5f, 1.f);
 
 	// 입력
-	mScene->GetInput()->AddBindKey("MoveUP", 'W');
+	mScene->GetInput()->AddBindKey("MoveUp", 'W');
 	mScene->GetInput()->AddBindFunction("MoveUp", EInputType::Hold, this, &CPlayerObject::MoveUp);
 
 	mScene->GetInput()->AddBindKey("MoveDown", 'S');
@@ -191,6 +198,7 @@ void CPlayerObject::Fire(float DeltaTime)
 	// 총알의 시작 위치 == 내 월드 위치
 	Root->SetWorldPos(mRootComponent->GetWorldPosition());
 	Root->SetWorldRotation(mRootComponent->GetWorldRotation());
+	Root->SetWorldScale(50.f, 50.f, 1.f);
 	Bullet->SetLifeTime(2.f);
 
 

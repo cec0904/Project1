@@ -5,6 +5,10 @@ class CGraphicShader abstract : public CShader
 {
 	friend class CShaderManager;
 
+protected:
+	CGraphicShader();
+	virtual ~CGraphicShader();
+
 private:
 	// 입력 레이아웃
 	// 정점 구조가 어떻게 구성되어 있는지 알려주는 것이다.
@@ -38,10 +42,6 @@ private:
 	// 지오메트리 쉐이더
 	ID3D11GeometryShader* mGS = nullptr;
 	ID3DBlob* mGSBlob = nullptr;
-
-protected:
-	CGraphicShader();
-	~CGraphicShader();
 
 public:
 	void AddInputLayoutDesc(const char* Sementic, unsigned int SementicIndex, DXGI_FORMAT Fmt, unsigned int InputSlot, unsigned int Size, D3D11_INPUT_CLASSIFICATION InputSlotClass, unsigned int InstanceDataStepRate);

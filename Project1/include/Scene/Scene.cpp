@@ -1,6 +1,7 @@
 ﻿#include "Scene.h"
 #include "../Object/SceneObject.h"
 #include "Input/Input.h"
+#include "CameraManager/CameraManager.h"
 
 
 CScene::CScene()
@@ -9,7 +10,8 @@ CScene::CScene()
 
 CScene::~CScene()
 {
-	SAFE_DELETE(mInput)
+	SAFE_DELETE(mInput);
+	SAFE_DELETE(mCameraManager);
 }
 
 bool CScene::Init()
@@ -20,12 +22,35 @@ bool CScene::Init()
 		SAFE_DELETE(mInput);
 		return false;
 	}
+
+	mCameraManager = new CCameraManager;
+	if (!mCameraManager->Init())
+	{
+		SAFE_DELETE(mCameraManager);
+		return false;
+	}
+
 	return true;
 }
 
 
 bool CScene::Init(const char* FileName)
 {
+	mInput = new CInput;
+	if (!mInput->Init())
+	{
+		SAFE_DELETE(mInput);
+		return false;
+	}
+
+	mCameraManager = new CCameraManager;
+	if (!mCameraManager->Init())
+	{
+		SAFE_DELETE(mCameraManager);
+		return false;
+	}
+
+
 	return true;
 }
 
