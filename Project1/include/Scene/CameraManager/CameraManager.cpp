@@ -17,7 +17,7 @@ void CCameraManager::SetViewTarget(CCameraComponent* ViewTarget)
 
 const FMatrix& CCameraManager::GetViewMatrix() const
 {
-	return mViewTarget->GetWorldMatrix();
+	return mViewTarget->GetViewMatrix();
 }
 
 const FMatrix& CCameraManager::GetProjMatrix() const

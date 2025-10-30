@@ -15,6 +15,7 @@ protected:
 protected:
 	// 업데이트 할 컴포넌트
 	CSharedPtr<class CSceneComponent> mUpdateComponent;
+	EAxis::Type mMoveAxis = EAxis::None;
 
 protected:
 	// 이동 방향 벡터
@@ -39,6 +40,9 @@ public:
 	}
 
 	void SetUpdateComponent(class CSceneComponent* Target);
+
+
+
 	void SetMoveSpeed(float Speed)
 	{
 		mSpeed = Speed;
@@ -51,6 +55,16 @@ public:
 	void SetMove(const FVector3D& Dir)
 	{
 		mVelocity = Dir;
+	}
+
+	void SetMoveAxis(EAxis::Type Axis)
+	{
+		mMoveAxis = Axis;
+	}
+
+	void SetVelocityInit(bool VelocityInit)
+	{
+		mVelocityInit = VelocityInit;
 	}
 
 	// 시점 함수

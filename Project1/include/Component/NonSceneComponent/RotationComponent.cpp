@@ -1,33 +1,30 @@
-﻿#include "MovementComponent.h"
+﻿#include "RotationComponent.h"
 #include "../SceneComponent/SceneComponent.h"
-#include "RotationComponent.h"
 
-CMovementComponent::CMovementComponent()
+CRotationComponent::CRotationComponent()
 {
 }
 
-CMovementComponent::CMovementComponent(const CMovementComponent& Com)
+CRotationComponent::CRotationComponent(const CRotationComponent& Com)
 	: CComponent(Com)
 {
 }
 
-CMovementComponent::CMovementComponent(CMovementComponent&& Com)
+CRotationComponent::CRotationComponent(CRotationComponent&& Com)
 	: CComponent(Com)
 {
 }
 
-CMovementComponent::~CMovementComponent()
+CRotationComponent::~CRotationComponent()
 {
 }
 
-
-
-void CMovementComponent::SetUpdateComponent(CSceneComponent* Target)
+void CRotationComponent::SetUpdateComponent(class CSceneComponent* Target)
 {
 	mUpdateComponent = Target;
 }
 
-bool CMovementComponent::Init()
+bool CRotationComponent::Init()
 {
 	if (!CComponent::Init())
 	{
@@ -37,7 +34,7 @@ bool CMovementComponent::Init()
 	return true;
 }
 
-bool CMovementComponent::Init(const char* FileName)
+bool CRotationComponent::Init(const char* FileName)
 {
 	if (!CComponent::Init(FileName))
 	{
@@ -45,7 +42,8 @@ bool CMovementComponent::Init(const char* FileName)
 	}
 	return true;
 }
-void CMovementComponent::PreUpdate(float DeltaTime)
+
+void CRotationComponent::PreUpdate(float DeltaTime)
 {
 	CComponent::PreUpdate(DeltaTime);
 
@@ -61,7 +59,8 @@ void CMovementComponent::PreUpdate(float DeltaTime)
 		}
 	}
 }
-void CMovementComponent::Update(float DeltaTime)
+
+void CRotationComponent::Update(float DeltaTime)
 {
 	CComponent::Update(DeltaTime);
 
@@ -73,22 +72,22 @@ void CMovementComponent::Update(float DeltaTime)
 		}
 		else if (mUpdateComponent->IsEnable())
 		{
-			// 이동 벡터 정규화
-			mVelocity.Normalize();
-
+			// 회전은 정규화 안할거다.
+			// 회전에 velocity는 회전 속도가 될 것이다.
 			if (mVelocity.Length() > 0.f)
 			{
-				// 한 프레임당 이동할 거리
-				mMoveStep = mVelocity * mSpeed * DeltaTime;
-				mUpdateComponent->AddWorldPos(mMoveStep);
+				mRotationStep = mVelocity * DeltaTime;
 			}
+
+			mUpdateComponent->AddWorldRotation(mRotationStep);
 		}
 	}
 }
 
-void CMovementComponent::PostUpdate(float DeltaTime)
+void CRotationComponent::PostUpdate(float DeltaTime)
 {
 	CComponent::PostUpdate(DeltaTime);
+
 	if (mUpdateComponent)
 	{
 		if (!mUpdateComponent->IsActive())
@@ -101,7 +100,8 @@ void CMovementComponent::PostUpdate(float DeltaTime)
 		}
 	}
 }
-void CMovementComponent::PostRender()
+
+void CRotationComponent::PostRender()
 {
 	CComponent::PostRender();
 
@@ -115,22 +115,17 @@ void CMovementComponent::PostRender()
 		{
 			// 여기서 작업
 		}
-
-		mVelocity = FVector3D::Zero;
-		mMoveStep = FVector3D::Zero;
 	}
-
 
 	if (mVelocityInit)
 	{
 		mVelocity = FVector3D::Zero;
 	}
-	mMoveStep = FVector3D::Zero;
+
+	mRotationStep = FVector3D::Zero;
 }
 
-
-
-CMovementComponent* CMovementComponent::Clone()
+CRotationComponent* CRotationComponent::Clone()
 {
-	return new CMovementComponent(*this);
+	return new CRotationComponent(*this);
 }

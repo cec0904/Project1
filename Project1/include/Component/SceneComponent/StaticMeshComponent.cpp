@@ -2,8 +2,8 @@
 
 #include "../../Asset/Mesh/StaticMesh.h"
 #include "../../Shader/ShaderClass/Shader.h"
-#include "../../Asset/AssetManager.h"
 #include "../../Shader/ShaderManager.h"
+#include "../../Asset/AssetManager.h"
 #include "../../Asset/Mesh/MeshManager.h"
 
 CStaticMeshComponent::CStaticMeshComponent()

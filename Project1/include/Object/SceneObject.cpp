@@ -47,7 +47,7 @@ void CSceneObject::PreUpdate(float DeltaTime)
 			iterEnd = mNonSceneComponent.end();
 			continue;
 		}
-		else if (!(*iter)->IsActive())
+		else if (!(*iter)->IsEnable())
 		{
 			iter++;
 			continue;

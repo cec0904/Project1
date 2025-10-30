@@ -2,6 +2,7 @@
 
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
 #include "../../Component/NonSceneComponent/MovementComponent.h"
+#include "../../Component/NonSceneComponent/RotationComponent.h"
 #include "../../Component/SceneComponent/CameraComponent.h"
 
 
@@ -45,20 +46,24 @@ bool CPlayerObject::Init()
 	mRoot = CreateComponent<CStaticMeshComponent>();
 	mMovement = CreateComponent<CMovementComponent>();
 	mCamera = CreateComponent<CCameraComponent>();
+	mRotation = CreateComponent<CRotationComponent>();
 
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
 
-	mRoot->SetWorldPos(0.f, 0.f, 5.5f);
+	mRoot->SetWorldPos(0.f, 0.f, 0.f);
 	mRoot->SetWorldScale(100.f, 100.f, 0.f);
 	SetRootComponent(mRoot);
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveSpeed(500.f);
 
+	mRotation->SetUpdateComponent(mRoot);
+
 	// 카메라 세팅
 	mCamera->SetProjectionType(ECameraProjectionType::Ortho);
 	mRoot->AddChild(mCamera);
+	
 
 	// 위성 만들기
 	mRotationPivot = CreateComponent<CSceneComponent>();
@@ -99,7 +104,7 @@ bool CPlayerObject::Init()
 
 	// 총알 발사
 	mScene->GetInput()->AddBindKey("Fire", VK_SPACE);
-	mScene->GetInput()->AddBindFunction("Fire", EInputType::Hold, this, &CPlayerObject::Fire);
+	mScene->GetInput()->AddBindFunction("Fire", EInputType::Down, this, &CPlayerObject::Fire);
 
 	// 스킬1
 	mScene->GetInput()->AddBindKey("Skill1", '1');
@@ -179,14 +184,18 @@ void CPlayerObject::MoveDown(float DeltaTime)
 
 void CPlayerObject::RotationZ(float DeltaTime)
 {
-	FVector3D Rot = mRootComponent->GetWorldRotation();
-	mRootComponent->SetWorldRotationZ(Rot.z + 90.f * DeltaTime);
+	/*FVector3D Rot = mRootComponent->GetWorldRotation();
+	mRootComponent->SetWorldRotationZ(Rot.z + 90.f * DeltaTime);*/
+
+	mRotation->AddMoveZ(90.f);
 }
 
 void CPlayerObject::RotationZInv(float DeltaTime)
 {
-	FVector3D Rot = mRootComponent->GetWorldRotation();
-	mRootComponent->SetWorldRotationZ(Rot.z - 90.f * DeltaTime);
+	/*FVector3D Rot = mRootComponent->GetWorldRotation();
+	mRootComponent->SetWorldRotationZ(Rot.z - 90.f * DeltaTime);*/
+
+	mRotation->AddMoveZ(-90.f);
 }
 
 void CPlayerObject::Fire(float DeltaTime)
@@ -371,7 +380,7 @@ void CPlayerObject::Skill4Update(float DeltaTime)
 		{
 			mSkill4Enable = false;
 			mSkill4TimeAcc = 0;
-			mSkill4Range = 2.f;
+			mSkill4Range = 200.f;
 			mSkill4State = ESkill4State::Expansion;
 			mPivotRotationSpeed = 180.f;
 		}
@@ -402,6 +411,7 @@ void CPlayerObject::Skill5(float DeltaTime)
 		FVector3D Pos = mRoot->GetWorldPosition();
 		Root->SetWorldPos(Pos + Dir);
 		Root->SetWorldRotation(Rot);
+		Root->SetWorldScale(50.f, 50.f, 1.f);
 
 		Rot.z += 45;
 

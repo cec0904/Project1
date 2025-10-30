@@ -57,6 +57,7 @@ void CTalonR::Update(float DeltaTime)
 		{
 			mTimeAcc -= mReadyTime;
 			mState = ETalonRState::Maintain;
+			SetLifeTime(5.f);
 		}
 
 		break;

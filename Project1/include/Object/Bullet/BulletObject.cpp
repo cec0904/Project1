@@ -1,4 +1,5 @@
 ﻿#include "BulletObject.h"
+#include "../../Component/NonSceneComponent/MovementComponent.h"
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
 
 CBulletObject::CBulletObject()
@@ -25,11 +26,20 @@ bool CBulletObject::Init()
 	CSceneObject::Init();
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
+	mMovement = CreateComponent<CMovementComponent>();
+
+
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
 	mRoot->SetWorldScale(0.5f, 0.5f, 1.f);
 
 	SetRootComponent(mRoot);
+
+	// Movement 세팅
+	mMovement->SetUpdateComponent(mRoot);
+	mMovement->SetMoveAxis(EAxis::Y);
+	mMovement->SetMoveSpeed(500.f);
+
 
 	return true;
 }
@@ -38,7 +48,7 @@ void CBulletObject::Update(float DeltaTime)
 {
 	CSceneObject::Update(DeltaTime);
 
-	FVector3D Pos = mRoot->GetWorldPosition();
-	// 이동할 위치의 새로운 위치값 = 내 위치 + 내 Y축 * 속도 * DeltaTime
-	mRoot->SetWorldPos(Pos + mRootComponent->GetAxis(EAxis::Y) * mSpeed * DeltaTime);
+	//FVector3D Pos = mRoot->GetWorldPosition();
+	//// 이동할 위치의 새로운 위치값 = 내 위치 + 내 Y축 * 속도 * DeltaTime
+	//mRoot->SetWorldPos(Pos + mRootComponent->GetAxis(EAxis::Y) * mSpeed * DeltaTime);
 }
