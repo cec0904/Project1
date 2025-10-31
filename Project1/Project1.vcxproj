@@ -37,7 +37,9 @@
     <ClCompile Include="include\Object\Bullet\BulletObject.cpp" />
     <ClCompile Include="include\Object\Bullet\TalonR.cpp" />
     <ClCompile Include="include\Object\Bullet\TornadoBullet.cpp" />
+    <ClCompile Include="include\Object\Monster\GunnerMonster.cpp" />
     <ClCompile Include="include\Object\Monster\MonsterObject.cpp" />
+    <ClCompile Include="include\Object\Monster\NearingMonster.cpp" />
     <ClCompile Include="include\Object\Player\PlayerObject.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -56,6 +58,7 @@
     <ClCompile Include="include\Shader\ShaderClass\GraphicShader.cpp" />
     <ClCompile Include="include\Shader\ShaderClass\Shader.cpp" />
     <ClCompile Include="include\Shader\ShaderManager.cpp" />
+    <ClCompile Include="include\Share\Log\Log.cpp" />
     <ClCompile Include="include\Share\Object\Object.cpp" />
     <ClCompile Include="include\Share\Timer\Timer.cpp" />
     <ClCompile Include="include\Vector3D.cpp" />
@@ -82,7 +85,9 @@
     <ClInclude Include="include\Object\Bullet\BulletObject.h" />
     <ClInclude Include="include\Object\Bullet\TalonR.h" />
     <ClInclude Include="include\Object\Bullet\TornadoBullet.h" />
+    <ClInclude Include="include\Object\Monster\GunnerMonster.h" />
     <ClInclude Include="include\Object\Monster\MonsterObject.h" />
+    <ClInclude Include="include\Object\Monster\NearingMonster.h" />
     <ClInclude Include="include\Object\Player\PlayerObject.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -102,6 +107,7 @@
     <ClInclude Include="include\Shader\ShaderClass\GraphicShader.h" />
     <ClInclude Include="include\Shader\ShaderClass\Shader.h" />
     <ClInclude Include="include\Shader\ShaderManager.h" />
+    <ClInclude Include="include\Share\Log\Log.h" />
     <ClInclude Include="include\Share\Object\Object.h" />
     <ClInclude Include="include\Share\SharedPtr\SharedPtr.h" />
     <ClInclude Include="include\Share\Timer\Timer.h" />

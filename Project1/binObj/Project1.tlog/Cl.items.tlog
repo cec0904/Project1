@@ -16,7 +16,9 @@ E:\SVN\Windows\Project1\Project1\include\main.cpp;E:\SVN\Windows\Project1\Projec
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\BulletObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\BulletObject.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TalonR.cpp;E:\SVN\Windows\Project1\Project1\binObj\TalonR.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TornadoBullet.cpp;E:\SVN\Windows\Project1\Project1\binObj\TornadoBullet.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Monster\GunnerMonster.cpp;E:\SVN\Windows\Project1\Project1\binObj\GunnerMonster.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Monster\MonsterObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\MonsterObject.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Monster\NearingMonster.cpp;E:\SVN\Windows\Project1\Project1\binObj\NearingMonster.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\PlayerObject.obj
 E:\SVN\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\SceneObject.obj
 E:\SVN\Windows\Project1\Project1\include\Scene\CameraManager\CameraManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\CameraManager.obj
@@ -32,6 +34,7 @@ E:\SVN\Windows\Project1\Project1\include\Shader\ShaderClass\ComputeShader.cpp;E:
 E:\SVN\Windows\Project1\Project1\include\Shader\ShaderClass\GraphicShader.cpp;E:\SVN\Windows\Project1\Project1\binObj\GraphicShader.obj
 E:\SVN\Windows\Project1\Project1\include\Shader\ShaderClass\Shader.cpp;E:\SVN\Windows\Project1\Project1\binObj\Shader.obj
 E:\SVN\Windows\Project1\Project1\include\Shader\ShaderManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\ShaderManager.obj
+E:\SVN\Windows\Project1\Project1\include\Share\Log\Log.cpp;E:\SVN\Windows\Project1\Project1\binObj\Log.obj
 E:\SVN\Windows\Project1\Project1\include\Share\Object\Object.cpp;E:\SVN\Windows\Project1\Project1\binObj\Object.obj
 E:\SVN\Windows\Project1\Project1\include\Share\Timer\Timer.cpp;E:\SVN\Windows\Project1\Project1\binObj\Timer.obj
 E:\SVN\Windows\Project1\Project1\include\Vector3D.cpp;E:\SVN\Windows\Project1\Project1\binObj\Vector3D.obj

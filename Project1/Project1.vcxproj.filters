@@ -82,6 +82,9 @@
     <Filter Include="06.Object\03.Object">
       <UniqueIdentifier>{fdae064c-b0bf-4106-a31a-acd9a6cf43e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Share\04.Log">
+      <UniqueIdentifier>{57c0aadf-78a4-4863-a4af-c4ee908d8b6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -198,6 +201,15 @@
     <ClCompile Include="include\Object\Monster\MonsterObject.cpp">
       <Filter>06.Object\03.Object</Filter>
     </ClCompile>
+    <ClCompile Include="include\Object\Monster\GunnerMonster.cpp">
+      <Filter>06.Object\03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Object\Monster\NearingMonster.cpp">
+      <Filter>06.Object\03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Share\Log\Log.cpp">
+      <Filter>02.Share\04.Log</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\GameManager\Device\Device.h">
@@ -226,9 +238,6 @@
     </ClInclude>
     <ClInclude Include="include\Share\SharedPtr\SharedPtr.h">
       <Filter>02.Share\03.SharedPtr</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Share\Object\Object.h">
-      <Filter>02.Share\02.Object</Filter>
     </ClInclude>
     <ClInclude Include="include\Share\Timer\Timer.h">
       <Filter>02.Share\01.Timer</Filter>
@@ -331,6 +340,18 @@
     </ClInclude>
     <ClInclude Include="include\Object\Monster\MonsterObject.h">
       <Filter>06.Object\03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\Monster\GunnerMonster.h">
+      <Filter>06.Object\03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\Monster\NearingMonster.h">
+      <Filter>06.Object\03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Share\Log\Log.h">
+      <Filter>02.Share\04.Log</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Share\Object\Object.h">
+      <Filter>02.Share\02.Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

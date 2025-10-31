@@ -165,6 +165,11 @@ void CPlayerObject::Update(float DeltaTime)
 	}
 }
 
+void CPlayerObject::Damage(float Damage)
+{
+	mHP -= Damage;
+}
+
 void CPlayerObject::MoveUp(float DeltaTime)
 {
 	/*FVector3D Pos = mRootComponent->GetWorldPosition();
@@ -230,17 +235,17 @@ void CPlayerObject::Skill1(float DeltaTime)
 
 	FVector3D Scale = Root->GetWorldScale();
 
-	Scale.x += 2.f * DeltaTime;
-	Scale.y += 2.f * DeltaTime;
+	Scale.x += 200.f * DeltaTime;
+	Scale.y += 200.f * DeltaTime;
 
-	if (Scale.x >= 4.f)
+	if (Scale.x >= 400.f)
 	{
-		Scale.x = 4.f;
+		Scale.x = 400.f;
 	}
 
-	if (Scale.y >= 4.f)
+	if (Scale.y >= 400.f)
 	{
-		Scale.y = 4.f;
+		Scale.y = 400.f;
 	}
 
 	mSkill1Object->GetRootComponent()->SetWorldScale(Scale);
@@ -250,7 +255,7 @@ void CPlayerObject::Skill1(float DeltaTime)
 
 void CPlayerObject::Skill1Fire(float DeltaTime)
 {
-	mSkill1Object->SetBulletSpeed(2.f);
+	mSkill1Object->SetBulletSpeed(500.f);
 	mSkill1Object = nullptr;
 
 }
@@ -265,7 +270,8 @@ void CPlayerObject::Skill2(float DeltaTime)
 	// 총알의 시작 위치 == 내 월드 위치
 	Root->SetWorldPos(mRootComponent->GetWorldPosition());
 	Root->SetWorldRotation(mRootComponent->GetWorldRotation());
-	Bullet->SetBulletSpeed(5.f);
+	Bullet->SetBulletSpeed(500.f);
+	Bullet->SetWorldScale(100.f, 100.f);
 	Bullet->SetLifeTime(1.f);
 }
 
@@ -298,7 +304,8 @@ void CPlayerObject::Skill3Update(float DeltaTime)
 		Root->SetWorldPos(mSub->GetWorldPosition());
 		Root->SetWorldRotation(mRootComponent->GetWorldRotation());
 		Bullet->SetLifeTime(2.f);
-		Bullet->SetBulletSpeed(1.5f);
+		Bullet->SetBulletSpeed(150.f);
+		Bullet->SetWorldScale(50.f, 50.f);
 
 		Bullet = mScene->CreateObj<CBulletObject>("Bullet");
 		Root = Bullet->GetRootComponent();
@@ -306,7 +313,8 @@ void CPlayerObject::Skill3Update(float DeltaTime)
 		Root->SetWorldPos(mSub1->GetWorldPosition());
 		Root->SetWorldRotation(mRootComponent->GetWorldRotation());
 		Bullet->SetLifeTime(2.f);
-		Bullet->SetBulletSpeed(1.5f);
+		Bullet->SetBulletSpeed(150.f);
+		Bullet->SetWorldScale(50.f, 50.f);
 	}
 
 	mSkill3Time -= DeltaTime;

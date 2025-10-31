@@ -9,6 +9,7 @@
 
 #include "../Share/SharedPtr/SharedPtr.h"
 #include "../Share/Object/Object.h"
+#include "../Share/Log/Log.h"
 
 
 #include "../Asset/Mesh/MeshManager.h"
@@ -29,6 +30,10 @@ CGameManager::CGameManager()
 }
 CGameManager::~CGameManager()
 {
+	// 소멸자
+	CLog::Destroy();
+
+
 	// DC 반납
 	ReleaseDC(mhWnd, mhDC);
 }
@@ -44,6 +49,11 @@ bool CGameManager::Init(HINSTANCE hInst)
 	RegisterWindowClass();
 
 	if (!Create())
+	{
+		return false;
+	}
+
+	if (!CLog::Init())
 	{
 		return false;
 	}
@@ -130,6 +140,20 @@ void CGameManager::Input(float DeltaTime)
 void CGameManager::Update(float DeltaTime)
 {
 	CSceneManager::GetInst()->Update(DeltaTime);
+
+	CLog::PrintLog("GameManager Update", ELogPrintType::All);
+
+	static bool push = false;
+
+	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+	{
+		push = true;
+	}
+	else if (push)
+	{
+		push = false;
+		CLog::SaveLog();
+	}
 }
 
 void CGameManager::Collision(float DeltaTime)
@@ -221,6 +245,13 @@ LRESULT CGameManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 {
 	switch (message)
 	{
+	case WM_SYSKEYDOWN:
+		if (wParam == VK_F4)
+		{
+			mLoop = false;
+			DestroyWindow(hWnd);
+		}
+		break;
 	
 	case WM_DESTROY:
 		mLoop = false;

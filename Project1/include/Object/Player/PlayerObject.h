@@ -63,9 +63,12 @@ protected:
 
 	float mPivotRotationSpeed = 180.f;
 
+	float mHP = 10;
+
 public:
 	virtual bool Init();
 	virtual void Update(float DeltaTime);
+	void Damage(float Damage);
 
 private:
 	void MoveUp(float DeltaTime);
@@ -96,6 +99,8 @@ private:
 	// 8각형 기준으로 스폰해주고 
 	// 총알은 각각 돌다가 돌아온다.
 	void Skill5(float DeltaTime);
+
+
 
 
 };
