@@ -77,7 +77,7 @@ public:
 	{
 		mVelocity.z += z;
 	}
-	void SetMoveInit(bool VelocityInit)
+	void SetVelocityInit(bool VelocityInit)
 	{
 		mVelocityInit = VelocityInit;
 	}

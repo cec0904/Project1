@@ -501,7 +501,58 @@ FVector3D FVector3D::GetRotation(const FVector3D& Rot) const
 	return TransformNormal(matRot);
 }
 
+float FVector3D::GetAngle(const FVector3D& v) const
+{
+	FVector3D v1 = *this;
+	FVector3D v2 = v;
+
+	v1.Normalize();
+	v2.Normalize();
+
+	float Angle = v1.Dot(v2);
+
+	Angle = DirectX::XMConvertToDegrees(acosf(Angle));
+	return Angle;
+}
+
+float FVector3D::GetViewTargetAngle(const FVector3D& v, EAxis::Type AxisType) const
+{
+	FVector3D v1 = Axis[AxisType];	// 비교할 축 벡터
+	FVector3D v2 = v- *this;	// 상대를 바라보는 방향벡터
+
+	v1.Normalize();
+	v2.Normalize();
+
+	float Angle = v1.Dot(v2);
+
+	Angle = DirectX::XMConvertToDegrees(acosf(Angle));
+
+	if (v.x > x)
+	{
+		Angle = 360.f - Angle;
+	}
+
+	return Angle;
+
+}
+
+float FVector3D::GetAngle(const FVector3D& v1, const FVector3D& v2)
+{
+	FVector3D v3 = v1;
+	FVector3D v4 = v2;
+
+
+	v3.Normalize();
+	v4.Normalize();
+
+	float Angle = v3.Dot(v4);
+
+	Angle = DirectX::XMConvertToDegrees(acosf(Angle));
+	return Angle;
+
+}
 
 
 
-#pragma endregion
+
+#pragma endregion Function

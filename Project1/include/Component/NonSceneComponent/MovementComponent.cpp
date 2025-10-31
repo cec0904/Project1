@@ -73,6 +73,12 @@ void CMovementComponent::Update(float DeltaTime)
 		}
 		else if (mUpdateComponent->IsEnable())
 		{
+			if (mMoveAxis != EAxis::None)
+			{
+				mVelocity = mUpdateComponent->GetAxis(mMoveAxis);
+			}
+
+
 			// 이동 벡터 정규화
 			mVelocity.Normalize();
 

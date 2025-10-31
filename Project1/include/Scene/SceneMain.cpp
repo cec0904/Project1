@@ -1,6 +1,7 @@
 ﻿#include "SceneMain.h"
 
 #include "../Object/Player/PlayerObject.h"
+#include "../Object/Monster/MonsterObject.h"
 
 CSceneMain::CSceneMain()
 {
@@ -17,12 +18,18 @@ bool CSceneMain::Init()
 		return false;
 	}
 
-	CSceneObject* Obj = CreateObj<CPlayerObject>("Player");
+	CPlayerObject* Player = CreateObj<CPlayerObject>("Player");
 
-	if (Obj == nullptr)
+	if (Player == nullptr)
 	{
 		return false;
 	}
 
-	return true;
+	CMonsterObject* Monster = CreateObj<CMonsterObject>("Monster");
+	Monster->SetWorldPos(-400.f, 300.f);
+	Monster->SetTarget(Player);
+
+	CMonsterObject* Monster1 = CreateObj<CMonsterObject>("Monster");
+	Monster1->SetWorldPos(400.f, 300.f);
+	Monster1->SetTarget(Player);
 }
