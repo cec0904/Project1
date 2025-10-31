@@ -173,7 +173,7 @@ bool CInput::UpdateKeyboard()
 		return false;
 	}
 		// 키보드 상태를 만들어 준다.
-		HRESULT result = mKeyboard->GetDeviceState(256, (LPVOID)&mKeyState);
+		HRESULT result = mKeyboard->GetDeviceState(256, (LPVOID) & mKeyState);
 
 		if (FAILED(result))
 		{
@@ -286,7 +286,7 @@ void CInput::UpdateInput(float DeltaTime)
 			}
 			else
 			{
-				mCtrl[EInputType::Hold] = false;
+				mCtrl[EInputType::Down] = false;
 			}
 		}
 		else if (mCtrl[EInputType::Hold])
@@ -294,6 +294,10 @@ void CInput::UpdateInput(float DeltaTime)
 			mCtrl[EInputType::Hold] = false;
 			mCtrl[EInputType::Down] = false;
 			mCtrl[EInputType::Up] = true;
+		}
+		else if (mCtrl[EInputType::Up])
+		{
+			mCtrl[EInputType::Up] = false;
 		}
 
 		// Alt
@@ -469,11 +473,11 @@ void CInput::UpdateBind(float DeltaTime)
 
 	for (; iter != iterEnd; iter++)
 	{
-		// Down 이 충족 됐는지
+		// Down 이 충족됐는지
 		if (iter->second->Key->Down &&
 			iter->second->Ctrl == mCtrl[EInputType::Down] &&
 			iter->second->Alt == mAlt[EInputType::Down] &&
-			iter->second->Shift== mShift[EInputType::Down])
+			iter->second->Shift == mShift[EInputType::Down])
 		{
 			size_t Size = iter->second->FunctionList[EInputType::Down].size();
 
@@ -483,13 +487,12 @@ void CInput::UpdateBind(float DeltaTime)
 			}
 		}
 
-		// Hold 충족 됐는지
+		// Hold 이 충족됐는지
 		if (iter->second->Key->Hold &&
 			iter->second->Ctrl == mCtrl[EInputType::Hold] &&
 			iter->second->Alt == mAlt[EInputType::Hold] &&
 			iter->second->Shift == mShift[EInputType::Hold])
 		{
-			iter->second->KeyHold = true;
 			size_t Size = iter->second->FunctionList[EInputType::Hold].size();
 
 			for (size_t i = 0; i < Size; i++)
@@ -508,25 +511,23 @@ void CInput::UpdateBind(float DeltaTime)
 				Verification = true;
 			}
 		}
-
 		if (iter->second->Alt)
 		{
-			if (mAlt[EInputType::Up])
+			if (mCtrl[EInputType::Up])
 			{
 				Verification = true;
 			}
 		}
-
 		if (iter->second->Shift)
 		{
-			if (mShift[EInputType::Up])
+			if (mCtrl[EInputType::Up])
 			{
 				Verification = true;
 			}
 		}
 
-		// up 이 충족됐는지 확인
-		if ((iter->second->Key->Up || Verification) && iter->second->KeyHold)
+		// Up 이 충족됐는지 확인할 것이다.
+		if ((iter->second->Key->Up || Verification)&& iter->second->KeyHold)
 		{
 			iter->second->KeyHold = false;
 
@@ -539,7 +540,6 @@ void CInput::UpdateBind(float DeltaTime)
 		}
 
 	}
-
 
 }
 

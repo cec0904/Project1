@@ -1,7 +1,6 @@
 ﻿#include "SceneComponent.h"
 
 CSceneComponent::CSceneComponent()
-	: CComponent()
 {
 }
 
@@ -165,7 +164,7 @@ void CSceneComponent::PreRender()
 	mmatRot.Rotation(mWorldRot);
 	mmatTranslate.Translation(mWorldPos);
 
-	// 크기 * 자전 * 이동
+	//			   크기   *    자전  *     이동
 	mmatWorld = mmatScale * mmatRot * mmatTranslate;
 
 	vector<CSharedPtr<CSceneComponent>>::iterator iter;
@@ -353,7 +352,7 @@ void CSceneComponent::SetRelativeRotation(const FVector3D& Rot)
 
 		mChildList[i]->mWorldPos = mChildList[i]->mRelativePos.TransformCoord(matRot);
 
-		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativePos + mWorldRot);
+		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativeRot + mWorldRot);
 	}
 }
 
@@ -530,7 +529,7 @@ void CSceneComponent::SetWorldRotation(const FVector3D& Rot)
 		// mChildList[i]->SetWorldPos(
 		//	mChildList[i]->mRelativePos.GetRotation(mWorldRot) + mWorldPos);
 
-
+		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativeRot + mWorldRot);
 
 
 		FVector3D ParentRot = GetWorldRotation();
@@ -544,7 +543,7 @@ void CSceneComponent::SetWorldRotation(const FVector3D& Rot)
 
 		mChildList[i]->mWorldPos = mChildList[i]->mRelativePos.TransformCoord(matRot);
 
-		mChildList[i]->SetWorldRotation(mChildList[i]->mRelativePos + mWorldRot);
+		
 
 
 		
@@ -632,14 +631,14 @@ void CSceneComponent::SetWorldPos(const FVector3D& Pos)
 
 	if (mParent)
 	{
-		FVector3D ParentRot = GetWorldRotation();
+		FVector3D ParentRot = mParent->GetWorldRotation();
 
 		FMatrix matRot;
 		matRot.Rotation(ParentRot);
 
 		// 행렬의 41, 42, 43 에 부모의 위치를 넣어 부모의 위치를 중심으로
 		// 회전하는 행렬을 만들어 준다.
-		memcpy(&matRot._41, &mWorldPos, sizeof(FVector3D));
+		memcpy(&matRot._41, &mParent->mWorldPos, sizeof(FVector3D));
 
 		mWorldPos = mRelativePos.TransformCoord(matRot);
 	}
@@ -827,12 +826,12 @@ void CSceneComponent::AddWorldPos(float x, float y, float z)
 
 void CSceneComponent::AddWorldPos(const FVector2D& Pos)
 {
-	AddWorldPos(FVector3D(Pos.x, Pos.y, mWorldPos.z));
+	AddWorldPos(FVector3D(Pos.x, Pos.y, mRelativePos.z));
 }
 
 void CSceneComponent::AddWorldPos(float x, float y)
 {
-	AddWorldPos(FVector3D(x, y, mWorldPos.z));
+	AddWorldPos(FVector3D(x, y, mRelativePos.z));
 }
 
 void CSceneComponent::ComputeTransform()

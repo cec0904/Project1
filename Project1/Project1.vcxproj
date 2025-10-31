@@ -37,6 +37,7 @@
     <ClCompile Include="include\Object\Bullet\BulletObject.cpp" />
     <ClCompile Include="include\Object\Bullet\TalonR.cpp" />
     <ClCompile Include="include\Object\Bullet\TornadoBullet.cpp" />
+    <ClCompile Include="include\Object\Monster\MonsterObject.cpp" />
     <ClCompile Include="include\Object\Player\PlayerObject.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -81,6 +82,7 @@
     <ClInclude Include="include\Object\Bullet\BulletObject.h" />
     <ClInclude Include="include\Object\Bullet\TalonR.h" />
     <ClInclude Include="include\Object\Bullet\TornadoBullet.h" />
+    <ClInclude Include="include\Object\Monster\MonsterObject.h" />
     <ClInclude Include="include\Object\Player\PlayerObject.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>

@@ -16,6 +16,7 @@ E:\SVN\Windows\Project1\Project1\include\main.cpp;E:\SVN\Windows\Project1\Projec
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\BulletObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\BulletObject.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TalonR.cpp;E:\SVN\Windows\Project1\Project1\binObj\TalonR.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TornadoBullet.cpp;E:\SVN\Windows\Project1\Project1\binObj\TornadoBullet.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Monster\MonsterObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\MonsterObject.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\PlayerObject.obj
 E:\SVN\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\SceneObject.obj
 E:\SVN\Windows\Project1\Project1\include\Scene\CameraManager\CameraManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\CameraManager.obj

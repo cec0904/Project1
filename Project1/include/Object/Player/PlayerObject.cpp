@@ -83,7 +83,7 @@ bool CPlayerObject::Init()
 	// 위성2
 	mSub1->SetMesh("CenterRect");
 	mSub1->SetShader("ColorMeshShader");
-	mSub1->SetRelativePos(-mSkill4Range, 0.f, 0.f);
+	mSub1->SetRelativePos(mSkill4Range, 0.f, 0.f);
 	mSub1->SetRelativeScale(0.5f, 0.5f, 1.f);
 
 	// 입력
@@ -324,7 +324,7 @@ void CPlayerObject::Skill4(float DeltatTime)
 		mSkill4Enable = true;
 		mSkill4Time = 5.f;
 		mSkill4TimeAcc = 0.f;
-		mSkill4ReadyTime = 2.l;
+		mSkill4ReadyTime = 2.0f;
 
 		mPivotRotationSpeed = 360.f;
 		mSkill4State = ESkill4State::Expansion;
@@ -339,9 +339,6 @@ void CPlayerObject::Skill4Update(float DeltaTime)
 
 	switch (mSkill4State)
 	{
-
-
-
 	case ESkill4State::Expansion:
 		// DeltaTime / mSkill4ReadyTime 을 하게 되면 확장하는 시간 2초라는 시간에 대해서
 		// 현재 DeltaTime 이 몇 퍼센트의 시간이 흘렀는지를 구해낼 수 있다.
@@ -370,6 +367,8 @@ void CPlayerObject::Skill4Update(float DeltaTime)
 			mSkill4TimeAcc = 0.f;
 			mSkill4State = ESkill4State::Reducion;
 		}
+
+
 		break;
 
 
