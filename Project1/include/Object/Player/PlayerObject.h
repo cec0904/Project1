@@ -100,7 +100,10 @@ private:
 	// 총알은 각각 돌다가 돌아온다.
 	void Skill5(float DeltaTime);
 
-
+	// 스킬6 중력탄 자리야 궁
+	// 총알 발사하면
+	// 범위 내 몬스터 한 곳으로 합쳐짐
+	void Skill6(float DeltaTime);
 
 
 };

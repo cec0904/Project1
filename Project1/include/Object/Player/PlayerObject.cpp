@@ -429,3 +429,8 @@ void CPlayerObject::Skill5(float DeltaTime)
 
 
 }
+
+void CPlayerObject::Skill6(float DeltaTime)
+{
+
+}
