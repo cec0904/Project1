@@ -13,6 +13,7 @@
 #include "../Bullet/TornadoBullet.h"
 #include "../Bullet/TalonR.h"
 #include "../Bullet/GravitonSurge.h"
+#include "../Bullet/ConcussiveBlast.h"
 
 
 
@@ -144,6 +145,11 @@ bool CPlayerObject::Init()
 	// 자리야 궁
 	mScene->GetInput()->AddBindKey("Skill6", '6');
 	mScene->GetInput()->AddBindFunction("Skill6", EInputType::Down, this, &CPlayerObject::Skill6);
+
+	// 스킬 7
+	// 파라 E
+	mScene->GetInput()->AddBindKey("Skill6", '7');
+	mScene->GetInput()->AddBindFunction("Skill7", EInputType::Down, this, &CPlayerObject::Skill7);
 
 
 	return true;
@@ -437,12 +443,17 @@ void CPlayerObject::Skill5(float DeltaTime)
 void CPlayerObject::Skill6(float DeltaTime)
 {
 	
-	CBulletObject* Bullet = mScene->CreateObj<CBulletObject>("GravitionSurge");
+	CGravitionSurge* Bullet = mScene->CreateObj<CGravitionSurge>("GravitionSurge");
 
-	CSceneComponent* Root = Bullet->GetRootComponent();
-	//총알의 시작 위치 == 내 월드 위치
-	Root->SetWorldPos(mRootComponent->GetWorldPosition());
-	Root->SetWorldRotation(mRootComponent->GetWorldRotation());
-	Root->SetWorldScale(50.f, 50.f, 1.f);
-	Bullet->SetLifeTime(2.f);
+	//CSceneComponent* Root = Bullet->GetRootComponent();
+	////총알의 시작 위치 == 내 월드 위치
+	//Root->SetWorldPos(mRootComponent->GetWorldPosition());
+	//Root->SetWorldRotation(mRootComponent->GetWorldRotation());
+	//Root->SetWorldScale(50.f, 50.f, 1.f);
+	//Bullet->SetLifeTime(2.f);
+
+	FVector3D Pos = GetWorldPosition();
+	FVector3D Dir = GetAxis(EAxis::Y);
+	Bullet->SetWorldPos(Pos + Dir * 75.f);
+	Bullet->SetWorldRotation(GetWorldRotation());
 }

@@ -21,6 +21,13 @@ protected:
 	// 오브젝트
 	list<CSharedPtr<class CSceneObject>> mObjList;
 
+
+public:
+	/*list<CSharedPtr<class CSceneObject>>& GetObjList()
+	{
+		return mObjList;
+	}*/
+
 public:
 	class CInput* GetInput() const
 	{
@@ -62,6 +69,23 @@ public:
 
 		mObjList.push_back(Obj);
 		return Obj;
+	}
+
+
+	template<typename T>
+	void FindObjectsFromType(list<CSharedPtr<T>>& result)
+	{
+		auto iter = mObjList.begin();
+		auto iterEnd = mObjList.end();
+
+		for (; iter != iterEnd; iter++)
+		{
+			T* Obj = dynamic_cast<T*>((*iter).Get());
+			if (Obj)
+			{
+				result.push_back(Obj);
+			}
+		}
 	}
 };
 

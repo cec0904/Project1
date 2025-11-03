@@ -105,6 +105,11 @@ private:
 	// 범위 내 몬스터 한 곳으로 합쳐짐
 	void Skill6(float DeltaTime);
 
+	// 스킬7
+	// 파라 충격탄
+	// 밀쳐내기
+	void Skill7(float DeltaTime);
+
 
 };
 

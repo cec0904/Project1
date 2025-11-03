@@ -36,7 +36,7 @@
     <ClCompile Include="include\main.cpp" />
     <ClCompile Include="include\Object\Bullet\BulletObject.cpp" />
     <ClCompile Include="include\Object\Bullet\ConcussiveBlast.cpp" />
-    <ClCompile Include="include\Object\Bullet\GravitonSurge.cpp" />
+    <ClCompile Include="include\Object\Bullet\GravityBullet.cpp" />
     <ClCompile Include="include\Object\Bullet\TalonR.cpp" />
     <ClCompile Include="include\Object\Bullet\TornadoBullet.cpp" />
     <ClCompile Include="include\Object\Monster\GunnerMonster.cpp" />
@@ -86,7 +86,7 @@
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Object\Bullet\BulletObject.h" />
     <ClInclude Include="include\Object\Bullet\ConcussiveBlast.h" />
-    <ClInclude Include="include\Object\Bullet\GravitonSurge.h" />
+    <ClInclude Include="include\Object\Bullet\GravityBullet.h" />
     <ClInclude Include="include\Object\Bullet\TalonR.h" />
     <ClInclude Include="include\Object\Bullet\TornadoBullet.h" />
     <ClInclude Include="include\Object\Monster\GunnerMonster.h" />

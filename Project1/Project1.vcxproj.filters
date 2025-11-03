@@ -210,7 +210,7 @@
     <ClCompile Include="include\Share\Log\Log.cpp">
       <Filter>02.Share\04.Log</Filter>
     </ClCompile>
-    <ClCompile Include="include\Object\Bullet\GravitonSurge.cpp">
+    <ClCompile Include="include\Object\Bullet\GravityBullet.cpp">
       <Filter>06.Object\02.Bullet</Filter>
     </ClCompile>
     <ClCompile Include="include\Object\Bullet\ConcussiveBlast.cpp">
@@ -362,7 +362,7 @@
     <ClInclude Include="include\Object\Bullet\ConcussiveBlast.h">
       <Filter>06.Object\02.Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="include\Object\Bullet\GravitonSurge.h">
+    <ClInclude Include="include\Object\Bullet\GravityBullet.h">
       <Filter>06.Object\02.Bullet</Filter>
     </ClInclude>
   </ItemGroup>
