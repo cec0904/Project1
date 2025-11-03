@@ -18,6 +18,9 @@ protected:
 	// 카메라 매니저
 	class CCameraManager* mCameraManager = nullptr;
 
+	// 충돌
+	class CSceneCollision* mCollision = nullptr;
+
 	// 오브젝트
 	list<CSharedPtr<class CSceneObject>> mObjList;
 
@@ -37,6 +40,11 @@ public:
 	class CCameraManager* GetCameraManager() const
 	{
 		return mCameraManager;
+	}
+
+	class CSceneCollision* GetCollision() const
+	{
+		return mCollision;
 	}
 
 public:

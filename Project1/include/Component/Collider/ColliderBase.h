@@ -1,11 +1,6 @@
 #pragma once
 #include "../SceneComponent/SceneComponent.h"
 
-enum class ECameraProjectionType
-{
-	Perspective,	// 원근 투영
-	Ortho			// 직교 투영
-};
 
 
 class CColliderBase : public CSceneComponent
@@ -20,46 +15,37 @@ protected:
 	virtual ~CColliderBase();
 
 protected:
-	// 카메라 투영 방식
-	ECameraProjectionType mProjType = ECameraProjectionType::Perspective;
+	// 2D 인지 3D 인지
+	EColliderType mColliderType;
 
-	// 뷰(카메라) 행렬
-	FMatrix mmatView;
+	// 충돌 모양
+	EColliderShape mColliderShape;
 
-	// 투영 행렬
-	FMatrix mmatProj;
-
-	float mViewAngle = 90.f;
-	float mWidth = 1280.f;
-	float mHeight = 720.f;
-	float mViewDistance = 1000.f;
+	// 충돌 정보
+	FVector3D mMin;
+	FVector3D mMax;
 
 public:
-	const FMatrix& GetViewMatrix() const
+	EColliderType GetColliderType()
 	{
-		return mmatView;
-	}
-	const FMatrix& GetProjMatrix() const
-	{
-		return mmatProj;
+		return mColliderType;
 	}
 
-public:
-	void SetProjectionType(ECameraProjectionType Type);
-	void SetViewAngle(float Angle)
+	EColliderShape GetColliderShape()
 	{
-		mViewAngle = Angle;
+		return mColliderShape;
 	}
 
-	void SetViewResolution(float Width, float Height)
+	const FVector3D& GetMin()
 	{
-		mWidth = Width;
-		mHeight = Height;
+		return mMin;
 	}
-	void SetViewDistance(float Dist)
+
+	const FVector3D& GetMax()
 	{
-		mViewDistance = Dist;
+		return mMax;
 	}
+
 
 public:
 	virtual bool Init();

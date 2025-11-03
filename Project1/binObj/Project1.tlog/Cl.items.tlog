@@ -25,6 +25,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\NearingMonster.cpp;
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\PlayerObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\CameraManager\CameraManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CameraManager.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Collision\CollisionQuadTree.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CollisionQuadTree.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Collision\SceneCollision.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneCollision.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Input\Input.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Input.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Scene.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Scene.obj

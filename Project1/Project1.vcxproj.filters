@@ -91,6 +91,12 @@
     <Filter Include="05.Scene\03.Collision">
       <UniqueIdentifier>{4be988c6-be9d-42d6-9dcc-b4f1e6d5b083}</UniqueIdentifier>
     </Filter>
+    <Filter Include="07.Component\01.SceneComponent\01.Mesh">
+      <UniqueIdentifier>{b7e4018e-d043-4723-8493-50e97c257e29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.Component\01.SceneComponent\02.Camera">
+      <UniqueIdentifier>{e860086b-ebad-4c08-be45-4c1a91c90b70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -165,13 +171,7 @@
     <ClCompile Include="include\Component\Component.cpp">
       <Filter>07.Component</Filter>
     </ClCompile>
-    <ClCompile Include="include\Component\SceneComponent\StaticMeshComponent.cpp">
-      <Filter>07.Component\01.SceneComponent</Filter>
-    </ClCompile>
     <ClCompile Include="include\Component\SceneComponent\SceneComponent.cpp">
-      <Filter>07.Component\01.SceneComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Component\SceneComponent\MeshComponent.cpp">
       <Filter>07.Component\01.SceneComponent</Filter>
     </ClCompile>
     <ClCompile Include="include\Vector3D.cpp">
@@ -194,9 +194,6 @@
     </ClCompile>
     <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp">
       <Filter>07.Component\02.NonSceneComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Component\SceneComponent\CameraComponent.cpp">
-      <Filter>07.Component\01.SceneComponent</Filter>
     </ClCompile>
     <ClCompile Include="include\Scene\CameraManager\CameraManager.cpp">
       <Filter>05.Scene\02.CameraManager</Filter>
@@ -227,6 +224,18 @@
     </ClCompile>
     <ClCompile Include="include\Component\Collider\ColliderAABB2D.cpp">
       <Filter>07.Component\03.Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Scene\Collision\CollisionQuadTree.cpp">
+      <Filter>05.Scene\03.Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\SceneComponent\CameraComponent.cpp">
+      <Filter>07.Component\01.SceneComponent\02.Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\SceneComponent\MeshComponent.cpp">
+      <Filter>07.Component\01.SceneComponent\01.Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\SceneComponent\StaticMeshComponent.cpp">
+      <Filter>07.Component\01.SceneComponent\01.Mesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -323,13 +332,7 @@
     <ClInclude Include="include\Component\Component.h">
       <Filter>07.Component</Filter>
     </ClInclude>
-    <ClInclude Include="include\Component\SceneComponent\MeshComponent.h">
-      <Filter>07.Component\01.SceneComponent</Filter>
-    </ClInclude>
     <ClInclude Include="include\Component\SceneComponent\SceneComponent.h">
-      <Filter>07.Component\01.SceneComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h">
       <Filter>07.Component\01.SceneComponent</Filter>
     </ClInclude>
     <ClInclude Include="include\Object\Player\PlayerObject.h">
@@ -346,9 +349,6 @@
     </ClInclude>
     <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h">
       <Filter>07.Component\02.NonSceneComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Component\SceneComponent\CameraComponent.h">
-      <Filter>07.Component\01.SceneComponent</Filter>
     </ClInclude>
     <ClInclude Include="include\Scene\CameraManager\CameraManager.h">
       <Filter>05.Scene\02.CameraManager</Filter>
@@ -382,6 +382,18 @@
     </ClInclude>
     <ClInclude Include="include\Component\Collider\ColliderAABB2D.h">
       <Filter>07.Component\03.Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\Collision\CollisionQuadTree.h">
+      <Filter>05.Scene\03.Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\SceneComponent\CameraComponent.h">
+      <Filter>07.Component\01.SceneComponent\02.Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\SceneComponent\MeshComponent.h">
+      <Filter>07.Component\01.SceneComponent\01.Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h">
+      <Filter>07.Component\01.SceneComponent\01.Mesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
