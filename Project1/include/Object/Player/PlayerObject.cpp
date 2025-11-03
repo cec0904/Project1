@@ -12,6 +12,7 @@
 #include "../Bullet/BulletObject.h"
 #include "../Bullet/TornadoBullet.h"
 #include "../Bullet/TalonR.h"
+#include "../Bullet/GravitonSurge.h"
 
 
 
@@ -139,7 +140,10 @@ bool CPlayerObject::Init()
 	mScene->GetInput()->AddBindKey("Skill5", '5');
 	mScene->GetInput()->AddBindFunction("Skill5", EInputType::Down, this, &CPlayerObject::Skill5);
 
-
+	// 스킬 6
+	// 자리야 궁
+	mScene->GetInput()->AddBindKey("Skill6", '6');
+	mScene->GetInput()->AddBindFunction("Skill6", EInputType::Down, this, &CPlayerObject::Skill6);
 
 
 	return true;
@@ -432,5 +436,13 @@ void CPlayerObject::Skill5(float DeltaTime)
 
 void CPlayerObject::Skill6(float DeltaTime)
 {
+	
+	CBulletObject* Bullet = mScene->CreateObj<CBulletObject>("GravitionSurge");
 
+	CSceneComponent* Root = Bullet->GetRootComponent();
+	//총알의 시작 위치 == 내 월드 위치
+	Root->SetWorldPos(mRootComponent->GetWorldPosition());
+	Root->SetWorldRotation(mRootComponent->GetWorldRotation());
+	Root->SetWorldScale(50.f, 50.f, 1.f);
+	Bullet->SetLifeTime(2.f);
 }

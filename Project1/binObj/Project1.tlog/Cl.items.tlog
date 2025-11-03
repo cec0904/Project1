@@ -14,6 +14,8 @@ E:\SVN\Windows\Project1\Project1\include\GameManager\Device\Device.cpp;E:\SVN\Wi
 E:\SVN\Windows\Project1\Project1\include\GameManager\GameManager.cpp;E:\SVN\Windows\Project1\Project1\binObj\GameManager.obj
 E:\SVN\Windows\Project1\Project1\include\main.cpp;E:\SVN\Windows\Project1\Project1\binObj\main.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\BulletObject.cpp;E:\SVN\Windows\Project1\Project1\binObj\BulletObject.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Bullet\ConcussiveBlast.cpp;E:\SVN\Windows\Project1\Project1\binObj\ConcussiveBlast.obj
+E:\SVN\Windows\Project1\Project1\include\Object\Bullet\GravitonSurge.cpp;E:\SVN\Windows\Project1\Project1\binObj\GravitonSurge.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TalonR.cpp;E:\SVN\Windows\Project1\Project1\binObj\TalonR.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Bullet\TornadoBullet.cpp;E:\SVN\Windows\Project1\Project1\binObj\TornadoBullet.obj
 E:\SVN\Windows\Project1\Project1\include\Object\Monster\GunnerMonster.cpp;E:\SVN\Windows\Project1\Project1\binObj\GunnerMonster.obj
