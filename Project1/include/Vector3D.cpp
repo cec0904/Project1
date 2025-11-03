@@ -463,11 +463,11 @@ FVector3D FVector3D::Cross(const FVector3D& _v) const
 }
 
 //두 벡터의 거리를 구한다. 
-float FVector3D::Distnace(const FVector3D& _v) const
+float FVector3D::Distance(const FVector3D& _v) const
 {
-	FVector3D diff = *this - _v;
+	FVector3D diff = *this - _v;	// 두 벡터의 차->거리 벡터
 
-	return diff.Length();
+	return diff.Length();	// 길이(제곱합의 루트)
 }
 
 DirectX::XMVECTOR FVector3D::Convert() const

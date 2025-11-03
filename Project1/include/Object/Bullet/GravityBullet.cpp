@@ -64,18 +64,27 @@ void CGravityBullet::Update(float DeltaTime)
 		// 총알 이동 스탑
 		mMovement->SetEnable(false);
 
+		// 몬스터 리스트 만들기
 		list<CSharedPtr<CMonsterObject>>MonsterList;
+
 
 		mScene->FindObjectsFromType<CMonsterObject>(MonsterList);
 
+		// 순회 반복자 준비
 		auto iter = MonsterList.begin();
 		auto iterEnd = MonsterList.end();
 
+		// 모든 몬스터에 대해서
 		for (; iter != iterEnd; iter++)
 		{
+			// 몬스터 현재 위치
 			FVector3D Pos = (*iter)->GetWorldPosition();
 
-			float dist = Pos.Distnace(GetWorldPosition());
+			// 총알의 중심(= 본인 위치) 와의 거리 계산
+			// Vector3D.h, Vector3D.cpp
+			// 몬스터 위치와(Pos) 총알 중심(GetWorldPosition()) 사이의 직선 거리를 구하는 수식
+			float dist = Pos.Distance(GetWorldPosition());
+
 
 			if (dist <= mRange)
 			{

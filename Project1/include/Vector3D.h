@@ -109,7 +109,7 @@ struct FVector3D
 	FVector3D Cross(const FVector3D& _v) const;
 
 	//두 벡터의 거리를 구한다. 
-	float Distnace(const FVector3D& _v) const;
+	float Distance(const FVector3D& _v) const;
 
 	DirectX::XMVECTOR Convert() const;
 
