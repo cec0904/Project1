@@ -50,7 +50,7 @@ public:
 	virtual void PreRender();
 	virtual void Render();
 	virtual void PostRender();
-
+	
 
 public:
 	template<typename T>
@@ -81,6 +81,7 @@ public:
 		for (; iter != iterEnd; iter++)
 		{
 			T* Obj = dynamic_cast<T*>((*iter).Get());
+
 			if (Obj)
 			{
 				result.push_back(Obj);

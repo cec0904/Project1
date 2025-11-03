@@ -240,7 +240,7 @@ void CSceneObject::PostRender()
 
 CSceneObject* CSceneObject::Clone()
 {
-	return new CSceneObject(*this);
+	return nullptr;
 }
 
 //Transform

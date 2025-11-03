@@ -147,7 +147,7 @@ bool CPlayerObject::Init()
 
 	// 스킬 7
 	// 파라 E
-	mScene->GetInput()->AddBindKey("Skill6", '7');
+	mScene->GetInput()->AddBindKey("Skill7", '7');
 	mScene->GetInput()->AddBindFunction("Skill7", EInputType::Down, this, &CPlayerObject::Skill7);
 
 

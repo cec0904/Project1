@@ -24,6 +24,7 @@
     <ClCompile Include="include\Asset\Mesh\Mesh.cpp" />
     <ClCompile Include="include\Asset\Mesh\MeshManager.cpp" />
     <ClCompile Include="include\Asset\Mesh\StaticMesh.cpp" />
+    <ClCompile Include="include\Component\Collider\ColliderBase.cpp" />
     <ClCompile Include="include\Component\Component.cpp" />
     <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp" />
     <ClCompile Include="include\Component\NonSceneComponent\RotationComponent.cpp" />
@@ -35,7 +36,6 @@
     <ClCompile Include="include\GameManager\GameManager.cpp" />
     <ClCompile Include="include\main.cpp" />
     <ClCompile Include="include\Object\Bullet\BulletObject.cpp" />
-    <ClCompile Include="include\Object\Bullet\ConcussiveBlast.cpp" />
     <ClCompile Include="include\Object\Bullet\GravityBullet.cpp" />
     <ClCompile Include="include\Object\Bullet\TalonR.cpp" />
     <ClCompile Include="include\Object\Bullet\TornadoBullet.cpp" />
@@ -48,6 +48,7 @@
     </ClCompile>
     <ClCompile Include="include\Object\SceneObject.cpp" />
     <ClCompile Include="include\Scene\CameraManager\CameraManager.cpp" />
+    <ClCompile Include="include\Scene\Collision\SceneCollision.cpp" />
     <ClCompile Include="include\Scene\Input\Input.cpp" />
     <ClCompile Include="include\Scene\Scene.cpp" />
     <ClCompile Include="include\Scene\SceneMain.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="include\Asset\Mesh\Mesh.h" />
     <ClInclude Include="include\Asset\Mesh\MeshManager.h" />
     <ClInclude Include="include\Asset\Mesh\StaticMesh.h" />
+    <ClInclude Include="include\Component\Collider\ColliderBase.h" />
     <ClInclude Include="include\Component\Component.h" />
     <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h" />
     <ClInclude Include="include\Component\NonSceneComponent\RotationComponent.h" />
@@ -85,7 +87,6 @@
     <ClInclude Include="include\GameManager\GameManager.h" />
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Object\Bullet\BulletObject.h" />
-    <ClInclude Include="include\Object\Bullet\ConcussiveBlast.h" />
     <ClInclude Include="include\Object\Bullet\GravityBullet.h" />
     <ClInclude Include="include\Object\Bullet\TalonR.h" />
     <ClInclude Include="include\Object\Bullet\TornadoBullet.h" />
@@ -98,6 +99,7 @@
     </ClInclude>
     <ClInclude Include="include\Object\SceneObject.h" />
     <ClInclude Include="include\Scene\CameraManager\CameraManager.h" />
+    <ClInclude Include="include\Scene\Collision\SceneCollision.h" />
     <ClInclude Include="include\Scene\Input\Input.h" />
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Scene\SceneMain.h" />

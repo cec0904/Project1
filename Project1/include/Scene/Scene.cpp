@@ -227,3 +227,5 @@ void CScene::PostRender()
 		iter++;
 	}
 }
+
+

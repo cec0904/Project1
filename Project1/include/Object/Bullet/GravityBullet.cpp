@@ -1,7 +1,7 @@
 ﻿#include "GravityBullet.h"
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
 #include "../../Component/NonSceneComponent/MovementComponent.h"
-#include "../../Component/NonSceneComponent/RotationComponent.h"
+
 
 #include "../Monster/MonsterObject.h"
 #include "../../Scene/Scene.h"
@@ -34,15 +34,12 @@ bool CGravityBullet::Init()
 
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
-	mRoot->SetWorldScale(0.5f, 0.5f, 1.f);
-
+	mRoot->SetWorldScale(50.f, 50.f);
 	SetRootComponent(mRoot);
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveAxis(EAxis::Y);
 	mMovement->SetMoveSpeed(500.f);
-
-	
 
 	return true;
 }
@@ -67,7 +64,7 @@ void CGravityBullet::Update(float DeltaTime)
 		// 총알 이동 스탑
 		mMovement->SetEnable(false);
 
-		list <CSharedPtr<CMonsterObject>>(MonsterList);
+		list<CSharedPtr<CMonsterObject>>MonsterList;
 
 		mScene->FindObjectsFromType<CMonsterObject>(MonsterList);
 
@@ -92,8 +89,8 @@ void CGravityBullet::Update(float DeltaTime)
 				case EGravityType::ConcussiveBlast:
 					MoveDir = Pos - GetWorldPosition();
 					break;
-				default:
-					break;
+				//default:
+				//	break;
 				}
 
 				MoveDir.Normalize();

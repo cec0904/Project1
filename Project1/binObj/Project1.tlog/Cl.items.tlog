@@ -3,6 +3,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\AssetManager.cpp;E:\KDT4_JEC
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\Mesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Mesh.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\MeshManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MeshManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\StaticMesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\StaticMesh.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderBase.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderBase.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Component.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Component.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\NonSceneComponent\MovementComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MovementComponent.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\NonSceneComponent\RotationComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\RotationComponent.obj
@@ -14,7 +15,6 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\GameManager\Device\Device.cpp;E:\K
 E:\KDT4_JEC\Windows\Project1\Project1\include\GameManager\GameManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\GameManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\main.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\main.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\BulletObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\BulletObject.obj
-E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\ConcussiveBlast.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ConcussiveBlast.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\GravityBullet.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\GravityBullet.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\TalonR.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TalonR.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\TornadoBullet.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TornadoBullet.obj
@@ -24,6 +24,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\NearingMonster.cpp;
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\PlayerObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\CameraManager\CameraManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CameraManager.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Collision\SceneCollision.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneCollision.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Input\Input.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Input.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Scene.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Scene.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\SceneMain.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneMain.obj
