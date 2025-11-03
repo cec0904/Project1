@@ -24,6 +24,7 @@
     <ClCompile Include="include\Asset\Mesh\Mesh.cpp" />
     <ClCompile Include="include\Asset\Mesh\MeshManager.cpp" />
     <ClCompile Include="include\Asset\Mesh\StaticMesh.cpp" />
+    <ClCompile Include="include\Component\Collider\ColliderAABB2D.cpp" />
     <ClCompile Include="include\Component\Collider\ColliderBase.cpp" />
     <ClCompile Include="include\Component\Component.cpp" />
     <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp" />
@@ -73,6 +74,7 @@
     <ClInclude Include="include\Asset\Mesh\Mesh.h" />
     <ClInclude Include="include\Asset\Mesh\MeshManager.h" />
     <ClInclude Include="include\Asset\Mesh\StaticMesh.h" />
+    <ClInclude Include="include\Component\Collider\ColliderAABB2D.h" />
     <ClInclude Include="include\Component\Collider\ColliderBase.h" />
     <ClInclude Include="include\Component\Component.h" />
     <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h" />

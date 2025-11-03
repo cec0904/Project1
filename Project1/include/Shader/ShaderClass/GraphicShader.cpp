@@ -91,7 +91,7 @@ bool CGraphicShader::CreateInputLayout()
 bool CGraphicShader::LoadVertexShader(const char* EntryName, const TCHAR* FileName)
 {
 	TCHAR FullPath[MAX_PATH] = {};
-	lstrcpy(FullPath, TEXT("E:\\SVN\\Windows\\Project1\\Project1\\bin\\Shader\\"));
+	lstrcpy(FullPath, TEXT("bin/Shader/"));
 	lstrcat(FullPath, FileName);
 	// 우리가 원하는 쉐이더 파일의 풀 경로가 나온다.
 
@@ -140,7 +140,7 @@ bool CGraphicShader::LoadVertexShader(const char* EntryName, const TCHAR* FileNa
 bool CGraphicShader::LoadPixelShader(const char* EntryName, const TCHAR* FileName)
 {
 	TCHAR FullPath[MAX_PATH] = {};
-	lstrcpy(FullPath, TEXT("E:\\SVN\\Windows\\Project1\\Project1\\bin\\Shader\\"));
+	lstrcpy(FullPath, TEXT("bin/Shader/"));
 	lstrcat(FullPath, FileName);
 
 	// 컴파일 했는데 에러가 나면 여기에 들어 올 것이다.
@@ -173,7 +173,7 @@ bool CGraphicShader::LoadPixelShader(const char* EntryName, const TCHAR* FileNam
 bool CGraphicShader::LoadHullShader(const char* EntryName, const TCHAR* FileName)
 {
 	TCHAR FullPath[MAX_PATH] = {};
-	lstrcpy(FullPath, TEXT("E:\\SVN\\Windows\\Project1\\Project1\\bin\\Shader\\"));
+	lstrcpy(FullPath, TEXT("bin/Shader/"));
 	lstrcat(FullPath, FileName);
 
 	// 컴파일 했는데 에러가 나면 여기에 들어 올 것이다.
@@ -206,7 +206,7 @@ bool CGraphicShader::LoadHullShader(const char* EntryName, const TCHAR* FileName
 bool CGraphicShader::LoadDomainShader(const char* EntryName, const TCHAR* FileName)
 {
 	TCHAR FullPath[MAX_PATH] = {};
-	lstrcpy(FullPath, TEXT("E:\\SVN\\Windows\\Project1\\Project1\\bin\\Shader\\"));
+	lstrcpy(FullPath, TEXT("bin/Shader/"));
 	lstrcat(FullPath, FileName);
 
 	// 컴파일 했는데 에러가 나면 여기에 들어 올 것이다.
@@ -239,7 +239,7 @@ bool CGraphicShader::LoadDomainShader(const char* EntryName, const TCHAR* FileNa
 bool CGraphicShader::LoadGeometryShader(const char* EntryName, const TCHAR* FileName)
 {
 	TCHAR FullPath[MAX_PATH] = {};
-	lstrcpy(FullPath, TEXT("E:\\SVN\\Windows\\Project1\\Project1\\bin\\Shader\\"));
+	lstrcpy(FullPath, TEXT("bin/Shader/"));
 	lstrcat(FullPath, FileName);
 
 	// 컴파일 했는데 에러가 나면 여기에 들어 올 것이다.
