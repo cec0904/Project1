@@ -29,19 +29,20 @@ bool CGravityBullet::Init()
 	//	return false;
 	//}
 
-	mMesh = CreateComponent<CStaticMeshComponent>();
+	mRoot = CreateComponent<CStaticMeshComponent>();
 	mMovement = CreateComponent<CMovementComponent>();
 
+	mRoot->SetMesh("CenterRect");
+	mRoot->SetShader("ColorMeshShader");
+	mRoot->SetWorldScale(0.5f, 0.5f, 1.f);
 
-	mMovement->SetUpdateComponent(mMesh);
+	SetRootComponent(mRoot);
+
+	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveAxis(EAxis::Y);
 	mMovement->SetMoveSpeed(500.f);
 
-	mMesh->SetMesh("CenterRect");
-	mMesh->SetShader("ColorMeshShader");
-	mMesh->SetWorldScale(0.5f, 0.5f, 1.f);
-
-	SetRootComponent(mMesh);
+	
 
 	return true;
 }

@@ -2,12 +2,12 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\SVN\Windows\Project1\Project1\bin\Project1.exe</FullPath>
+      <FullPath>E:\KDT4_JEC\Windows\Project1\Project1\bin\Project1.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>E:\SVN\Windows\Project1\Project1\bin\ColorMesh.cso</FullPath>
+      <FullPath>E:\KDT4_JEC\Windows\Project1\Project1\bin\ColorMesh.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

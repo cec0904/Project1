@@ -12,8 +12,17 @@ class CGravityBullet : public CSceneObject
 	friend class CScene;
 
 protected:
+	CGravityBullet();
+	CGravityBullet(const CGravityBullet& Obj);
+	CGravityBullet(CGravityBullet&& Obj);
+	virtual ~CGravityBullet();
 
-private:
+protected:
+	CSharedPtr<class CStaticMeshComponent> mRoot;
+	CSharedPtr<class CMovementComponent> mMovement;
+	EGravityType mGravityType = EGravityType::GravitionSurge;
+
+
 	float mSpeed = 200.f;
 	float mDistance = 150.f;
 	float mDuration = 1.f;
@@ -41,16 +50,8 @@ public:
 		mGravityType = Type;
 	}
 	
-protected:
-	CSharedPtr<class CStaticMeshComponent> mMesh;
-	CSharedPtr<class CMovementComponent> mMovement;
-	EGravityType mGravityType = EGravityType::GravitionSurge;
 
-protected:
-	CGravityBullet();
-	CGravityBullet(const CGravityBullet& Obj);
-	CGravityBullet(CGravityBullet&& Obj);
-	virtual ~CGravityBullet();
+
 
 public:
 	virtual bool Init();
