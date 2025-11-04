@@ -43,7 +43,7 @@ void CNearingMonster::Update(float DeltaTime)
 	if (mTarget)
 	{
 		// 나와 타겟의 거리를 측정한다.
-		float Distance = GetWorldPosition().Distnace(mTarget->GetWorldPosition());
+		float Distance = GetWorldPosition().Distance(mTarget->GetWorldPosition());
 
 		// 측정한 거리가 내 사정거리 안이냐
 		if (Distance <= mDetectDistance)	// 탐지 됐다

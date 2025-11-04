@@ -141,7 +141,7 @@ void CGameManager::Update(float DeltaTime)
 {
 	CSceneManager::GetInst()->Update(DeltaTime);
 
-	CLog::PrintLog("GameManager Update", ELogPrintType::All);
+	//CLog::PrintLog("GameManager Update", ELogPrintType::All);
 
 	static bool push = false;
 

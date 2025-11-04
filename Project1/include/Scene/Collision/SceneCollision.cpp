@@ -35,11 +35,11 @@ bool CSceneCollision::Init()
 }
 void CSceneCollision::Update(float DeltaTime)
 {
-	size_t Size = mColliderList2D.size();
 
 	// 쿼드트리를 이용해서 카메라 좌표를 먼저 갱신해야 한다.
 	mQuadTree->Update(DeltaTime);
 
+	size_t Size = mColliderList2D.size();
 	for (size_t i = 0; i < Size;)
 	{
 		if (!mColliderList2D[i]->IsActive())
@@ -64,4 +64,8 @@ void CSceneCollision::Update(float DeltaTime)
 		mQuadTree->AddCollider(mColliderList2D[i]);
 		i++;
 	}
+
+
+	// 충돌 검사
+	mQuadTree->Collision(DeltaTime);
 }

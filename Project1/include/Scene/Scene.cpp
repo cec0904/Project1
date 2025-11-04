@@ -175,7 +175,7 @@ void CScene::Collision(float DeltaTime)
 	}
 
 	// SceneCollision 이 해당 씬의 충돌을 모두 관리한다.
-	// mCollision->Update(DeltaTime);
+	 //mCollision->Update(DeltaTime);
 }
 
 void CScene::PreRender()
