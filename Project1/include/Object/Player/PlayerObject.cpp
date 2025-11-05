@@ -4,7 +4,7 @@
 #include "../../Component/NonSceneComponent/MovementComponent.h"
 #include "../../Component/NonSceneComponent/RotationComponent.h"
 #include "../../Component/SceneComponent/CameraComponent.h"
-
+#include "../../Component/Collider/ColliderAABB2D.h"
 
 #include "../../Scene/Scene.h"
 #include "../../Scene/Input/Input.h"
@@ -45,6 +45,7 @@ bool CPlayerObject::Init()
 	// 컴포넌트 하나 등록해줄것이다.
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
+	mBody = CreateComponent<CColliderAABB2D>();
 	mMovement = CreateComponent<CMovementComponent>();
 	mCamera = CreateComponent<CCameraComponent>();
 	mRotation = CreateComponent<CRotationComponent>();
@@ -55,6 +56,9 @@ bool CPlayerObject::Init()
 	mRoot->SetWorldPos(0.f, 0.f, 0.f);
 	mRoot->SetWorldScale(100.f, 100.f, 0.f);
 	SetRootComponent(mRoot);
+
+	mRoot->AddChild(mBody);
+	mBody->SetBoxSize(100.f, 100.f);
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveSpeed(500.f);

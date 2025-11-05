@@ -2,6 +2,7 @@
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
 #include "../../Object/Bullet/BulletObject.h"
 #include "../../Scene/Scene.h"
+#include "../../Component/Collider/ColliderAABB2D.h"
 
 #include <sstream>
 
@@ -32,11 +33,16 @@ bool CMonsterObject::Init()
 	}
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
+	mBody = CreateComponent<CColliderAABB2D>();
+
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
 	mRoot->SetWorldScale(100.f, 100.f);
 
 	SetRootComponent(mRoot);
+
+	mRoot->AddChild(mBody);
+	mBody->SetBoxSize(100.f, 100.f);
 
 	return true;
 

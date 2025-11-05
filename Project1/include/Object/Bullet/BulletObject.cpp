@@ -1,6 +1,7 @@
 ﻿#include "BulletObject.h"
 #include "../../Component/NonSceneComponent/MovementComponent.h"
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
+#include "../../Component/Collider/ColliderAABB2D.h"
 
 CBulletObject::CBulletObject()
 	:CSceneObject()
@@ -26,6 +27,7 @@ bool CBulletObject::Init()
 	CSceneObject::Init();
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
+	mBody = CreateComponent<CColliderAABB2D>();
 	mMovement = CreateComponent<CMovementComponent>();
 
 
@@ -34,6 +36,10 @@ bool CBulletObject::Init()
 	mRoot->SetWorldScale(0.5f, 0.5f, 1.f);
 
 	SetRootComponent(mRoot);
+
+	mRoot->AddChild(mBody);
+	mBody->SetBoxSize(50.f, 50.f);
+
 
 	// Movement 세팅
 	mMovement->SetUpdateComponent(mRoot);

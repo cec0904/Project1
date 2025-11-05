@@ -21,6 +21,7 @@ protected:
 
 protected:
 	CSharedPtr<class CStaticMeshComponent> mRoot;
+	CSharedPtr<class CColliderAABB2D> mBody;
 	CSharedPtr<class CSceneComponent> mRotationPivot;
 	CSharedPtr<class CStaticMeshComponent> mSub;
 

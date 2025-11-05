@@ -17,6 +17,18 @@ protected:
 	//최대 최소값 
 	FAABB2D mAABB;
 
+public:
+	void SetBoxSize(const FVector2D& Size)
+	{
+		mBoxSize = Size;
+	}
+
+	void SetBoxSize(float x, float y)
+	{
+		mBoxSize.x = x;
+		mBoxSize.y = y;
+
+	}
 
 public:
 	virtual bool Init();
