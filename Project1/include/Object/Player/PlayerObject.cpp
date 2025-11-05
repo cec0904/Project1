@@ -59,6 +59,7 @@ bool CPlayerObject::Init()
 
 	mRoot->AddChild(mBody);
 	mBody->SetBoxSize(100.f, 100.f);
+	mBody->SetCollisionProfile("Player");
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveSpeed(500.f);

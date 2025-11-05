@@ -19,6 +19,8 @@
 #include "../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
 #include "../Scene/SceneManager.h"
 
+#include "ProfileManager/ProfileManager.h"
+
 
 
 
@@ -78,6 +80,12 @@ bool CGameManager::Init(HINSTANCE hInst)
 	if (!CAssetManager::GetInst()->Init())
 	{
 		MessageBox(nullptr, L"AssetManager Init Failed", L"Error", MB_OK);
+		return false;
+	}
+
+	// Collision Profile 매니저 초기화
+	if (!CProfileManager::GetInst()->Init())
+	{
 		return false;
 	}
 

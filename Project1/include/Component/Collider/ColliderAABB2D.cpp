@@ -1,4 +1,5 @@
 #include "ColliderAABB2D.h"
+#include "../../GameManager/Collision/Collision.h"
 
 CColliderAABB2D::CColliderAABB2D()
 {
@@ -99,4 +100,20 @@ CColliderAABB2D* CColliderAABB2D::Clone()
 	return new CColliderAABB2D(*this);
 }
 
+bool CColliderAABB2D::Collision(FVector3D& HitPoint, CColliderBase* Dest)
+{
+	if (Dest->GetColliderType() == EColliderType::Collider3D)
+	{
+		return false;
+	}
+
+	switch (Dest->GetColliderShape())
+	{
+	case EColliderShape::AABB2D:
+		return CCollision::CollisionAABB2DToAABB2D(HitPoint, this, (CColliderAABB2D*)Dest);
+		break;
+	}
+
+	return true;
+}
 

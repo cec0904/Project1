@@ -163,3 +163,73 @@ struct FAABB2D
 	FVector2D Min;	// 왼쪽 아래점
 	FVector2D Max;
 };
+
+//충돌 필터 정보 
+
+// 채널
+namespace ECollisionChannel
+{
+	enum Type : unsigned char
+	{
+		Default,		//0
+		Player,			//1
+		Monster,		//2
+		PlayerAttack,	//3
+		MonsterAttack,	//4
+		End				//5
+	};
+}
+
+//상호작용  : 충돌체끼리 충돌을 할지 말지 저장할것이다. 
+namespace ECollisionInteraction
+{
+	enum Type : unsigned char
+	{
+		Ignore,		//0		// 충돌 무시 
+		Collision,	//1		// 충돌 
+		End			//2	
+	};
+}
+
+
+/*
+Player꺼 프로파일을 만들고 채널을 Player로 지정했다.
+이때 다른채널을 사용하는 프로파일과 충돌해야할지 여부에 따라서
+충돌 함수를 호출해 줄것이다.
+
+다른 채널과 어떻게 되어 있는지는 미리 저장해야한다.
+
+//1번 프로파일 플레이어 충돌정보
+Channel : Player
+Enable : true
+Interaction[Default] = Collision;
+Interaction[Player] = Ignore;
+Interaction[Monster] = Collision;
+Interaction[PlayerAttack] = Ignore;
+Interaction[MonsterAttack] = Collision;
+
+//2번 프로파일 몬스터 공격 프로파일
+Channel : MonsterAttack
+Enable : true
+Interaction[Default] = Collision;
+Interaction[Player] = Collision;
+Interaction[Monster] = Igonre;
+Interaction[PlayerAttack] = Igonre;
+Interaction[MonsterAttack] = Igonre;
+
+if(Player->Interaction[MonsterAttack] == Collision &&
+MonsterAttack->Interaction[Player] == Collision)
+	//충돌 했다!
+*/
+
+//프로파일 
+//채널과 상호작용을 이용해서 프로파일을 만들어준다. 
+// 미리 등록시키는 형식(시스템)이다. 
+struct FCollisionProfile
+{
+	std::string Name;
+	//현재 프로파일이 사용하는 충돌 채널 
+	ECollisionChannel::Type Channel = ECollisionChannel::Default;
+	bool Enable = true;
+	ECollisionInteraction::Type Interaction[ECollisionChannel::End];
+};

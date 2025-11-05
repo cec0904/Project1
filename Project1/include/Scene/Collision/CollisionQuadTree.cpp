@@ -267,6 +267,95 @@ bool CCollisionQuadTreeNode::IsInCollider(CColliderBase* Collider)
 void CCollisionQuadTreeNode::Collision(float DeltaTime)
 {
 	// 충돌간의 검사를 해주면 된다.
+	// mColliderList 순회하면서 나 충돌 했니? 검사할거다. 
+
+	size_t Size = mColliderList.size();
+
+	for (size_t i = 0; i < Size;)
+	{
+		if (!mColliderList[i]->IsActive())
+		{
+			if (i < Size - 1)
+			{
+				//mColliderList[i] = mColliderList.back();
+				mColliderList[i] = mColliderList[Size - 1];
+			}
+			mColliderList.pop_back();
+			--Size;
+			continue;
+		}
+		else if (!mColliderList[i]->IsEnable())
+		{
+			++i;
+			continue;
+		}
+
+		//i의 프로파일을 지역변수로 가져온다. 
+		FCollisionProfile* SrcProfile = mColliderList[i]->GetProfile();
+
+		if (!SrcProfile->Enable)
+		{
+			++i;
+			continue;
+		}
+
+
+		for (size_t j = i + 1; j < Size;)
+		{
+			if (!mColliderList[j]->IsActive())
+			{
+				if (j < Size - 1)
+				{
+					mColliderList[j] = mColliderList[Size - 1];
+				}
+				mColliderList.pop_back();
+				--Size;
+				continue;
+			}
+			else if (!mColliderList[j]->IsEnable())
+			{
+				++j;
+				continue;
+			}
+
+			//i의 프로파일을 지역변수로 가져온다. 
+			FCollisionProfile* DestProfile = mColliderList[j]->GetProfile();
+
+			if (!DestProfile->Enable)
+			{
+				++j;
+				continue;
+			}
+
+			//먼저 프로파일이 서로 충돌인지 검사한다. 
+			if (SrcProfile->Interaction[DestProfile->Channel] == ECollisionInteraction::Ignore ||
+				DestProfile->Interaction[SrcProfile->Channel] == ECollisionInteraction::Ignore)
+			{
+				++j;
+				continue;
+			}
+
+			//충돌 했는지 여부를 검사할것이다.
+			FVector3D HitPoint;
+
+			if (mColliderList[i]->Collision(HitPoint, mColliderList[j]))
+			{
+				//둘이 충돌 되었다.
+				int i = 10;
+
+			}
+
+
+
+
+			++j;
+		}
+
+		++i;
+	}
+
+
+
 }
 
 

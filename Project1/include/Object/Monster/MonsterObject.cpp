@@ -43,6 +43,7 @@ bool CMonsterObject::Init()
 
 	mRoot->AddChild(mBody);
 	mBody->SetBoxSize(100.f, 100.f);
+	mBody->SetCollisionProfile("Monster");
 
 	return true;
 

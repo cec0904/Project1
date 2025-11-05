@@ -33,8 +33,10 @@
     <ClCompile Include="include\Component\SceneComponent\MeshComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\SceneComponent.cpp" />
     <ClCompile Include="include\Component\SceneComponent\StaticMeshComponent.cpp" />
+    <ClCompile Include="include\GameManager\Collision\Collision.cpp" />
     <ClCompile Include="include\GameManager\Device\Device.cpp" />
     <ClCompile Include="include\GameManager\GameManager.cpp" />
+    <ClCompile Include="include\GameManager\ProfileManager\ProfileManager.cpp" />
     <ClCompile Include="include\main.cpp" />
     <ClCompile Include="include\Object\Bullet\BulletObject.cpp" />
     <ClCompile Include="include\Object\Bullet\GravityBullet.cpp" />
@@ -87,8 +89,10 @@
     <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h" />
     <ClInclude Include="include\EngineMath.h" />
     <ClInclude Include="include\GameInfo.h" />
+    <ClInclude Include="include\GameManager\Collision\Collision.h" />
     <ClInclude Include="include\GameManager\Device\Device.h" />
     <ClInclude Include="include\GameManager\GameManager.h" />
+    <ClInclude Include="include\GameManager\ProfileManager\ProfileManager.h" />
     <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Object\Bullet\BulletObject.h" />
     <ClInclude Include="include\Object\Bullet\GravityBullet.h" />

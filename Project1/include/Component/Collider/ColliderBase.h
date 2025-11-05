@@ -25,7 +25,20 @@ protected:
 	FVector3D mMin;
 	FVector3D mMax;
 
+
+	//충돌 프로파일 
+	FCollisionProfile* mProfile = nullptr;
+	//충돌 중 여부 
+	bool mCollision = false;
+	//충돌 시점 함수!
+
+
 public:
+	FCollisionProfile* GetProfile() const
+	{
+		return mProfile;
+	}
+
 	EColliderType GetColliderType()
 	{
 		return mColliderType;
@@ -46,6 +59,8 @@ public:
 		return mMax;
 	}
 
+public:
+	void SetCollisionProfile(const std::string& Name);
 
 public:
 	virtual bool Init();
@@ -58,6 +73,10 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 	virtual CColliderBase* Clone();
+
+public:
+	//순수가상함수 
+	virtual bool Collision(FVector3D& HitPoint, CColliderBase* Dest) = 0;
 
 
 };

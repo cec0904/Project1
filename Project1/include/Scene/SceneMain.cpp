@@ -47,5 +47,13 @@ bool CSceneMain::Init()
 	Monster4->SetWorldPos(0.f, -300.f);
 	Monster4->SetTarget(Player);
 
+	CMonsterObject* Monster5 = CreateObj<CGunnerMonster>("GunnerMonster4");
+	Monster5->SetWorldPos(200.f, -300.f);
+	Monster5->SetTarget(Player);
+
+	CMonsterObject* Monster6 = CreateObj<CGunnerMonster>("GunnerMonster5");
+	Monster6->SetWorldPos(0.f, -150.f);
+	Monster6->SetTarget(Player);
+
 	return true;
 }
