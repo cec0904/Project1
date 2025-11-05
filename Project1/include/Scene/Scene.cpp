@@ -33,6 +33,7 @@ bool CScene::Init()
 	}
 
 	mCollision = new CSceneCollision;
+	mCollision->mScene = this;
 	if (!mCollision->Init())
 	{
 		SAFE_DELETE(mCollision);
@@ -125,6 +126,8 @@ void CScene::Update(float DeltaTime)
 		(*iter)->Update(DeltaTime);
 		iter++;
 	}
+
+	mCameraManager->Update(DeltaTime);
 }
 
 void CScene::PostUpdate(float DeltaTime)
@@ -153,7 +156,7 @@ void CScene::PostUpdate(float DeltaTime)
 
 void CScene::Collision(float DeltaTime)
 {
-	list<CSharedPtr<CSceneObject>>::iterator iter;
+	/*list<CSharedPtr<CSceneObject>>::iterator iter;
 	list<CSharedPtr<CSceneObject>>::iterator iterEnd = mObjList.end();
 
 	for (iter = mObjList.begin(); iter != iterEnd;)
@@ -172,10 +175,10 @@ void CScene::Collision(float DeltaTime)
 
 		(*iter)->Collision(DeltaTime);
 		iter++;
-	}
+	}*/
 
 	// SceneCollision 이 해당 씬의 충돌을 모두 관리한다.
-	 //mCollision->Update(DeltaTime);
+	mCollision->Update(DeltaTime);
 }
 
 void CScene::PreRender()
@@ -204,6 +207,15 @@ void CScene::PreRender()
 
 void CScene::Render()
 {
+#ifdef _DEBUG
+	if (mDebugQuadTree)
+	{
+		mCollision->Render();
+	}
+#endif // _DEBUG
+	mCollision->ReturnNodePool();
+
+
 	list<CSharedPtr<CSceneObject>>::iterator iter;
 	list<CSharedPtr<CSceneObject>>::iterator iterEnd = mObjList.end();
 

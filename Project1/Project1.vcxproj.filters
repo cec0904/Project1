@@ -97,6 +97,12 @@
     <Filter Include="07.Component\01.SceneComponent\02.Camera">
       <UniqueIdentifier>{e860086b-ebad-4c08-be45-4c1a91c90b70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04.Shader\02.Shader Class\02.FrameMesh">
+      <UniqueIdentifier>{12874a08-1b7f-4612-a5cc-2015365b4bb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\02.Shader Class\01.ColorMesh">
+      <UniqueIdentifier>{e9ce92a9-2435-4b58-a2ed-d48e72ddc9e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -133,9 +139,6 @@
       <Filter>04.Shader\02.Shader Class</Filter>
     </ClCompile>
     <ClCompile Include="include\Shader\ShaderClass\ComputeShader.cpp">
-      <Filter>04.Shader\02.Shader Class</Filter>
-    </ClCompile>
-    <ClCompile Include="include\Shader\ShaderClass\ColorMeshShader.cpp">
       <Filter>04.Shader\02.Shader Class</Filter>
     </ClCompile>
     <ClCompile Include="include\Shader\ShaderClass\Shader.cpp">
@@ -237,6 +240,12 @@
     <ClCompile Include="include\Component\SceneComponent\StaticMeshComponent.cpp">
       <Filter>07.Component\01.SceneComponent\01.Mesh</Filter>
     </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\ColorMeshShader.cpp">
+      <Filter>04.Shader\02.Shader Class\01.ColorMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\FrameMeshShader.cpp">
+      <Filter>04.Shader\02.Shader Class\02.FrameMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\GameManager\Device\Device.h">
@@ -286,9 +295,6 @@
     </ClInclude>
     <ClInclude Include="include\Asset\AssetManager.h">
       <Filter>03.Asset</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Shader\ShaderClass\ColorMeshShader.h">
-      <Filter>04.Shader\02.Shader Class</Filter>
     </ClInclude>
     <ClInclude Include="include\Shader\ShaderClass\ComputeShader.h">
       <Filter>04.Shader\02.Shader Class</Filter>
@@ -394,6 +400,12 @@
     </ClInclude>
     <ClInclude Include="include\Component\SceneComponent\StaticMeshComponent.h">
       <Filter>07.Component\01.SceneComponent\01.Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\ColorMeshShader.h">
+      <Filter>04.Shader\02.Shader Class\01.ColorMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\FrameMeshShader.h">
+      <Filter>04.Shader\02.Shader Class\02.FrameMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

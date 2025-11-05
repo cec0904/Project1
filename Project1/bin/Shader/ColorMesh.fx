@@ -9,7 +9,7 @@
 struct VS_Input_Color
 {
     float3 Pos : POSITION; // POSITION 0번 레지스터 
-    float4 Color : COLOR;   // COLOR 0번 레지스터 
+    float4 Color : COLOR; // COLOR 0번 레지스터 
 };
 
 // 정점쉐이더의 반환값 
@@ -21,7 +21,7 @@ struct VS_Output_Color
     // SV를 붙여줘야 레스터라이즈 단계에서 애가 위치값이다. 를 인식한다. 
     // 만약 SV를 안붙이고 일반 POSITION 이라고 한다면 레스터라이즈 단계에서 이게 사용할 위치값인지 아닌지 모른다. 
     float4 Pos : SV_POSITION; // SV_POSITION 0번 레지스터 
-    float4 Color : COLOR;       // COLOR 0번 레지스터 
+    float4 Color : COLOR; // COLOR 0번 레지스터 
 };
 
 VS_Output_Color ColorMeshVS(VS_Input_Color input)
@@ -44,7 +44,7 @@ VS_Output_Color ColorMeshVS(VS_Input_Color input)
 //VS_Output_Color
 PS_Output_Single ColorMeshPS(VS_Output_Color input)
 {
-    PS_Output_Single output = (PS_Output_Single)0;
+    PS_Output_Single output = (PS_Output_Single) 0;
     
     output.Color = input.Color;
     
@@ -55,3 +55,28 @@ PS_Output_Single ColorMeshPS(VS_Output_Color input)
 // 진입점 main -> 시작할 정점쉐이더(ColorMeshVS)
 // 쉐이더 형식 -> 효과(/fx)
 // 쉐이더 모델 5.0
+
+
+//FrameCeterRect 
+float4 FrameMeshVS(float3 Pos : POSITION) : SV_POSITION
+{
+    //유연한 형변환 0으로 초기화 
+    //
+    float4 output = (float4) 0;
+    
+    // Output.Pos의 X Y Z가 들어가고 
+    // W값은 1이 들어간다. 
+    output = mul(float4(Pos, 1.f), gmatWVP);
+    
+    return output;
+}
+
+PS_Output_Single FrameMeshPS(float4 Pos : SV_POSITION)
+{
+    PS_Output_Single output = (PS_Output_Single) 0;
+    
+    output.Color = float4(1.f, 1.f, 1.f, 1.f);
+    
+    return output;
+}
+

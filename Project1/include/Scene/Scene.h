@@ -24,6 +24,8 @@ protected:
 	// 오브젝트
 	list<CSharedPtr<class CSceneObject>> mObjList;
 
+	bool mDebugQuadTree = true;
+
 
 public:
 	/*list<CSharedPtr<class CSceneObject>>& GetObjList()

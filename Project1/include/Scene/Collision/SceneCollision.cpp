@@ -40,6 +40,7 @@ void CSceneCollision::Update(float DeltaTime)
 	mQuadTree->Update(DeltaTime);
 
 	size_t Size = mColliderList2D.size();
+
 	for (size_t i = 0; i < Size;)
 	{
 		if (!mColliderList2D[i]->IsActive())
@@ -68,4 +69,14 @@ void CSceneCollision::Update(float DeltaTime)
 
 	// 충돌 검사
 	mQuadTree->Collision(DeltaTime);
+}
+
+void CSceneCollision::Render()
+{
+	mQuadTree->Render();
+}
+
+void CSceneCollision::ReturnNodePool()
+{
+	mQuadTree->ReturnNodePool();
 }

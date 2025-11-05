@@ -36,6 +36,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\ConstantBuff
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Transform\TransformCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TransformCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\ColorMeshShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColorMeshShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\ComputeShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ComputeShader.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\FrameMeshShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\FrameMeshShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\GraphicShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\GraphicShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\Shader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Shader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ShaderManager.obj

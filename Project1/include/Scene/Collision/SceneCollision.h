@@ -23,5 +23,7 @@ public:
 public:
 	bool Init();
 	void Update(float DeltaTime);
+	void Render();
+	void ReturnNodePool();
 };
 

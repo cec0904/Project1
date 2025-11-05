@@ -65,6 +65,23 @@ bool CMeshManager::Init()
 		return false;
 	}
 
+	// 사각형 와이어 프레임
+	FVector3D FrameCenterRect[4] =
+	{
+		FVector3D(-0.5f, 0.5f, 0.f),
+		FVector3D(0.5f, 0.5f, 0.f),
+		FVector3D(-0.5f, -0.5f, 0.f),
+		FVector3D(0.5f, -0.5f, 0.f)
+	};
+
+	unsigned short FrameRectIdx[5] = { 0, 1, 3, 2, 0 };
+
+	if (!CreateMesh("FrameCenterRect", FrameCenterRect, sizeof(FVector3D), 4, D3D11_USAGE_DEFAULT, D3D_PRIMITIVE_TOPOLOGY_LINESTRIP, FrameRectIdx, sizeof(unsigned short), 5, DXGI_FORMAT_R16_UINT))
+	{
+		return false;
+	}
+
+
 	return true;
 }
 

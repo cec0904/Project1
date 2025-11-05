@@ -38,4 +38,14 @@ bool CSceneMain::Init()
 	CMonsterObject* Monster2 = CreateObj<CNearingMonster>("NearingMonster");
 	Monster2->SetWorldPos(0.f, 300.f);
 	Monster2->SetTarget(Player);
+
+	CMonsterObject* Monster3 = CreateObj<CGunnerMonster>("GunnerMonster2");
+	Monster3->SetWorldPos(400.f, -300.f);
+	Monster3->SetTarget(Player);
+
+	CMonsterObject* Monster4 = CreateObj<CGunnerMonster>("GunnerMonster3");
+	Monster4->SetWorldPos(0.f, -300.f);
+	Monster4->SetTarget(Player);
+
+	return true;
 }

@@ -1,6 +1,7 @@
 ﻿#include "SceneManager.h"
 #include "SceneMain.h"
 
+
 CSceneManager::CSceneManager()
 {
 

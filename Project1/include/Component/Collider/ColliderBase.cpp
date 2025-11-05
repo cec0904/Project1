@@ -15,7 +15,7 @@ CColliderBase::CColliderBase(CColliderBase&& Com)
 	: CSceneComponent(Com)
 {
 }
-CColliderBase::~CColliderBase()	
+CColliderBase::~CColliderBase()
 {
 }
 
