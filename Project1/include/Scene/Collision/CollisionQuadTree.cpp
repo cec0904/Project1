@@ -171,13 +171,13 @@ bool CCollisionQuadTreeNode::IsInCollider(CColliderBase* Collider)
 	Min.x = Collider->GetMin().x;
 	Min.y = Collider->GetMin().y;
 
-	Max.x = Collider->GetMin().x;
-	Max.y = Collider->GetMin().y;
+	Max.x = Collider->GetMax().x;
+	Max.y = Collider->GetMax().y;
 
 	// 노드
 	FVector2D NodeMin, NodeMax;
 	NodeMin = mCenter - mSize * 0.5f;
-	NodeMax = mCenter - mSize * 0.5f;
+	NodeMax = mCenter + mSize * 0.5f;
 	
 	// 좌표
 	if (Min.x > NodeMax.x)
