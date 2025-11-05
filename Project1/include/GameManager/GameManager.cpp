@@ -199,7 +199,7 @@ ATOM CGameManager::RegisterWindowClass()
 	wcex.hIcon = LoadIcon(mhInst, MAKEINTRESOURCE(IDI_ICON1));
 
 	// 커서 모양
-	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	wcex.hCursor = LoadCursor(nullptr, IDC_CROSS);
 
 	// 클라이언트 영역의 색상 지정
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);

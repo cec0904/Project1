@@ -285,7 +285,7 @@ void CCollisionQuadTree::Update(float DeltaTime)
 
 	// 카메라를 얻어와서 카메라의 위치로 루트의 센터를 지정해준다.
 	// 현재 중앙은 카메라 기준이기 때문이다.
-	if (!Camera)
+	if (Camera)
 	{
 		mRoot->mCenter.x = Camera->GetWorldPosition().x;
 		mRoot->mCenter.y = Camera->GetWorldPosition().y;
