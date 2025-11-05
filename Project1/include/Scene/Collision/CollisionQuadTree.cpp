@@ -375,7 +375,7 @@ void CCollisionQuadTree::Collision(float DeltaTime)
 	mCollisionNodeList.clear();
 
 	// 노드 회수 노드풀에 다시 돌려놓는다. 
-	mRoot->ReturnNodePool(mNodePool);
+	//mRoot->ReturnNodePool(mNodePool);
 }
 
 void CCollisionQuadTree::Render()

@@ -46,7 +46,7 @@ void CSceneCollision::Update(float DeltaTime)
 		if (!mColliderList2D[i]->IsActive())
 		{
 			// 그냥 덮어씌우기
-			if (1 < Size - 1)
+			if (i < Size - 1)
 			{
 				mColliderList2D[i] = mColliderList2D[Size - 1];
 			}
