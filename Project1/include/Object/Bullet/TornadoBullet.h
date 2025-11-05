@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../SceneObject.h"
+#include "../Bullet/BulletObject.h"
 
 class CTornadoBullet : public CSceneObject
 {

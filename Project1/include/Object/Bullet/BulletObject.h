@@ -1,5 +1,14 @@
 ﻿#pragma once
 #include "../SceneObject.h"
+#include "../../Component/SceneComponent/StaticMeshComponent.h"
+#include "../../Component/Collider/ColliderAABB2D.h"
+#include "../../Component/NonSceneComponent/MovementComponent.h"
+
+enum class EBulletClass
+{
+	Player,
+	Monster
+};
 
 class CBulletObject :
 	public CSceneObject
@@ -8,6 +17,10 @@ class CBulletObject :
 
 private:
 	float mSpeed = 200.f;
+
+
+	EBulletClass mBulletClass = EBulletClass::Player;
+	CSceneObject* mOwner = nullptr;
 
 public:
 	float GetBulletSpeed() const
@@ -19,6 +32,22 @@ public:
 	{
 		mSpeed = Speed;
 	}
+
+	void SetBulletClass(EBulletClass BulletType)
+	{
+		mBulletClass = BulletType;
+		if (mBody)
+		{
+			mBody->SetCollisionProfile(BulletType == EBulletClass::Player ? "PlayerAttack" : "MonsterAttack");
+		}
+	}
+
+	void SetOwner(CSceneObject* Owner)
+	{
+		mOwner = Owner;
+	}
+
+
 
 protected:
 

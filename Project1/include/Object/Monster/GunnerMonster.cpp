@@ -65,6 +65,9 @@ void CGunnerMonster::Update(float DeltaTime)
 		Bullet->SetWorldRotation(GetWorldRotation());
 		Bullet->SetWorldPos(GetWorldPosition());
 
+		// collision
+		Bullet->SetBulletClass(EBulletClass::Monster);
+
 		Bullet->SetLifeTime(2.f);
 
 		// 지금 총알이 4번째 총알임 ?
@@ -84,6 +87,9 @@ void CGunnerMonster::Update(float DeltaTime)
 
 			Bullet->SetWorldPos(GetWorldPosition());
 
+			// collision
+			Bullet->SetBulletClass(EBulletClass::Monster);
+
 			Bullet->SetLifeTime(2.f);
 
 
@@ -95,6 +101,9 @@ void CGunnerMonster::Update(float DeltaTime)
 			Bullet->AddWorldRotationZ(-45.f);
 
 			Bullet->SetWorldPos(GetWorldPosition());
+
+			// collision
+			Bullet->SetBulletClass(EBulletClass::Monster);
 
 			Bullet->SetLifeTime(2.f);
 		}

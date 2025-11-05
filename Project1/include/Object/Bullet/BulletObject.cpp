@@ -39,7 +39,7 @@ bool CBulletObject::Init()
 
 	mRoot->AddChild(mBody);
 	mBody->SetBoxSize(50.f, 50.f);
-
+	
 
 	// Movement 세팅
 	mMovement->SetUpdateComponent(mRoot);

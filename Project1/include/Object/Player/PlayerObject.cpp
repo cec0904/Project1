@@ -60,6 +60,7 @@ bool CPlayerObject::Init()
 	mRoot->AddChild(mBody);
 	mBody->SetBoxSize(100.f, 100.f);
 	mBody->SetCollisionProfile("Player");
+	
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveSpeed(500.f);
@@ -111,6 +112,7 @@ bool CPlayerObject::Init()
 	// 총알 발사
 	mScene->GetInput()->AddBindKey("Fire", VK_SPACE);
 	mScene->GetInput()->AddBindFunction("Fire", EInputType::Down, this, &CPlayerObject::Fire);
+
 
 	// 스킬1
 	mScene->GetInput()->AddBindKey("Skill1", '1');
@@ -229,7 +231,10 @@ void CPlayerObject::Fire(float DeltaTime)
 	Root->SetWorldScale(50.f, 50.f, 1.f);
 	Bullet->SetLifeTime(2.f);
 
+	
 
+	// collision
+	Bullet->SetBulletClass(EBulletClass::Player);
 }
 
 void CPlayerObject::Skill1(float DeltaTime)
@@ -264,7 +269,7 @@ void CPlayerObject::Skill1(float DeltaTime)
 
 	mSkill1Object->GetRootComponent()->SetWorldScale(Scale);
 
-
+	
 }
 
 void CPlayerObject::Skill1Fire(float DeltaTime)
@@ -287,6 +292,8 @@ void CPlayerObject::Skill2(float DeltaTime)
 	Bullet->SetBulletSpeed(500.f);
 	Bullet->SetWorldScale(100.f, 100.f);
 	Bullet->SetLifeTime(1.f);
+
+	
 }
 
 void CPlayerObject::Skill3(float DeltaTime)
