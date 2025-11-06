@@ -30,8 +30,11 @@ protected:
 	FCollisionProfile* mProfile = nullptr;
 	//충돌 중 여부 
 	bool mCollision = false;
-	//충돌 시점 함수!
-
+	
+	// 충돌 시점 함수!
+	// 충돌 시작
+	// 충돌 위치, 누구랑 충돌했는지
+	function<void(const FVector3D&, CColliderBase*)> mCollisionBeginFunc;
 
 public:
 	FCollisionProfile* GetProfile() const
