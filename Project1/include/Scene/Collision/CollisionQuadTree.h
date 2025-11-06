@@ -82,12 +82,13 @@ public:
 #ifdef _DEBUG
 	CSharedPtr<class CMesh> mMesh;
 	CSharedPtr<class CShader> mShader;
+	class CColliderCBuffer* mColliderCBuffer;
 #endif // _DEBUG
 
 
 public:
 	bool Init();
-	void AddCollider(class CColliderBase* Collder);
+	void AddCollider(class CColliderBase* Collider);
 	void Update(float DeltaTime);
 	void Collision(float DeltaTime);
 	void Render();

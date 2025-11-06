@@ -18,9 +18,9 @@ class CBulletObject :
 private:
 	float mSpeed = 200.f;
 
-
-	EBulletClass mBulletClass = EBulletClass::Player;
-	CSceneObject* mOwner = nullptr;
+	// 숙제
+	/*EBulletClass mBulletClass = EBulletClass::Player;
+	CSceneObject* mOwner = nullptr;*/
 
 public:
 	float GetBulletSpeed() const
@@ -33,7 +33,8 @@ public:
 		mSpeed = Speed;
 	}
 
-	void SetBulletClass(EBulletClass BulletType)
+	// 숙제
+	/*void SetBulletClass(EBulletClass BulletType)
 	{
 		mBulletClass = BulletType;
 		if (mBody)
@@ -45,9 +46,10 @@ public:
 	void SetOwner(CSceneObject* Owner)
 	{
 		mOwner = Owner;
-	}
+	}*/
 
-
+	// 강사님
+	void SetBulletCollisionProfile(const string& Name);
 
 protected:
 
@@ -66,5 +68,7 @@ public:
 	virtual bool Init();
 	virtual void Update(float DeltaTime);
 
+private:
+	void CollisionBullet(const FVector3D& HitPoint, class CColliderBase* Dest);
 };
 

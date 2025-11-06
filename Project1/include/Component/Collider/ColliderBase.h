@@ -35,6 +35,22 @@ protected:
 	// 충돌 시작
 	// 충돌 위치, 누구랑 충돌했는지
 	function<void(const FVector3D&, CColliderBase*)> mCollisionBeginFunc;
+	// 충돌 종료
+	function<void(CColliderBase*)> mCollisionEndFunc;
+
+	//디버그용 출력 해주기 
+#ifdef _DEBUG
+
+	//위치용 상수버퍼 
+	class CTransformCBuffer* mTransformCBuffer = nullptr;
+	//충돌체 상수버퍼 
+	class CColliderCBuffer* mCBuffer = nullptr;
+	//메쉬
+	CSharedPtr<class CMesh> mMesh;
+	//쉐이더 
+	CSharedPtr<class CShader> mShader;
+
+#endif // _DEBUG
 
 public:
 	FCollisionProfile* GetProfile() const
@@ -64,6 +80,8 @@ public:
 
 public:
 	void SetCollisionProfile(const std::string& Name);
+	void CallCollisionBegin(const FVector3D& HitPoint, CColliderBase* Dest);
+	void CallCollisionEnd(CColliderBase* Dest);
 
 public:
 	virtual bool Init();
@@ -80,6 +98,19 @@ public:
 public:
 	//순수가상함수 
 	virtual bool Collision(FVector3D& HitPoint, CColliderBase* Dest) = 0;
+
+public:
+	template<typename T>
+	void SetCollisionBeginFunc(T* Obj, void(T::* Func)(const FVector3D&, CColliderBase*))
+	{
+		mCollisionBeginFunc = bind(Func, Obj, placeholders::_1, placeholders::_2);
+	}
+
+	template<typename T>
+	void SetCollisionEndFunc(T* Obj, void(T::* Func)(CColliderBase*))
+	{
+		mCollisionEndFunc = bind(Func, Obj, placeholders::_1);
+	}
 
 
 };

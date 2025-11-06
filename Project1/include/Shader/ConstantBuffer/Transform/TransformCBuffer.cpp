@@ -1,14 +1,17 @@
 ﻿#include "TransformCBuffer.h"
+#include "../Collider/ColliderCBuffer.h"
 
 CTransformCBuffer::CTransformCBuffer()
 {
 }
 
 CTransformCBuffer::CTransformCBuffer(const CTransformCBuffer& Data)
+	:CConstantBufferData(Data), mData(Data.mData)
 {
 }
 
 CTransformCBuffer::CTransformCBuffer(CTransformCBuffer&& Data)
+	:CConstantBufferData(Data), mData(Data.mData)
 {
 }
 
@@ -22,6 +25,8 @@ bool CTransformCBuffer::Init()
 
 	return true;
 }
+
+
 
 void CTransformCBuffer::UpdateBuffer()
 {

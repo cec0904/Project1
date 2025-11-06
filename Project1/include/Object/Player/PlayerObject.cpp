@@ -223,6 +223,7 @@ void CPlayerObject::Fire(float DeltaTime)
 {
 	// 총알을 만들 것이고
 	CBulletObject* Bullet = mScene->CreateObj<CBulletObject>("Bullet");
+	Bullet->SetBulletCollisionProfile("PlayerAttack");
 
 	CSceneComponent* Root = Bullet->GetRootComponent();
 	// 총알의 시작 위치 == 내 월드 위치
@@ -234,7 +235,7 @@ void CPlayerObject::Fire(float DeltaTime)
 	
 
 	// collision
-	Bullet->SetBulletClass(EBulletClass::Player);
+	// Bullet->SetBulletClass(EBulletClass::Player);
 }
 
 void CPlayerObject::Skill1(float DeltaTime)

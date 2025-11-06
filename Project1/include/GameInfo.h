@@ -227,7 +227,7 @@ MonsterAttack->Interaction[Player] == Collision)
 // 미리 등록시키는 형식(시스템)이다. 
 struct FCollisionProfile
 {
-	std::string Name;
+	string Name;
 	//현재 프로파일이 사용하는 충돌 채널 
 	ECollisionChannel::Type Channel = ECollisionChannel::Default;
 	bool Enable = true;

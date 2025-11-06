@@ -64,9 +64,12 @@ void CGunnerMonster::Update(float DeltaTime)
 		Bullet->SetWorldScale(50.f, 50.f);
 		Bullet->SetWorldRotation(GetWorldRotation());
 		Bullet->SetWorldPos(GetWorldPosition());
+		
+		// collision
+		Bullet->SetBulletCollisionProfile("MonsterAttack");
 
 		// collision
-		Bullet->SetBulletClass(EBulletClass::Monster);
+		// Bullet->SetBulletClass(EBulletClass::Monster);
 
 		Bullet->SetLifeTime(2.f);
 
@@ -88,7 +91,9 @@ void CGunnerMonster::Update(float DeltaTime)
 			Bullet->SetWorldPos(GetWorldPosition());
 
 			// collision
-			Bullet->SetBulletClass(EBulletClass::Monster);
+			Bullet->SetBulletCollisionProfile("MonsterAttack");
+			// collision
+			// Bullet->SetBulletClass(EBulletClass::Monster);
 
 			Bullet->SetLifeTime(2.f);
 
@@ -103,7 +108,9 @@ void CGunnerMonster::Update(float DeltaTime)
 			Bullet->SetWorldPos(GetWorldPosition());
 
 			// collision
-			Bullet->SetBulletClass(EBulletClass::Monster);
+			Bullet->SetBulletCollisionProfile("MonsterAttack");
+			// collision
+			// Bullet->SetBulletClass(EBulletClass::Monster);
 
 			Bullet->SetLifeTime(2.f);
 		}

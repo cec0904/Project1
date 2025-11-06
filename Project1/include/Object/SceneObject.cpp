@@ -243,6 +243,17 @@ CSceneObject* CSceneObject::Clone()
 	return nullptr;
 }
 
+float CSceneObject::Damage(float Attack, CSceneObject* Obj)
+{
+	if (mDamageEnable)
+	{
+		Attack = 0.f;
+	}
+
+
+	return Attack;
+}
+
 #pragma region Trasnfrom
 // Transform 함수들 
 

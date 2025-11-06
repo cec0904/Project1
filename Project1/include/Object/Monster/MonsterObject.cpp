@@ -3,6 +3,7 @@
 #include "../../Object/Bullet/BulletObject.h"
 #include "../../Scene/Scene.h"
 #include "../../Component/Collider/ColliderAABB2D.h"
+#include "../../Share/Log/Log.h"
 
 #include <sstream>
 
@@ -19,10 +20,34 @@ CMonsterObject::CMonsterObject(const CMonsterObject& Obj)
 CMonsterObject::CMonsterObject(CMonsterObject&& Obj)
 	: CSceneObject(Obj)
 {
+	
 }
 
 CMonsterObject::~CMonsterObject()
 {
+}
+
+void CMonsterObject::CollisionMonster(const FVector3D& HitPoint, CColliderBase* Dest)
+{
+	CLog::PrintLog("Collision Monster");
+
+	// Dest->GetProfile()->Channel == ECollisionChannel::PlayerAttack();
+
+	// 공용된 데미지 함수를 만들어서 호출하는게 더 좋다.
+}
+
+float CMonsterObject::Damage(float Attack, CSceneObject* Obj)
+{
+	float Dmg = CSceneObject::Damage(Attack, Obj);
+
+	mHP -= (int)Dmg;
+
+	if (mHP <= 0)
+	{
+		Destroy();
+	}
+
+	return Dmg;
 }
 
 bool CMonsterObject::Init()
@@ -44,6 +69,7 @@ bool CMonsterObject::Init()
 	mRoot->AddChild(mBody);
 	mBody->SetBoxSize(100.f, 100.f);
 	mBody->SetCollisionProfile("Monster");
+	mBody->SetCollisionBeginFunc<CMonsterObject>(this, &CMonsterObject::CollisionMonster);
 
 	return true;
 

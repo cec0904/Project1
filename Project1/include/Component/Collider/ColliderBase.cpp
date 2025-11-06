@@ -5,6 +5,15 @@
 #include "../../Scene/Collision/SceneCollision.h"
 #include "../../GameManager/ProfileManager/ProfileManager.h"
 
+#include "../../Shader/ShaderClass/Shader.h"
+#include "../../Shader/ShaderManager.h"
+#include "../../Shader/ConstantBuffer/Collider/ColliderCBuffer.h"
+#include "../../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
+#include "../../Asset/Mesh/MeshManager.h"
+#include "../../Asset/Mesh/Mesh.h"
+
+#include "../../Scene/CameraManager/CameraManager.h"
+
 CColliderBase::CColliderBase()
 {
 }
@@ -18,11 +27,37 @@ CColliderBase::CColliderBase(CColliderBase&& Com)
 }
 CColliderBase::~CColliderBase()
 {
+#ifdef _DEBUG
+	SAFE_DELETE(mTransformCBuffer);
+	SAFE_DELETE(mCBuffer);
+#endif // _DEBUG
+
+
 }
 
 void CColliderBase::SetCollisionProfile(const std::string& Name)
 {
 	mProfile = CProfileManager::GetInst()->FindProfile(Name);
+}
+
+void CColliderBase::CallCollisionBegin(const FVector3D& HitPoint, CColliderBase* Dest)
+{
+	mCollision = true;
+
+	if (mCollisionBeginFunc)
+	{
+		mCollisionBeginFunc(HitPoint, Dest);
+	}
+}
+
+void CColliderBase::CallCollisionEnd(CColliderBase* Dest)
+{
+	// mCollision = false;
+
+	if (mCollisionEndFunc)
+	{
+		mCollisionEndFunc(Dest);
+	}
 }
 
 bool CColliderBase::Init()
@@ -36,6 +71,24 @@ bool CColliderBase::Init()
 
 	mScene->GetCollision()->AddCollider(this);
 
+#ifdef _DEBUG
+	
+	mShader = CShaderManager::GetInst()->FindShader("FrameMeshShader");
+
+	// Transform 상수버퍼
+	mTransformCBuffer = new CTransformCBuffer;
+	mTransformCBuffer->Init();
+
+	// Collider 상수버퍼
+	mCBuffer = new CColliderCBuffer;
+	mCBuffer->Init();
+
+	// 버퍼 사용했으면 바로 Release 하자
+	// 소멸자로 ㄱㄱ
+
+#endif // _DEBUG
+
+
 	return true;
 }
 bool CColliderBase::Init(const char* FileName)
@@ -46,6 +99,23 @@ bool CColliderBase::Init(const char* FileName)
 	}
 	SetCollisionProfile("Default");
 	mScene->GetCollision()->AddCollider(this);
+
+#ifdef _DEBUG
+
+	mShader = CShaderManager::GetInst()->FindShader("FrameMeshShader");
+
+	// Transform 상수버퍼
+	mTransformCBuffer = new CTransformCBuffer;
+	mTransformCBuffer->Init();
+
+	// Collider 상수버퍼
+	mCBuffer = new CColliderCBuffer;
+	mCBuffer->Init();
+
+	// 버퍼 사용했으면 바로 Release 하자
+	// 소멸자로 ㄱㄱ
+
+#endif // _DEBUG
 
 	return true;
 }
@@ -74,6 +144,64 @@ void CColliderBase::PreRender()
 void CColliderBase::Render()
 {
 	CSceneComponent::Render();
+
+#ifdef _DEBUG
+
+	// 한 번씩 작성하고 해보자
+	// Transform 상수버퍼 데이터 넣어주기
+	// Collider 상수버퍼 데이터 넣어주기
+	// 상수버퍼들 업데이트 
+	// 쉐이더 세팅
+	// Mesh->Render();
+
+
+
+	// Transform 상수버퍼 데이터 넣어주기
+	// 크기, 위치
+	FMatrix matScale, matTranslate, matWorld;
+	matScale.Scaling(mWorldScale);
+	matTranslate.Translation(mWorldPos);
+
+	// 곱하는 순서 정해져 있음
+	// 크자이공부
+	matWorld = matScale * matTranslate;
+
+	FMatrix matView, matProj;
+	matView = mScene->GetCameraManager()->GetViewMatrix();
+	matProj = mScene->GetCameraManager()->GetProjMatrix();
+
+	mTransformCBuffer->SetWorldMatrix(matWorld);
+	mTransformCBuffer->SetViewMatrix(matView);
+	mTransformCBuffer->SetProjMatrix(matProj);
+
+	mTransformCBuffer->UpdateBuffer();
+
+	// Collider 상수버퍼 데이터 넣어주기
+	// 충돌 중 : 빨강
+	if (mCollision)
+	{
+	mCBuffer->SetColor(1.f, 0.f, 1.f, 0.f);	// 빨간색
+	}
+	// 충돌 X : 초록
+	else
+	{
+	mCBuffer->SetColor(0.f, 1.f, 0.f, 1.f);	// 초록색
+	}
+	
+	// 상수버퍼들 업데이트 
+	mCBuffer->UpdateBuffer();
+
+
+	// 쉐이더 세팅
+	mShader->SetShader();
+
+	// Mesh->Render();
+	mMesh->Render();
+
+#endif // _DEBUG
+
+	mCollision = false;
+
 }
 void CColliderBase::PostRender()
 {

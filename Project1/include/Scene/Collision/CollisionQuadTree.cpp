@@ -12,7 +12,7 @@
 #include "../../Shader/ShaderManager.h"
 #include "../../Shader/ShaderClass/Shader.h"
 #include "../../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
-
+#include "../../Shader/ConstantBuffer/Collider/ColliderCBuffer.h"
 
 CCollisionQuadTreeNode::CCollisionQuadTreeNode()
 {
@@ -273,6 +273,8 @@ void CCollisionQuadTreeNode::Collision(float DeltaTime)
 
 	for (size_t i = 0; i < Size;)
 	{
+		CColliderBase* Src = mColliderList[i];
+
 		if (!mColliderList[i]->IsActive())
 		{
 			if (i < Size - 1)
@@ -302,6 +304,7 @@ void CCollisionQuadTreeNode::Collision(float DeltaTime)
 
 		for (size_t j = i + 1; j < Size;)
 		{
+			CColliderBase* Dest = mColliderList[j];
 			if (!mColliderList[j]->IsActive())
 			{
 				if (j < Size - 1)
@@ -341,7 +344,10 @@ void CCollisionQuadTreeNode::Collision(float DeltaTime)
 			if (mColliderList[i]->Collision(HitPoint, mColliderList[j]))
 			{
 				//둘이 충돌 되었다.
-				int i = 10;
+				// Src->함수 호출;
+				Src->CallCollisionBegin(HitPoint, Dest);
+				//Dest->함수 호출;
+				Dest->CallCollisionBegin(HitPoint, Src);
 
 			}
 
@@ -369,6 +375,8 @@ CCollisionQuadTree::CCollisionQuadTree()
 
 CCollisionQuadTree::~CCollisionQuadTree()
 {
+	SAFE_DELETE(mColliderCBuffer);
+
 	size_t Size = mNodePool.size();
 	for (size_t i = 0; i < Size; i++)
 	{
@@ -404,6 +412,12 @@ bool CCollisionQuadTree::Init()
 	mMesh = CAssetManager::GetInst()->GetMeshManager()->FindMesh("FrameCenterRect");
 
 	mShader = CShaderManager::GetInst()->FindShader("FrameMeshShader");
+
+	mColliderCBuffer = new CColliderCBuffer;
+
+	mColliderCBuffer->Init();
+
+	mColliderCBuffer->SetColor(1.f, 0.f, 0.f, 1.f);
 #endif // _DEBUG
 
 
@@ -469,7 +483,11 @@ void CCollisionQuadTree::Collision(float DeltaTime)
 
 void CCollisionQuadTree::Render()
 {
+#ifdef _DEBUG
+	mColliderCBuffer->UpdateBuffer();
 	mRoot->Render(mMesh, mShader);
+#endif // _DEBUG
+
 }
 
 void CCollisionQuadTree::ReturnNodePool()

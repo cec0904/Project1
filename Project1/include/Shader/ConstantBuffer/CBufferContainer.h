@@ -13,3 +13,8 @@ struct FTransformCBufferInfo
 	FMatrix matWV;
 	FMatrix matWVP;
 };
+
+struct FColliderCBufferInfo
+{
+	FVector4D Color;
+};
