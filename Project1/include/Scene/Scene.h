@@ -6,7 +6,7 @@
 class CScene
 {
 	friend class CSceneManager;
-
+	
 protected:
 	CScene();
 	virtual ~CScene();
@@ -37,6 +37,10 @@ public:
 	class CInput* GetInput() const
 	{
 		return mInput;
+	}
+	list<CSharedPtr<class CSceneObject>>* Getlist()
+	{
+		return &mObjList;
 	}
 
 	class CCameraManager* GetCameraManager() const

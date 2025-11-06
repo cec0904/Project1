@@ -180,7 +180,7 @@ void CColliderBase::Render()
 	// 충돌 중 : 빨강
 	if (mCollision)
 	{
-	mCBuffer->SetColor(1.f, 0.f, 1.f, 0.f);	// 빨간색
+	mCBuffer->SetColor(1.f, 0.f, 0.f, 1.f);	// 빨간색
 	}
 	// 충돌 X : 초록
 	else

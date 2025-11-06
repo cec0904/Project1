@@ -21,6 +21,9 @@ protected:
 	// 몬스터 체력
 	int mHP = 5;
 
+
+	
+
 private:
 	void CollisionMonster(const FVector3D& HitPoint, class CColliderBase* Dest);
 

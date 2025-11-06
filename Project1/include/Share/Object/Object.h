@@ -20,6 +20,8 @@ public:
 	bool IsActive()
 	{
 		return mActive;
+		// mActive가 업데이트 돌다가 순회중 false로 바뀌면
+		// retrun false;
 	}
 	bool IsEnable()
 	{

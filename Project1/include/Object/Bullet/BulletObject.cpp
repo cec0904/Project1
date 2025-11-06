@@ -70,7 +70,7 @@ void CBulletObject::Update(float DeltaTime)
 
 void CBulletObject::CollisionBullet(const FVector3D& HitPoint, CColliderBase* Dest)
 {
-	CLog::PrintLog("Bullet Hit Collision", ELogPrintType::All);
+	//CLog::PrintLog("Bullet Hit Collision", ELogPrintType::All);
 
 	Dest->GetOwner()->Damage(1.f, this);
 

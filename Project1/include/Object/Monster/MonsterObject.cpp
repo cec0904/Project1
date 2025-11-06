@@ -5,6 +5,9 @@
 #include "../../Component/Collider/ColliderAABB2D.h"
 #include "../../Share/Log/Log.h"
 
+#include "MonsterSpawn.h"
+
+
 #include <sstream>
 
 
@@ -27,6 +30,8 @@ CMonsterObject::~CMonsterObject()
 {
 }
 
+
+
 void CMonsterObject::CollisionMonster(const FVector3D& HitPoint, CColliderBase* Dest)
 {
 	CLog::PrintLog("Collision Monster");
@@ -40,15 +45,20 @@ float CMonsterObject::Damage(float Attack, CSceneObject* Obj)
 {
 	float Dmg = CSceneObject::Damage(Attack, Obj);
 
-	mHP -= (int)Dmg;
+ 	mHP -= (int)Dmg;
 
 	if (mHP <= 0)
 	{
 		Destroy();
+		CLog::PrintLog("Monster is dead");
+
+		
 	}
 
 	return Dmg;
 }
+
+
 
 bool CMonsterObject::Init()
 {

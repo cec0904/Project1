@@ -29,6 +29,9 @@ protected:
 	// 무적상태 여부
 	bool mDamageEnable = true;
 
+
+
+
 public:
 	void SetLifeTime(float Time)
 	{

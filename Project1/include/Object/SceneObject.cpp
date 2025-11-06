@@ -245,7 +245,7 @@ CSceneObject* CSceneObject::Clone()
 
 float CSceneObject::Damage(float Attack, CSceneObject* Obj)
 {
-	if (mDamageEnable)
+	if (!mDamageEnable)
 	{
 		Attack = 0.f;
 	}
