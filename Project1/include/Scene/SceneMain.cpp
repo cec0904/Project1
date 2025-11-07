@@ -4,6 +4,7 @@
 #include "../Object/Monster/MonsterObject.h"
 #include "../Object/Monster/GunnerMonster.h"
 #include "../Object/Monster/NearingMonster.h"
+#include "../Object/Monster/ObjectSpawnPoint.h"
 
 CSceneMain::CSceneMain()
 {
@@ -27,11 +28,57 @@ bool CSceneMain::Init()
 		return false;
 	}
 
-	CMonsterObject* Monster = CreateObj<CGunnerMonster>("GunnerMonster");
+	/*CMonsterObject* Monster = CreateObj<CGunnerMonster>("GunnerMonster");
 	Monster->SetWorldPos(-400.f, 300.f);
-	Monster->SetTarget(Player);
+	Monster->SetTarget(Player);*/
 
-	CMonsterObject* Monster1 = CreateObj<CGunnerMonster>("GunnerMonster1");
+	CObjectSpawnPoint* MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint");
+	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);
+	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Once);
+	MonsterPoint->SetSpawnCountType(EObjectSpawnCountType::CountDestroy);
+	MonsterPoint->SetDestroySpawnCount(3);
+	MonsterPoint->SetWorldPos(400.f, 300.f);
+
+
+	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint1");
+	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);
+	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
+	MonsterPoint->SetSpawnCountType(EObjectSpawnCountType::CountDestroy);
+	MonsterPoint->SetImmediateSpawn(false);
+	MonsterPoint->SetSpawnTime(5.f);
+	MonsterPoint->SetDestroySpawnCount(3);
+	MonsterPoint->SetWorldPos(-400.f, 300.f);
+
+
+	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint2");
+	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);
+	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
+	MonsterPoint->SetImmediateSpawn(false);
+	MonsterPoint->SetSpawnTime(5.f);
+	MonsterPoint->SetWorldPos(400.f, -300.f);
+
+
+	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint3");
+	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);
+	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
+	MonsterPoint->SetImmediateSpawn(false);
+	MonsterPoint->SetSpawnTime(3.5f);
+	MonsterPoint->SetWorldPos(-400.f, -300.f);
+
+
+	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint4");
+	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);
+	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
+	MonsterPoint->SetImmediateSpawn(true);
+	MonsterPoint->SetSpawnTime(10.f);
+	MonsterPoint->SetWorldPos(200.f, 0.f);
+
+	return true;
+
+
+
+
+	/*CMonsterObject* Monster1 = CreateObj<CGunnerMonster>("GunnerMonster1");
 	Monster1->SetWorldPos(400.f, 300.f);
 	Monster1->SetTarget(Player);
 
@@ -55,5 +102,5 @@ bool CSceneMain::Init()
 	Monster6->SetWorldPos(0.f, -150.f);
 	Monster6->SetTarget(Player);
 
-	return true;
+	return true;*/
 }

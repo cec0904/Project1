@@ -26,6 +26,7 @@
     <ClCompile Include="include\Asset\Mesh\StaticMesh.cpp" />
     <ClCompile Include="include\Component\Collider\ColliderAABB2D.cpp" />
     <ClCompile Include="include\Component\Collider\ColliderBase.cpp" />
+    <ClCompile Include="include\Component\Collider\ColliderSphere2D.cpp" />
     <ClCompile Include="include\Component\Component.cpp" />
     <ClCompile Include="include\Component\NonSceneComponent\MovementComponent.cpp" />
     <ClCompile Include="include\Component\NonSceneComponent\RotationComponent.cpp" />
@@ -44,8 +45,8 @@
     <ClCompile Include="include\Object\Bullet\TornadoBullet.cpp" />
     <ClCompile Include="include\Object\Monster\GunnerMonster.cpp" />
     <ClCompile Include="include\Object\Monster\MonsterObject.cpp" />
-    <ClCompile Include="include\Object\Monster\MonsterSpawn.cpp" />
     <ClCompile Include="include\Object\Monster\NearingMonster.cpp" />
+    <ClCompile Include="include\Object\Monster\ObjectSpawnPoint.cpp" />
     <ClCompile Include="include\Object\Player\PlayerObject.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -82,6 +83,7 @@
     <ClInclude Include="include\Asset\Mesh\StaticMesh.h" />
     <ClInclude Include="include\Component\Collider\ColliderAABB2D.h" />
     <ClInclude Include="include\Component\Collider\ColliderBase.h" />
+    <ClInclude Include="include\Component\Collider\ColliderSphere2D.h" />
     <ClInclude Include="include\Component\Component.h" />
     <ClInclude Include="include\Component\NonSceneComponent\MovementComponent.h" />
     <ClInclude Include="include\Component\NonSceneComponent\RotationComponent.h" />
@@ -102,8 +104,8 @@
     <ClInclude Include="include\Object\Bullet\TornadoBullet.h" />
     <ClInclude Include="include\Object\Monster\GunnerMonster.h" />
     <ClInclude Include="include\Object\Monster\MonsterObject.h" />
-    <ClInclude Include="include\Object\Monster\MonsterSpawn.h" />
     <ClInclude Include="include\Object\Monster\NearingMonster.h" />
+    <ClInclude Include="include\Object\Monster\ObjectSpawnPoint.h" />
     <ClInclude Include="include\Object\Player\PlayerObject.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>

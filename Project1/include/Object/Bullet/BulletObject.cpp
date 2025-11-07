@@ -4,10 +4,7 @@
 #include "../../Component/Collider/ColliderAABB2D.h"
 #include "../../Share/Log/Log.h"
 
-void CBulletObject::SetBulletCollisionProfile(const string& Name)
-{
-	mBody->SetCollisionProfile(Name);
-}
+
 
 CBulletObject::CBulletObject()
 	:CSceneObject()
@@ -26,6 +23,10 @@ CBulletObject::CBulletObject(CBulletObject&& Obj)
 
 CBulletObject::~CBulletObject()
 {
+}
+void CBulletObject::SetBulletCollisionProfile(const string& Name)
+{
+	mBody->SetCollisionProfile(Name);
 }
 
 bool CBulletObject::Init()

@@ -1,5 +1,6 @@
 ﻿#include "NearingMonster.h"
 #include "../Player/PlayerObject.h"
+#include "../../Scene/Scene.h"
 
 CNearingMonster::CNearingMonster()
 {
@@ -26,6 +27,13 @@ bool CNearingMonster::Init()
 	{
 		return false;
 	}
+
+	CPlayerObject* pPlayer = mScene->FindObjectFromName<CPlayerObject>("Player");
+	if (pPlayer)
+	{
+		SetTarget(pPlayer);
+	}
+
 	mDetectDistance = 400.f;
 	
 

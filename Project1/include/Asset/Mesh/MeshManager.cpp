@@ -81,6 +81,26 @@ bool CMeshManager::Init()
 		return false;
 	}
 
+	// 원 와이어
+	// 정점 36개 짜리 도형 -> 원이라고 생각한다.
+
+	FVector3D Sphere2DPoint[37];
+
+	for (int i = 0; i < 37; i++)
+	{
+		float Angle = DirectX::XMConvertToRadians(i * 10.f);
+
+		// 지름이 1인 도형을 만들고 있기 때문에
+		// 반지름을 0.5로 만들어 준 것이다.
+		Sphere2DPoint[i].x = cosf(Angle) * 0.5f;
+		Sphere2DPoint[i].y = sinf(Angle) * 0.5f;
+	}
+
+	if (!CreateMesh("FrameSphere2D", Sphere2DPoint, sizeof(FVector3D), 37, D3D11_USAGE_DEFAULT, D3D_PRIMITIVE_TOPOLOGY_LINESTRIP))
+	{
+		return false;
+	}
+
 
 	return true;
 }

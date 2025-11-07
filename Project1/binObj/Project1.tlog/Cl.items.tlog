@@ -5,6 +5,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\MeshManager.cpp;E:\KDT4
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\StaticMesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\StaticMesh.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderAABB2D.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderAABB2D.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderBase.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderBase.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderSphere2D.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderSphere2D.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Component.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Component.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\NonSceneComponent\MovementComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MovementComponent.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\NonSceneComponent\RotationComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\RotationComponent.obj
@@ -23,8 +24,8 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\TalonR.cpp;E:\KDT4_J
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\TornadoBullet.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TornadoBullet.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\GunnerMonster.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\GunnerMonster.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\MonsterObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MonsterObject.obj
-E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\MonsterSpawn.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MonsterSpawn.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\NearingMonster.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\NearingMonster.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\ObjectSpawnPoint.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ObjectSpawnPoint.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\PlayerObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\CameraManager\CameraManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CameraManager.obj

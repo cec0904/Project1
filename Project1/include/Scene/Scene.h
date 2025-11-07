@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../GameInfo.h"
+#include "../Object/SceneObject.h"
 
 // 월드를 구상하는 클래스
 class CScene
@@ -84,6 +85,42 @@ public:
 		mObjList.push_back(Obj);
 		return Obj;
 	}
+
+	template<typename T>
+	T* FindObjectFromType()
+	{
+		auto iter = mObjList.begin();
+		auto iterEnd = mObjList.end();
+
+		for (; iter != iterEnd; iter++)
+		{
+			T* Obj = dynamic_cast<T*>((*iter).Get());
+
+			if (Obj)
+			{
+				return Obj;
+			}
+		}
+		return nullptr;
+	}
+
+	// 오브젝트 이름으로 찾아오자.
+	template<typename T>
+	T* FindObjectFromName(const string& Name)
+	{
+		auto iter = mObjList.begin();
+		auto iterEnd = mObjList.end();
+
+		for (; iter != iterEnd; iter++)
+		{
+			if ((*iter)->GetName() == Name)
+			{
+				return dynamic_cast<T*>((*iter).Get());
+			}
+		}
+		return nullptr;
+	}
+
 
 
 	template<typename T>

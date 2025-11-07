@@ -3,9 +3,11 @@
 #include "../../Object/Bullet/BulletObject.h"
 #include "../../Scene/Scene.h"
 #include "../../Component/Collider/ColliderAABB2D.h"
+#include "../../Component/Collider/ColliderSphere2D.h"
 #include "../../Share/Log/Log.h"
+#include "../Monster/ObjectSpawnPoint.h"
 
-#include "MonsterSpawn.h"
+
 
 
 #include <sstream>
@@ -49,9 +51,14 @@ float CMonsterObject::Damage(float Attack, CSceneObject* Obj)
 
 	if (mHP <= 0)
 	{
+		if (mSpawnPoint != nullptr)
+		{
+			mSpawnPoint->ClearObject();
+		}
+
 		Destroy();
 		CLog::PrintLog("Monster is dead");
-
+		//CMonsterSpawn::MonsterRespawn();
 		
 	}
 
@@ -68,7 +75,8 @@ bool CMonsterObject::Init()
 	}
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
-	mBody = CreateComponent<CColliderAABB2D>();
+	//mBody = CreateComponent<CColliderAABB2D>();
+	mBody = CreateComponent<CColliderSphere2D>();
 
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
@@ -77,7 +85,8 @@ bool CMonsterObject::Init()
 	SetRootComponent(mRoot);
 
 	mRoot->AddChild(mBody);
-	mBody->SetBoxSize(100.f, 100.f);
+	//mBody->SetBoxSize(100.f, 100.f);
+	mBody->SetRadius(50.f);
 	mBody->SetCollisionProfile("Monster");
 	mBody->SetCollisionBeginFunc<CMonsterObject>(this, &CMonsterObject::CollisionMonster);
 

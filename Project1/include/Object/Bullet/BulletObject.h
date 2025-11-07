@@ -1,14 +1,6 @@
 ﻿#pragma once
 #include "../SceneObject.h"
-#include "../../Component/SceneComponent/StaticMeshComponent.h"
-#include "../../Component/Collider/ColliderAABB2D.h"
-#include "../../Component/NonSceneComponent/MovementComponent.h"
 
-enum class EBulletClass
-{
-	Player,
-	Monster
-};
 
 class CBulletObject :
 	public CSceneObject

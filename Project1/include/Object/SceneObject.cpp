@@ -1,6 +1,7 @@
 ﻿#include "SceneObject.h"
 
 #include "../Component/SceneComponent/SceneComponent.h"
+#include "../Object/Monster/ObjectSpawnPoint.h"
 
 CSceneObject::CSceneObject()
 {
@@ -21,6 +22,11 @@ CSceneObject::~CSceneObject()
 void CSceneObject::SetRootComponent(CSceneComponent* Root)
 {
 	mRootComponent = Root;
+}
+
+void CSceneObject::SetSpawnPoint(CObjectSpawnPoint* Point)
+{
+	mSpawnPoint = Point;
 }
 
 bool CSceneObject::Init()

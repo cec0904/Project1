@@ -1,5 +1,5 @@
 ﻿#include "Scene.h"
-#include "../Object/SceneObject.h"
+
 #include "Input/Input.h"
 #include "CameraManager/CameraManager.h"
 #include "Collision/SceneCollision.h"

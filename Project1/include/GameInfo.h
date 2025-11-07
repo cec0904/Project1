@@ -153,7 +153,8 @@ enum class EColliderType
 // 충돌 모양
 enum class EColliderShape
 {
-	AABB2D
+	AABB2D,
+	Sphere2D
 };
 
 
