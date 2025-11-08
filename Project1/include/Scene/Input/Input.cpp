@@ -16,8 +16,8 @@ CInput::~CInput()
 		SAFE_DELETE(iter->second);
 	}
 
-	auto iter1 = mKeyStateMap.begin();
-	auto iterEnd1 = mKeyStateMap.end();
+	auto iter1 = mBindKeyMap.begin();
+	auto iterEnd1 = mBindKeyMap.end();
 
 	for (; iter1 != iterEnd1; iter1++)
 	{
