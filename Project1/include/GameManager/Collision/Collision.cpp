@@ -1,6 +1,7 @@
 #include "Collision.h"
 
 #include "../../Component/Collider/ColliderAABB2D.h"
+#include "../../Component/Collider/ColliderOBB2D.h"
 #include "../../Component/Collider/ColliderSphere2D.h"
 
 CCollision::CCollision()
@@ -11,9 +12,9 @@ CCollision::~CCollision()
 {
 }
 
-bool CCollision::CollisionAABB2DToAABB2D(FVector3D& HitPoint, CColliderOBB2D* Src, CColliderOBB2D* Dest)
+bool CCollision::CollisionAABB2DToAABB2D(FVector3D& HitPoint, CColliderAABB2D* Src, CColliderAABB2D* Dest)
 {
-	if (CollisionAABB2DToAABB2D(HitPoint, 
+	if (CollisionAABB2DToAABB2D(HitPoint,
 		Src->GetBox(), 
 		Dest->GetBox()))
 	{
@@ -35,11 +36,21 @@ bool CCollision::CollisionSphere2DToSphere2D(FVector3D& HitPoint, CColliderSpher
 	return false;
 }
 
-bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, CColliderOBB2D* Src, CColliderSphere2D* Dest)
+
+
+bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, CColliderAABB2D* Src, CColliderSphere2D* Dest)
 {
-	if (CollisionAABB2DToSphere2D(HitPoint,
-		Src->GetBox(),
-		Dest->GetWorldPosition(), Dest->GetRadius()))
+	if (CollisionAABB2DToSphere2D(HitPoint, Src->GetBox(), Dest->GetWorldPosition(), Dest->GetRadius()))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionOBB2DToOBB2D(FVector3D& HitPoint, CColliderOBB2D* Src, CColliderOBB2D* Dest)
+{
+	if (CollisionOBB2DToOBB2D(HitPoint, Src->GetBox(), Dest->GetBox()))
 	{
 		return true;
 	}
@@ -280,4 +291,128 @@ bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, const FAABB2D& S
 		return true;
 	}
 	return false;
+}
+
+bool CCollision::CollisionOBB2DToOBB2D(FVector3D& HitPoint, const FOBB2D& Src, const FOBB2D& Dest)
+{
+	// 두 충돌체의 중심의 거리벡터를 구한다.
+	FVector2D CenterLine = Src.Center - Dest.Center;
+
+	// 축 검사 실시
+	// Src X축
+	if (!ComputeAxisProjection(CenterLine,
+		Src.Axis[EAxis::X],
+		Src.HalfSize.x,
+		Dest.Axis,
+		Dest.HalfSize))
+	{
+		return false;
+	}
+
+	// Src Y축
+	if (!ComputeAxisProjection(CenterLine, 
+		Src.Axis[EAxis::Y], 
+		Src.HalfSize.y,
+		Dest.Axis,
+		Dest.HalfSize))
+	{
+		return false;
+	}
+
+	// Dest X축
+	if (!ComputeAxisProjection(CenterLine, Dest.Axis[EAxis::X], Dest.HalfSize.x,
+		Src.Axis, Src.HalfSize))
+	{
+		return false;
+	}
+
+	// Dest Y축
+	if (!ComputeAxisProjection(CenterLine, Dest.Axis[EAxis::Y], Dest.HalfSize.y,
+		Src.Axis, Src.HalfSize))
+	{
+		return false;
+	}
+
+	// 충돌 성공
+
+	// 충돌 지점은 AABB 정보로 만들어서 두 교집합의 중점을 충돌지점으로 사용할 것이다.
+	FAABB2D Hit1, Hit2;
+
+	Hit1 = CreateAABB2D(Src);
+	Hit2 = CreateAABB2D(Dest);
+
+	FVector3D Min, Max;
+	// 비교 ?	참 : 거짓
+	// 겹친부분의 최소 좌표
+	Min.x = Hit1.Min.x > Hit2.Min.x ? Hit1.Min.x : Hit2.Min.x;
+	Min.y = Hit1.Min.y > Hit2.Min.y ? Hit1.Min.y : Hit2.Min.y;
+
+	// 겹친 부분의 최대 좌표 
+	Max.x = Hit1.Max.x < Hit2.Max.x ? Hit1.Max.x : Hit2.Max.x;
+	Max.y = Hit1.Max.y < Hit2.Max.y ? Hit1.Max.y : Hit2.Max.y;
+
+	HitPoint.x = (Min.x + Max.x) * 0.5f;
+	HitPoint.y = (Min.y + Max.y) * 0.5f;
+
+	return true;
+}
+
+// 축 검사
+// 정사영
+bool CCollision::ComputeAxisProjection(const FVector2D& CenterLine, const FVector2D& SeparationAxis, float AxisHalfSize, const FVector2D* DestAxis, const FVector2D& DestHalfSize)
+{
+	// SeparationAxis.Normalize();	// const라 오류
+
+	// 중심을 연결하는 벡터를 분리축에 투영하여 구간의 길이를 구했다.
+	// 길이값이므로 부호가 필요 없어서 절댓값으로 사용한다.
+	// abs : 절댓값
+	float CenterProjectionDist = abs(CenterLine.Dot(SeparationAxis));
+
+	float DestProjectionDist =
+		abs((SeparationAxis.Dot(DestAxis[EAxis::X]))) * DestHalfSize.x + 
+		abs((SeparationAxis.Dot(DestAxis[EAxis::Y]))) * DestHalfSize.y;
+	// 두 점의 거리 > 각 축에 투영된 두 도형의 반 길이의 합
+	// 충돌 실패
+
+	if (CenterProjectionDist > DestProjectionDist + AxisHalfSize)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+FAABB2D CCollision::CreateAABB2D(const FOBB2D& Info)
+{
+	FAABB2D result;
+
+	FVector2D Pos[4];
+	//좌상
+	Pos[0] = Info.Center - Info.Axis[0] * Info.HalfSize.x + Info.Axis[1] * Info.HalfSize.y;
+	//좌하
+	Pos[1] = Info.Center - Info.Axis[0] * Info.HalfSize.x - Info.Axis[1] * Info.HalfSize.y;
+	//우상
+	Pos[2] = Info.Center + Info.Axis[0] * Info.HalfSize.x + Info.Axis[1] * Info.HalfSize.y;
+	//우하
+	Pos[3] = Info.Center + Info.Axis[0] * Info.HalfSize.x - Info.Axis[1] * Info.HalfSize.y;
+
+	//4개의 꼭지점에서 가장 작은 X,Y 값을 Min, 가장 큰 X, Y값을 Max로 넣으면 된다. 
+
+	//초기화 
+	result.Min.x = Pos[0].x;
+	result.Min.y = Pos[0].y;
+
+	result.Max.x = Pos[0].x;
+	result.Max.y = Pos[0].y;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		result.Min.x = result.Min.x > Pos[i].x ? Pos[i].x : result.Min.x;
+		result.Min.y = result.Min.y > Pos[i].y ? Pos[i].y : result.Min.y;
+
+		result.Max.x = result.Max.x < Pos[i].x ? Pos[i].x : result.Max.x;
+		result.Max.y = result.Max.y < Pos[i].y ? Pos[i].y : result.Max.y;
+	}
+
+	return result;
 }

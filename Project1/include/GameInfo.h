@@ -174,7 +174,7 @@ struct FOBB2D
 	// 축 인덱스 0 : X축			인덱스 1: Y축
 	FVector2D Axis[2];
 	// 길이의 반
-	FVector2D HalfSizel
+	FVector2D HalfSize;
 
 };
 

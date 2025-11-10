@@ -1,16 +1,16 @@
 #pragma once
 #include "ColliderBase.h"
 
-class CColliderOBB2D : public CColliderBase
+class CColliderAABB2D : public CColliderBase
 {
 	friend class CScene;
 	friend class CSceneObject;
 
 protected:
-	CColliderOBB2D();
-	CColliderOBB2D(const CColliderOBB2D& Com);
-	CColliderOBB2D(CColliderOBB2D&& Com);
-	virtual ~CColliderOBB2D();
+	CColliderAABB2D();
+	CColliderAABB2D(const CColliderAABB2D& Com);
+	CColliderAABB2D(CColliderAABB2D&& Com);
+	virtual ~CColliderAABB2D();
 
 protected:
 	FVector2D mBoxSize;
@@ -50,7 +50,7 @@ public:
 	virtual void PreRender();
 	virtual void Render();
 	virtual void PostRender();
-	virtual CColliderOBB2D* Clone();
+	virtual CColliderAABB2D* Clone();
 
 public:
 	virtual bool Collision(FVector3D& HitPoint, CColliderBase* Dest);

@@ -6,6 +6,7 @@
 #include "../../Component/SceneComponent/CameraComponent.h"
 #include "../../Component/Collider/ColliderAABB2D.h"
 #include "../../Component/Collider/ColliderSphere2D.h"
+#include "../../Component/Collider/ColliderOBB2D.h"
 
 
 #include "../../Scene/Scene.h"
@@ -48,8 +49,9 @@ bool CPlayerObject::Init()
 	// 컴포넌트 하나 등록해줄것이다.
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
-	//mBody = CreateComponent<CColliderOBB2D>();
-	mBody = CreateComponent<CColliderSphere2D>();
+	//mBody = CreateComponent<CColliderAABB2D>();
+	// mBody = CreateComponent<CColliderSphere2D>();
+	mBody = CreateComponent<CColliderOBB2D>();
 	mMovement = CreateComponent<CMovementComponent>();
 	mCamera = CreateComponent<CCameraComponent>();
 	mRotation = CreateComponent<CRotationComponent>();
@@ -62,8 +64,8 @@ bool CPlayerObject::Init()
 	SetRootComponent(mRoot);
 
 	mRoot->AddChild(mBody);
-	//mBody->SetBoxSize(100.f, 100.f);
-	mBody->SetRadius(50.f);
+	mBody->SetBoxSize(100.f, 100.f);
+	// mBody->SetRadius(50.f);
 	mBody->SetCollisionProfile("Player");
 	
 

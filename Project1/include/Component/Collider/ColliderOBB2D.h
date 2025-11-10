@@ -27,7 +27,7 @@ public:
 
 	const FVector2D& GetBoxSize()
 	{
-
+		return mBoxSize;
 	}
 
 	void SetBoxSize(const FVector2D& Size)

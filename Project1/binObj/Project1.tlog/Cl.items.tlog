@@ -5,6 +5,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\MeshManager.cpp;E:\KDT4
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\StaticMesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\StaticMesh.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderAABB2D.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderAABB2D.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderBase.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderBase.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderOBB2D.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderOBB2D.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderSphere2D.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderSphere2D.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Component.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Component.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\NonSceneComponent\MovementComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MovementComponent.obj
