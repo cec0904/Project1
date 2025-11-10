@@ -34,7 +34,7 @@ bool CBulletObject::Init()
 	CSceneObject::Init();
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
-	mBody = CreateComponent<CColliderAABB2D>();
+	mBody = CreateComponent<CColliderOBB2D>();
 	mMovement = CreateComponent<CMovementComponent>();
 
 

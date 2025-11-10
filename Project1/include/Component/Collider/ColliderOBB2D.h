@@ -13,11 +13,23 @@ protected:
 	virtual ~CColliderOBB2D();
 
 protected:
+	// 충돌체의 크기
 	FVector2D mBoxSize;
-	//최대 최소값 
-	FAABB2D mAABB;
+	
+	// OBB 충돌체 정보
+	FOBB2D mBoxInfo;
 
 public:
+	const FOBB2D& GetBox() const
+	{
+		return mBoxInfo;
+	}
+
+	const FVector2D& GetBoxSize()
+	{
+
+	}
+
 	void SetBoxSize(const FVector2D& Size)
 	{
 		mBoxSize = Size;
@@ -30,15 +42,7 @@ public:
 
 	}
 
-	const FAABB2D& GetBox() const
-	{
-		return mAABB;
-	}
 
-	const FVector2D& GetBoxSize() const
-	{
-		return mBoxSize;
-	}
 
 public:
 	virtual bool Init();

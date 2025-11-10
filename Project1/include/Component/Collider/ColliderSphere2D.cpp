@@ -119,7 +119,7 @@ bool CColliderSphere2D::Collision(FVector3D& HitPoint, CColliderBase* Dest)
 	{
 	case EColliderShape::AABB2D:
 		/*return CCollision::CollisionAABB2DToAABB2D(HitPoint, this, (CColliderSphere2D*)Dest);*/
- 		return CCollision::CollisionAABB2DToSphere2D(HitPoint, (CColliderAABB2D*)Dest, this);
+ 		return CCollision::CollisionAABB2DToSphere2D(HitPoint, (CColliderOBB2D*)Dest, this);
 
 		break;
 	case EColliderShape::Sphere2D:

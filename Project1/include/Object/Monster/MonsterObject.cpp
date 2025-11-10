@@ -75,7 +75,7 @@ bool CMonsterObject::Init()
 	}
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
-	//mBody = CreateComponent<CColliderAABB2D>();
+	//mBody = CreateComponent<CColliderOBB2D>();
 	mBody = CreateComponent<CColliderSphere2D>();
 
 	mRoot->SetMesh("CenterRect");

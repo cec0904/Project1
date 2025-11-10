@@ -10,8 +10,8 @@ public:
 
 	// 호출
 	static bool CollisionAABB2DToAABB2D(FVector3D& HitPoint,
-		class CColliderAABB2D* Src,
-		class CColliderAABB2D* Dest);
+		class CColliderOBB2D* Src,
+		class CColliderOBB2D* Dest);
 
 	static bool CollisionSphere2DToSphere2D(FVector3D& HitPoint,
 		class CColliderSphere2D* Src,
@@ -19,7 +19,7 @@ public:
 
 	// AABB2D to Sphere2D
 	static bool CollisionAABB2DToSphere2D(FVector3D& HitPoint,
-		class CColliderAABB2D* Src,
+		class CColliderOBB2D* Src,
 		class CColliderSphere2D* Dest);
 
 	// 연산

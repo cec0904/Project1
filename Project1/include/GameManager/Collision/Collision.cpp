@@ -11,7 +11,7 @@ CCollision::~CCollision()
 {
 }
 
-bool CCollision::CollisionAABB2DToAABB2D(FVector3D& HitPoint, CColliderAABB2D* Src, CColliderAABB2D* Dest)
+bool CCollision::CollisionAABB2DToAABB2D(FVector3D& HitPoint, CColliderOBB2D* Src, CColliderOBB2D* Dest)
 {
 	if (CollisionAABB2DToAABB2D(HitPoint, 
 		Src->GetBox(), 
@@ -35,7 +35,7 @@ bool CCollision::CollisionSphere2DToSphere2D(FVector3D& HitPoint, CColliderSpher
 	return false;
 }
 
-bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, CColliderAABB2D* Src, CColliderSphere2D* Dest)
+bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, CColliderOBB2D* Src, CColliderSphere2D* Dest)
 {
 	if (CollisionAABB2DToSphere2D(HitPoint,
 		Src->GetBox(),

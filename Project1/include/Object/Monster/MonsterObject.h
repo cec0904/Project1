@@ -15,7 +15,7 @@ protected:
 protected:
 	CSharedPtr<class CStaticMeshComponent> mRoot;
 	CSharedPtr<CSceneObject> mTarget;
-	//CSharedPtr<class CColliderAABB2D> mBody;
+	//CSharedPtr<class CColliderOBB2D> mBody;
 	CSharedPtr<class CColliderSphere2D> mBody;
 	float mDetectDistance = 0.f;
 

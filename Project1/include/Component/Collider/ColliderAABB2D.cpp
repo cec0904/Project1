@@ -5,7 +5,7 @@
 #include "../../Asset/Mesh/MeshManager.h"
 #include "ColliderSphere2D.h"
 
-CColliderAABB2D::CColliderAABB2D()
+CColliderOBB2D::CColliderOBB2D()
 {
 	mColliderType = EColliderType::Collider2D;
 	mColliderShape = EColliderShape::AABB2D;
@@ -13,7 +13,7 @@ CColliderAABB2D::CColliderAABB2D()
 	mBoxSize.y = 100.f;
 }
 
-CColliderAABB2D::CColliderAABB2D(const CColliderAABB2D& Com)
+CColliderOBB2D::CColliderOBB2D(const CColliderOBB2D& Com)
 	: CColliderBase(Com)
 {
 	mColliderType = EColliderType::Collider2D;
@@ -22,7 +22,7 @@ CColliderAABB2D::CColliderAABB2D(const CColliderAABB2D& Com)
 	mBoxSize = Com.mBoxSize;
 }
 
-CColliderAABB2D::CColliderAABB2D(CColliderAABB2D&& Com)
+CColliderOBB2D::CColliderOBB2D(CColliderOBB2D&& Com)
 	: CColliderBase(Com)
 {
 	mColliderType = EColliderType::Collider2D;
@@ -31,11 +31,11 @@ CColliderAABB2D::CColliderAABB2D(CColliderAABB2D&& Com)
 	mBoxSize = Com.mBoxSize;
 }
 
-CColliderAABB2D::~CColliderAABB2D()
+CColliderOBB2D::~CColliderOBB2D()
 {
 }
 
-bool CColliderAABB2D::Init()
+bool CColliderOBB2D::Init()
 {
 	if (!CColliderBase::Init())
 	{
@@ -49,7 +49,7 @@ bool CColliderAABB2D::Init()
 	return true;
 }
 
-bool CColliderAABB2D::Init(const char* FileName)
+bool CColliderOBB2D::Init(const char* FileName)
 {
 	if (!CColliderBase::Init(FileName))
 	{
@@ -59,12 +59,12 @@ bool CColliderAABB2D::Init(const char* FileName)
 
 	return true;
 }
-void CColliderAABB2D::PreUpdate(float DeltaTime)
+void CColliderOBB2D::PreUpdate(float DeltaTime)
 {
 	CColliderBase::PreUpdate(DeltaTime);
 }
 
-void CColliderAABB2D::Update(float DeltaTime)
+void CColliderOBB2D::Update(float DeltaTime)
 {
 	CColliderBase::Update(DeltaTime);
 
@@ -85,34 +85,34 @@ void CColliderAABB2D::Update(float DeltaTime)
 	SetWorldScale(mBoxSize);
 }
 
-void CColliderAABB2D::PostUpdate(float DeltaTime)
+void CColliderOBB2D::PostUpdate(float DeltaTime)
 {
 	CColliderBase::PostUpdate(DeltaTime);
 }
 
-void CColliderAABB2D::Collision(float DeltaTime)
+void CColliderOBB2D::Collision(float DeltaTime)
 {
 	CColliderBase::Collision(DeltaTime);
 }
-void CColliderAABB2D::PreRender()
+void CColliderOBB2D::PreRender()
 {
 	CColliderBase::PreRender();
 }
-void CColliderAABB2D::Render()
+void CColliderOBB2D::Render()
 {
 	CColliderBase::Render();
 }
-void CColliderAABB2D::PostRender()
+void CColliderOBB2D::PostRender()
 {
 	CColliderBase::PostRender();
 }
 
-CColliderAABB2D* CColliderAABB2D::Clone()
+CColliderOBB2D* CColliderOBB2D::Clone()
 {
-	return new CColliderAABB2D(*this);
+	return new CColliderOBB2D(*this);
 }
 
-bool CColliderAABB2D::Collision(FVector3D& HitPoint, CColliderBase* Dest)
+bool CColliderOBB2D::Collision(FVector3D& HitPoint, CColliderBase* Dest)
 {
 	if (Dest->GetColliderType() == EColliderType::Collider3D)
 	{
@@ -122,7 +122,7 @@ bool CColliderAABB2D::Collision(FVector3D& HitPoint, CColliderBase* Dest)
 	switch (Dest->GetColliderShape())
 	{
 	case EColliderShape::AABB2D:
-		return CCollision::CollisionAABB2DToAABB2D(HitPoint, this, (CColliderAABB2D*)Dest);
+		return CCollision::CollisionAABB2DToAABB2D(HitPoint, this, (CColliderOBB2D*)Dest);
 		break;
 	case EColliderShape::Sphere2D:
 		return CCollision::CollisionAABB2DToSphere2D(HitPoint, this, (CColliderSphere2D*)Dest);

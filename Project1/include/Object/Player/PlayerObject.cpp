@@ -48,7 +48,7 @@ bool CPlayerObject::Init()
 	// 컴포넌트 하나 등록해줄것이다.
 
 	mRoot = CreateComponent<CStaticMeshComponent>();
-	//mBody = CreateComponent<CColliderAABB2D>();
+	//mBody = CreateComponent<CColliderOBB2D>();
 	mBody = CreateComponent<CColliderSphere2D>();
 	mMovement = CreateComponent<CMovementComponent>();
 	mCamera = CreateComponent<CCameraComponent>();
