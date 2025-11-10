@@ -120,27 +120,164 @@ bool CCollision::CollisionSphere2DToSphere2D(FVector3D& HitPoint, const FVector3
 	return false;
 }
 
+//bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, const FAABB2D& Src, const FVector3D& DestCenter, float DestRadius)
+//{
+//	// 1. 원의 중심이 사각형의 안에 있는지 검사해야한다.
+//	if (DestCenter.x < Src.Min.x)
+//	{
+//		return false;
+//	}
+//	else if (DestCenter.x > Src.Max.x)
+//	{
+//		return false;
+//	}
+//	else if (DestCenter.y < Src.Min.y)
+//	{
+//		return false;
+//	}
+//	else if (DestCenter.y > Src.Max.y)
+//	{
+//		return false;
+//	}
+//
+//
+//	
+//	// 2. 대각선이 아닌 상 하 좌 우 범위에 들어갔는지 검사한다.
+//	// 사각형의 크기에서 반지름 만큼 더한 사각형 안에 있는지 검사한다. -> 
+//	
+//	if (DestCenter.x < Src.Min.x + DestRadius)
+//	{
+//		return false;
+//	}
+//	else if (DestCenter.x > Src.Max.x + DestRadius)
+//	{
+//		return false;
+//	}
+//	else if (DestCenter.y < Src.Min.y + DestRadius)
+//	{
+//		return false;
+//	}
+//	else if (DestCenter.y > Src.Max.y + DestRadius)
+//	{
+//		return false;
+//	}
+//
+//	// 대각선은 두번 나눠 계산한다.
+//
+//
+//	// 3. 대각선 영역을 검사한다.
+//	// 가장 가까운 꼭짓점을 구하고
+//	// 해당 꼭짓점이랑 원의 중심이랑 거리가 반지름보다 작은지 확인해야한다.
+//
+//
+//	if (sqrt(Src.Max.x * DestCenter.x + Src.Max.y * DestCenter.y) > DestRadius) { return false; }
+//	else if (sqrt(Src.Max.x * DestCenter.x + Src.Min.y * DestCenter.y) > DestRadius) { return false; }
+//	else if (sqrt(Src.Min.x * DestCenter.x + Src.Max.y * DestCenter.y) > DestRadius) { return false; }
+//	else if (sqrt(Src.Min.x * DestCenter.x + Src.Min.y * DestCenter.y) > DestRadius) { return false; }
+//
+//
+//	// hitPoint는 
+//	// 사격형과 원의 MinMax 사각형의 중간지점으로 한다.
+//
+//	FVector3D Min, Max;
+//
+//	// 겹친부분의 최소 좌표
+//	Min.x = Src.Min.x > DestCenter.x ? Src.Min.x : DestCenter.x;
+//	Min.y = Src.Min.y > DestCenter.y ? Src.Min.y : DestCenter.y;
+//
+//	// 겹친 부분의 최대 좌표 
+//	Max.x = Src.Max.x < DestCenter.x ? Src.Max.x : DestCenter.x;
+//	Max.y = Src.Max.y < DestCenter.y ? Src.Max.y : DestCenter.y;
+//
+//	HitPoint.x = (Min.x + Max.x) * 0.5f;
+//	HitPoint.y = (Min.y + Max.y) * 0.5f;
+//
+//	return true;
+//}
 bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, const FAABB2D& Src, const FVector3D& DestCenter, float DestRadius)
 {
-	// 1. 원의 중심이 사각형의 안에 있는지 검사해야한다.
+	if ((Src.Min.x <= DestCenter.x && DestCenter.x <= Src.Max.x) || (Src.Min.y <= DestCenter.y && DestCenter.y <= Src.Max.y))
+	{
+		FAABB2D SrcExtent;
+		SrcExtent.Min = Src.Min - DestRadius;
+		SrcExtent.Max = Src.Max +  DestRadius;
+
+		if (DestCenter.x < SrcExtent.Min.x)
+		{
+			return false;
+		}
+		else if (SrcExtent.Max.x < DestCenter.x)
+		{
+			return false;
+		}
+		else if (DestCenter.y < SrcExtent.Min.y)
+		{
+			return false;
+		}
+		else if (SrcExtent.Max.y < DestCenter.y)
+		{
+			return false;
+		}
 
 
+		// 충돌이 됐다면
+		// Dest 원을 내접원으로 하는 사각형을 구했다.
+		FAABB2D SphereAABB;
+		SphereAABB.Min.x = DestCenter.x - DestRadius;
+		SphereAABB.Min.y = DestCenter.y - DestRadius;
+		SphereAABB.Max.x = DestCenter.x - DestRadius;
+		SphereAABB.Max.y = DestCenter.y - DestRadius;
 
-	
-	// 2. 대각선이 아닌 상 하 좌 우 범위에 들어갔는지 검사한다.
-	// 사각형의 크기에서 반지름 만큼 더한 사각형 안에 있는지 검사한다.
+		FVector3D Min, Max;
+		// 비교 ?	참 : 거짓
+		// 겹친부분의 최소 좌표
+		Min.x = Src.Min.x > SphereAABB.Min.x ? Src.Min.x : SphereAABB.Min.x;
+		Min.y = Src.Min.y > SphereAABB.Min.y ? Src.Min.y : SphereAABB.Min.y;
+
+		// 겹친 부분의 최대 좌표 
+		Max.x = Src.Max.x < SphereAABB.Max.x ? Src.Max.x : SphereAABB.Max.x;
+		Max.y = Src.Max.y < SphereAABB.Max.y ? Src.Max.y : SphereAABB.Max.y;
+
+		HitPoint.x = (Min.x + Max.x) * 0.5f;
+		HitPoint.y = (Min.y + Max.y) * 0.5f;
 
 
-	// 대각선은 두번 나눠 계산한다.
+		return true;
+	}
 
+	// 대각선 영역 검사
+	FVector3D Vertex;
+	// 가장 가까운 꼭짓점 구하기
+	// 왼쪽 대각선 영역에 있는가
+	if (DestCenter.x < Src.Min.x)
+	{
+		Vertex.x = Src.Min.x;
+	}
+	else
+	{
+		Vertex.x = Src.Max.x;
+	}
 
-	// 3. 대각선 영역을 검사한다.
-	// 가장 가까운 꼭짓점을 구하고
-	// 해당 꼭짓점이랑 원의 중심이랑 거리가 반지름보다 작은지 확인해야한다.
+	//대각선에 아래쪽인지 위쪽인지
+	if (DestCenter.y < Src.Min.y)
+	{
+		Vertex.y = Src.Min.y;
+	}
+	else
+	{
+		Vertex.y = Src.Max.y;
+	}
 
-	// hitPoint는 
-	// 사격형과 원의 MinMax 사각형의 중간지점으로 한다.
+	// 해당 꼭짓점과 원의 중심과의 거리가
+	// 반지름보다 작은지 확인
 
+	float Dist = Vertex.Distance(DestCenter);
 
+	if (Dist <= DestRadius)
+	{
+		// 모서리 할 때는 충돌지점을 모서리로 하겠다.
+		HitPoint = Vertex;
+		return true;
+	}
 	return false;
 }
