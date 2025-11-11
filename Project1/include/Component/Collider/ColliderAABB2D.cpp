@@ -1,4 +1,5 @@
 #include "ColliderAABB2D.h"
+#include "ColliderOBB2D.h"
 #include "../../GameManager/Collision/Collision.h"
 #include "../../Asset/AssetManager.h"
 #include "../../Asset/Mesh/Mesh.h"

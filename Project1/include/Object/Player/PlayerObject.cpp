@@ -52,6 +52,7 @@ bool CPlayerObject::Init()
 	//mBody = CreateComponent<CColliderAABB2D>();
 	// mBody = CreateComponent<CColliderSphere2D>();
 	mBody = CreateComponent<CColliderOBB2D>();
+
 	mMovement = CreateComponent<CMovementComponent>();
 	mCamera = CreateComponent<CCameraComponent>();
 	mRotation = CreateComponent<CRotationComponent>();

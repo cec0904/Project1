@@ -48,13 +48,34 @@ bool CCollision::CollisionAABB2DToSphere2D(FVector3D& HitPoint, CColliderAABB2D*
 	return false;
 }
 
-bool CCollision::CollisionOBB2DToOBB2D(FVector3D& HitPoint, CColliderOBB2D* Src, CColliderOBB2D* Dest)
+bool CCollision::CollisionOBB2DToOBB2D(FVector3D& HitPoint, class CColliderOBB2D* Src, class CColliderOBB2D* Dest)
 {
 	if (CollisionOBB2DToOBB2D(HitPoint, Src->GetBox(), Dest->GetBox()))
 	{
 		return true;
 	}
 
+	return false;
+}
+
+bool CCollision::CollisionAABB2DToOBB2D(FVector3D& HitPoint, class CColliderAABB2D* Src, class CColliderOBB2D* Dest)
+{
+	if (CollisionAABB2DToOBB2D(HitPoint, Src->GetBox(), Dest->GetBox()))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionSphere2DToOBB2D(FVector3D& HitPoint, class CColliderSphere2D* Src, class CColliderOBB2D* Dest)
+{
+	if (CollisionSphere2DToOBB2D(HitPoint,
+		Src->GetWorldPosition(), Src->GetRadius(),
+		Dest->GetBox()))
+	{
+		return true;
+	}
 	return false;
 }
 
@@ -357,6 +378,69 @@ bool CCollision::CollisionOBB2DToOBB2D(FVector3D& HitPoint, const FOBB2D& Src, c
 	return true;
 }
 
+bool CCollision::CollisionAABB2DToOBB2D(FVector3D& HitPoint, const FAABB2D& Src, const FOBB2D& Dest)
+{
+	FOBB2D SrcOBB = CreateOBB2D(Src);
+
+	return CollisionOBB2DToOBB2D(HitPoint, SrcOBB, Dest);
+}
+
+bool CCollision::CollisionSphere2DToOBB2D(FVector3D& HitPoint, const FVector3D& SrcCenter, float SrcRadius, const FOBB2D& Dest)
+{
+	FVector2D ConvertCenter;
+	ConvertCenter.x = SrcCenter.x;
+	ConvertCenter.y = SrcCenter.y;
+
+	FVector2D CenterLine = ConvertCenter - Dest.Center;
+
+	FVector2D Axis = CenterLine;
+	Axis.Normalize();	// 정사영 받을 축을 구했다.
+
+	// 충앙 연결 라인을 축으로 검사한다.
+	if (!ComputeAxisProjection(CenterLine, Axis, SrcRadius, Dest.Axis, Dest.HalfSize))
+	{
+		//충돌 실패 
+		return false;
+	}
+
+	//Dest의 각 축을 분리축으로 사용한다.
+	//Dest의 x축
+	float CenterProjectionDist = abs(CenterLine.Dot(Dest.Axis[EAxis::X]));
+
+	if (CenterProjectionDist > SrcRadius + Dest.HalfSize.x)
+	{
+		return false;
+	}
+
+	//Dest의 x축
+	CenterProjectionDist = abs(CenterLine.Dot(Dest.Axis[EAxis::Y]));
+
+	if (CenterProjectionDist > SrcRadius + Dest.HalfSize.y)
+	{
+		return false;
+	}
+
+	FAABB2D Hit1, Hit2;
+
+	Hit1 = CreateAABB2D(ConvertCenter, SrcRadius);
+	Hit2 = CreateAABB2D(Dest);
+
+	FVector3D Min, Max;
+	// 비교 ?	참 : 거짓
+	// 겹친부분의 최소 좌표
+	Min.x = Hit1.Min.x > Hit2.Min.x ? Hit1.Min.x : Hit2.Min.x;
+	Min.y = Hit1.Min.y > Hit2.Min.y ? Hit1.Min.y : Hit2.Min.y;
+
+	// 겹친 부분의 최대 좌표 
+	Max.x = Hit1.Max.x < Hit2.Max.x ? Hit1.Max.x : Hit2.Max.x;
+	Max.y = Hit1.Max.y < Hit2.Max.y ? Hit1.Max.y : Hit2.Max.y;
+
+	HitPoint.x = (Min.x + Max.x) * 0.5f;
+	HitPoint.y = (Min.y + Max.y) * 0.5f;
+
+	return true;
+}
+
 // 축 검사
 // 정사영
 bool CCollision::ComputeAxisProjection(const FVector2D& CenterLine, const FVector2D& SeparationAxis, float AxisHalfSize, const FVector2D* DestAxis, const FVector2D& DestHalfSize)
@@ -413,6 +497,33 @@ FAABB2D CCollision::CreateAABB2D(const FOBB2D& Info)
 		result.Max.x = result.Max.x < Pos[i].x ? Pos[i].x : result.Max.x;
 		result.Max.y = result.Max.y < Pos[i].y ? Pos[i].y : result.Max.y;
 	}
+
+	return result;
+}
+
+FAABB2D CCollision::CreateAABB2D(const FVector2D& Center, float Radius)
+{
+	FAABB2D result;
+
+	result.Min = Center - Radius;
+	result.Max = Center + Radius;
+
+	return FAABB2D();
+}
+
+FOBB2D CCollision::CreateOBB2D(const FAABB2D& Info)
+{
+	FOBB2D result;
+
+	result.Center = (Info.Min + Info.Max) * 0.5;
+
+	result.Axis[EAxis::X].x = 1.f;
+	result.Axis[EAxis::X].y = 0.f;
+
+	result.Axis[EAxis::Y].x = 0.f;
+	result.Axis[EAxis::Y].y = 1.f;
+
+	result.HalfSize = (Info.Max - Info.Min) * 0.5;
 
 	return result;
 }
