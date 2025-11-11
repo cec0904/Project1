@@ -276,6 +276,9 @@
     <ClCompile Include="include\Component\Collider\ColliderOBB2D.cpp">
       <Filter>07.Component\03.Collider\01.2D</Filter>
     </ClCompile>
+    <ClCompile Include="include\Object\Bullet\PoisonBullet.cpp">
+      <Filter>06.Object\02.Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\GameManager\Device\Device.h">
@@ -454,6 +457,9 @@
     </ClInclude>
     <ClInclude Include="include\Component\Collider\ColliderOBB2D.h">
       <Filter>07.Component\03.Collider\01.2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object\Bullet\PoisonBullet.h">
+      <Filter>06.Object\02.Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,8 +4,6 @@
 #include "../../Component/Collider/ColliderAABB2D.h"
 #include "../../Share/Log/Log.h"
 
-
-
 CBulletObject::CBulletObject()
 	:CSceneObject()
 {
@@ -48,9 +46,12 @@ bool CBulletObject::Init()
 	mBody->SetBoxSize(50.f, 50.f);
 
 	mBody->SetCollisionProfile("PlayerAttack");
-	mBody->SetCollisionBeginFunc<CBulletObject>(this, &CBulletObject::CollisionBullet);
 	
+	
+	mBody->SetCollisionBeginFunc<CBulletObject>(this, &CBulletObject::CollisionBullet);
 
+	
+	
 	// Movement 세팅
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveAxis(EAxis::Y);
@@ -75,5 +76,8 @@ void CBulletObject::CollisionBullet(const FVector3D& HitPoint, CColliderBase* De
 
 	Dest->GetOwner()->Damage(1.f, this);
 
-	//Destroy();
+	Destroy();
 }
+
+
+

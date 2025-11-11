@@ -16,6 +16,7 @@
 #include "../Bullet/TornadoBullet.h"
 #include "../Bullet/TalonR.h"
 #include "../Bullet/GravityBullet.h"
+#include "../Bullet/PoisonBullet.h"
 
 
 
@@ -122,6 +123,7 @@ bool CPlayerObject::Init()
 	mScene->GetInput()->AddBindFunction("Fire", EInputType::Down, this, &CPlayerObject::Fire);
 
 
+
 	// 스킬1
 	mScene->GetInput()->AddBindKey("Skill1", '1');
 	mScene->GetInput()->ChangeKeyCtrl("Skill1", true);
@@ -165,6 +167,8 @@ bool CPlayerObject::Init()
 	mScene->GetInput()->AddBindKey("Skill7", '7');
 	mScene->GetInput()->AddBindFunction("Skill7", EInputType::Down, this, &CPlayerObject::Skill7);
 
+	mScene->GetInput()->AddBindKey("Skill8", '8');
+	mScene->GetInput()->AddBindFunction("Skill8", EInputType::Down, this, &CPlayerObject::Skill8);
 
 	return true;
 }
@@ -229,9 +233,6 @@ void CPlayerObject::RotationZInv(float DeltaTime)
 
 void CPlayerObject::Fire(float DeltaTime)
 {
-	
-
-
 	//총알을 만들것이고 
 	CBulletObject* Bullet = mScene->CreateObj<CBulletObject>("Bullet");
 	Bullet->SetBulletCollisionProfile("PlayerAttack");
@@ -242,7 +243,17 @@ void CPlayerObject::Fire(float DeltaTime)
 	Root->SetWorldRotation(mRootComponent->GetWorldRotation());
 	Root->SetWorldScale(50.f, 50.f, 1.f);
 	Bullet->SetLifeTime(2.f);
+
 	
+	
+
+		
+		
+
+	
+
+
+
 	
 
 	// collision
@@ -491,3 +502,16 @@ void CPlayerObject::Skill7(float DeltaTime)
 	Bullet->SetWorldRotation(GetWorldRotation());
 	Bullet->SetGravityType(EGravityType::ConcussiveBlast);
 }
+
+void CPlayerObject::Skill8(float DeltaTime)
+{
+
+	CPoisonBullet* Bullet = mScene->CreateObj<CPoisonBullet>("PoisonBullet");
+
+	FVector3D Pos = GetWorldPosition();
+	FVector3D Dir = GetAxis(EAxis::Y);
+	Bullet->SetWorldPos(Pos + Dir * 75.f);
+	Bullet->SetWorldRotation(GetWorldRotation());
+	
+}
+

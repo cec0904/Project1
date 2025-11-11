@@ -2,17 +2,24 @@
 #include "../SceneObject.h"
 
 
+
 class CBulletObject :
 	public CSceneObject
 {
 	friend class CScene;
-
 private:
 	float mSpeed = 200.f;
+
+
+	
 
 	// 숙제
 	/*EBulletClass mBulletClass = EBulletClass::Player;
 	CSceneObject* mOwner = nullptr;*/
+
+protected:
+	float mFireTime = 1.f;
+	int mFireCount = 0;
 
 public:
 	float GetBulletSpeed() const
@@ -62,5 +69,7 @@ public:
 
 private:
 	void CollisionBullet(const FVector3D& HitPoint, class CColliderBase* Dest);
+	
+
 };
 

@@ -21,6 +21,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\GameManager\ProfileManager\Profile
 E:\KDT4_JEC\Windows\Project1\Project1\include\main.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\main.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\BulletObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\BulletObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\GravityBullet.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\GravityBullet.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\PoisonBullet.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\PoisonBullet.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\TalonR.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TalonR.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Bullet\TornadoBullet.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TornadoBullet.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\GunnerMonster.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\GunnerMonster.obj

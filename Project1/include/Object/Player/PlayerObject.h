@@ -69,7 +69,7 @@ protected:
 	float mHP = 10;
 
 
-	float mFireTime = 1.f;
+	
 	int mFireCount = 0;
 
 public:
@@ -118,6 +118,8 @@ private:
 	void Skill7(float DeltaTime);
 
 
-
+	// 스킬8
+	// 지속 데미지
+	void Skill8(float DeltaTime);
 };
 

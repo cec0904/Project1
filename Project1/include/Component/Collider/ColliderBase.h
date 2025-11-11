@@ -44,6 +44,10 @@ protected:
 	function<void(CColliderBase*)> mCollisionEndFunc;
 	class CSceneObject* mEndObj;
 
+
+
+	
+
 protected:
 	// 충돌한 충돌체의 데이터를 가지고 있을 것이다.
 	// 용도 : 내가 얘랑 충돌했니 ? 탐색
@@ -137,6 +141,7 @@ public:
 		mEndObj = Obj;
 		mCollisionEndFunc = bind(Func, Obj, placeholders::_1);
 	}
+
 
 
 };
