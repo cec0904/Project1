@@ -27,6 +27,7 @@ protected:
 
 private:
 	void CollisionMonster(const FVector3D& HitPoint, class CColliderBase* Dest);
+	void CollisionMonsterEnd(class CColliderBase* Dest);
 
 public:
 	virtual float Damage(float Attack, CSceneObject* Obj);

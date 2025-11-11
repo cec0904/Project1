@@ -172,7 +172,7 @@ bool CColliderOBB2D::Collision(FVector3D& HitPoint, CColliderBase* Dest)
 
 	case EColliderShape::OBB2D:
 		return CCollision::CollisionOBB2DToOBB2D(HitPoint, this, (CColliderOBB2D*)Dest);
-		break;
+		
 	}
 
 	return false;

@@ -345,10 +345,27 @@ void CCollisionQuadTreeNode::Collision(float DeltaTime)
 			{
 				//둘이 충돌 되었다.
 				// Src->함수 호출;
+				// 처음인지 검사
+				if (!Src->CheckCollisionObject(Dest))
+				{
 				Src->CallCollisionBegin(HitPoint, Dest);
 				//Dest->함수 호출;
 				Dest->CallCollisionBegin(HitPoint, Src);
 
+				}
+				else
+				{
+					// 오버랩중
+				}
+
+			}
+			else if (Src->CheckCollisionObject(Dest))	// 충돌 안했을 때
+			{
+				// 두 충돌체가 현재 충돌이 안 됐을 경우
+				// 이전에 충돌하고 있는지 확인하고
+				// 충돌하고 있었으면 CollisionEnd 함수를 호출해준다.
+				Src->CallCollisionEnd(Dest);
+				Dest->CallCollisionEnd(Src);
 			}
 
 

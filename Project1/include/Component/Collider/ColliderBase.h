@@ -38,6 +38,13 @@ protected:
 	// 충돌 종료
 	function<void(CColliderBase*)> mCollisionEndFunc;
 
+protected:
+	// 충돌한 충돌체의 데이터를 가지고 있을 것이다.
+	// 용도 : 내가 얘랑 충돌했니 ? 탐색
+	// 충돌했을 때 새로운 데이터가 추가가 자주 일어난다.
+	unordered_map<CColliderBase*, bool> mCollisionObjects;
+
+
 	//디버그용 출력 해주기 
 #ifdef _DEBUG
 
@@ -84,6 +91,14 @@ public:
 	void SetCollisionProfile(const std::string& Name);
 	void CallCollisionBegin(const FVector3D& HitPoint, CColliderBase* Dest);
 	void CallCollisionEnd(CColliderBase* Dest);
+
+public:
+	// 충돌한 오브젝트를 추가하는 함수
+	void AddCollisionObject(CColliderBase* Collider);
+	// 충돌한 오브젝트인지 확인하는 함수
+	bool CheckCollisionObject(CColliderBase* Collider);
+	// 충돌이 끝났으면 제거하는 함수
+	void EraseCollisionObject(CColliderBase* Collider);
 
 public:
 	virtual bool Init();

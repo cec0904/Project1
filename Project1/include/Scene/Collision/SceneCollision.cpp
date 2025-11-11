@@ -1,6 +1,7 @@
 #include "SceneCollision.h"
 #include "../../Component/Collider/ColliderBase.h"
 #include "../Collision/CollisionQuadTree.h"
+#include "../../Share/Log/Log.h"
 
 CSceneCollision::CSceneCollision()
 {
@@ -36,38 +37,53 @@ bool CSceneCollision::Init()
 void CSceneCollision::Update(float DeltaTime)
 {
 
+	
+
+	// mInterval 시간을 지정해야만 인터벌을 사용할 수 있게 하겠다.
+	if (mInterval > 0.f)
+	{
+		mIntervalTime += DeltaTime;
+
+		if (mIntervalTime < mInterval)
+		{
+			return;
+		}
+
+		mIntervalTime -= mInterval;
+	}
+
 	// 쿼드트리를 이용해서 카메라 좌표를 먼저 갱신해야 한다.
 	mQuadTree->Update(DeltaTime);
 
 	size_t Size = mColliderList2D.size();
 
-	for (size_t i = 0; i < Size;)
+	for (size_t i = 0; i < Size; )
 	{
 		if (!mColliderList2D[i]->IsActive())
 		{
-			// 그냥 덮어씌우기
+			//그냥 덮어씌우기 
 			if (i < Size - 1)
 			{
 				mColliderList2D[i] = mColliderList2D[Size - 1];
 			}
 			mColliderList2D.pop_back();
-			Size--;
+			--Size;
 			continue;
 		}
 		else if (!mColliderList2D[i]->IsEnable())
 		{
-			i++;
+			++i;
 			continue;
 		}
 
-		// 쿼드트리 만들고 나서
-		// 여기에 쿼드트리에 등록
+		//쿼드트리 만들고나서 
+		//여기에 쿼드트리에 등록 
 		mQuadTree->AddCollider(mColliderList2D[i]);
-		i++;
+
+		++i;
 	}
 
-
-	// 충돌 검사
+	//충돌 검사 
 	mQuadTree->Collision(DeltaTime);
 }
 

@@ -37,11 +37,16 @@ CMonsterObject::~CMonsterObject()
 
 void CMonsterObject::CollisionMonster(const FVector3D& HitPoint, CColliderBase* Dest)
 {
-	CLog::PrintLog("Collision Monster");
+	CLog::PrintLog("Collision Begin");
 
 	// Dest->GetProfile()->Channel == ECollisionChannel::PlayerAttack();
 
 	// 공용된 데미지 함수를 만들어서 호출하는게 더 좋다.
+}
+
+void CMonsterObject::CollisionMonsterEnd(CColliderBase* Dest)
+{
+	CLog::PrintLog("Collision End");
 }
 
 float CMonsterObject::Damage(float Attack, CSceneObject* Obj)
@@ -90,6 +95,7 @@ bool CMonsterObject::Init()
 	 mBody->SetRadius(50.f);
 	mBody->SetCollisionProfile("Monster");
 	mBody->SetCollisionBeginFunc<CMonsterObject>(this, &CMonsterObject::CollisionMonster);
+	mBody->SetCollisionEndFunc<CMonsterObject>(this, &CMonsterObject::CollisionMonsterEnd);
 
 	return true;
 
