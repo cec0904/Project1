@@ -75,5 +75,5 @@ void CBulletObject::CollisionBullet(const FVector3D& HitPoint, CColliderBase* De
 
 	Dest->GetOwner()->Damage(1.f, this);
 
-	Destroy();
+	//Destroy();
 }

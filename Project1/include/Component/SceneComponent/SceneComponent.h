@@ -32,6 +32,7 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 	virtual CSceneComponent* Clone();
+	virtual void EraseOwner();
 
 	// Transform 관련 정보를 SceneComponent 가 가지고 있게 할 것이다.
 protected:

@@ -17,6 +17,20 @@ CSceneObject::CSceneObject(CSceneObject&& Obj)
 
 CSceneObject::~CSceneObject()
 {
+	mRootComponent->EraseOwner();
+
+	size_t Size = mNonComponentList.size();
+
+	for (size_t i = 0; i < Size; i++)
+	{
+		mNonComponentList[i]->EraseOwner();
+	}
+
+	if (mSpawnPoint)
+	{
+		mSpawnPoint->ClearObject();
+	}
+
 }
 
 void CSceneObject::SetRootComponent(CSceneComponent* Root)
@@ -248,6 +262,8 @@ CSceneObject* CSceneObject::Clone()
 {
 	return nullptr;
 }
+
+
 
 float CSceneObject::Damage(float Attack, CSceneObject* Obj)
 {

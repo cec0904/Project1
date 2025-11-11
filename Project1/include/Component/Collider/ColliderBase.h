@@ -35,8 +35,14 @@ protected:
 	// 충돌 시작
 	// 충돌 위치, 누구랑 충돌했는지
 	function<void(const FVector3D&, CColliderBase*)> mCollisionBeginFunc;
+	// Begin 함수 Object
+	class CSceneObject* mBeginObj;
+
+
+
 	// 충돌 종료
 	function<void(CColliderBase*)> mCollisionEndFunc;
+	class CSceneObject* mEndObj;
 
 protected:
 	// 충돌한 충돌체의 데이터를 가지고 있을 것이다.
@@ -111,6 +117,7 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 	virtual CColliderBase* Clone();
+	virtual void EraseOwner();
 
 public:
 	//순수가상함수 
@@ -120,12 +127,14 @@ public:
 	template<typename T>
 	void SetCollisionBeginFunc(T* Obj, void(T::* Func)(const FVector3D&, CColliderBase*))
 	{
+		mBeginObj = Obj;
 		mCollisionBeginFunc = bind(Func, Obj, placeholders::_1, placeholders::_2);
 	}
 
 	template<typename T>
 	void SetCollisionEndFunc(T* Obj, void(T::* Func)(CColliderBase*))
 	{
+		mEndObj = Obj;
 		mCollisionEndFunc = bind(Func, Obj, placeholders::_1);
 	}
 

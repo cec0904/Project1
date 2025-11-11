@@ -20,6 +20,7 @@ protected:
 	// 내가 어떤 컴포넌트를 가지고 있을것인가
 	CSharedPtr<class CSceneComponent> mRootComponent;
 
+	vector<CSharedPtr<class CComponent>> mNonComponentList;
 
 	// NonSceneComponent
 	vector<CSharedPtr<class CComponent>> mNonSceneComponent;
@@ -77,6 +78,7 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 	virtual CSceneObject* Clone();
+	
 
 public:
 						// 데미지,			데미지를 준 대상 

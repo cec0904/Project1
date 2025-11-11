@@ -68,6 +68,10 @@ protected:
 
 	float mHP = 10;
 
+
+	float mFireTime = 1.f;
+	int mFireCount = 0;
+
 public:
 	virtual bool Init();
 	virtual void Update(float DeltaTime);
@@ -112,6 +116,7 @@ private:
 	// 파라 충격탄
 	// 밀쳐내기
 	void Skill7(float DeltaTime);
+
 
 
 };
