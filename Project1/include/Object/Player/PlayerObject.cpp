@@ -233,6 +233,8 @@ void CPlayerObject::RotationZInv(float DeltaTime)
 
 void CPlayerObject::Fire(float DeltaTime)
 {
+	mFireCount++;
+
 	//총알을 만들것이고 
 	CBulletObject* Bullet = mScene->CreateObj<CBulletObject>("Bullet");
 	Bullet->SetBulletCollisionProfile("PlayerAttack");
@@ -244,8 +246,25 @@ void CPlayerObject::Fire(float DeltaTime)
 	Root->SetWorldScale(50.f, 50.f, 1.f);
 	Bullet->SetLifeTime(2.f);
 
-	
-	
+
+	if (mFireCount == 4)
+	{
+		mFireCount = 0;
+
+
+		//총알을 만들것이고 
+		CBulletObject* Bullet = mScene->CreateObj<CBulletObject>("Bullet");
+		//Bullet->SetBulletCollisionProfile("PlayerAttack");
+		Bullet->SetBulletCollisionProfile("PlayerPenetrationAttack");
+
+
+		CSceneComponent* Root = Bullet->GetRootComponent();
+		//총알의 시작 위치 == 내 월드 위치
+		Root->SetWorldPos(mRootComponent->GetWorldPosition());
+		Root->SetWorldRotation(mRootComponent->GetWorldRotation());
+		Root->SetWorldScale(50.f, 50.f, 1.f);
+		Bullet->SetLifeTime(2.f);
+	}
 
 		
 		

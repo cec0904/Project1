@@ -15,13 +15,20 @@ protected:
 protected:
 	CSharedPtr<class CStaticMeshComponent> mRoot;
 	CSharedPtr<class CMovementComponent> mMovement;
+	//CSharedPtr<class CColliderAABB2D> mBody;
+	CSharedPtr<class CColliderSphere2D> mBody;
 
-
-	float mSpeed = 200.f;
-	float mDistance = 150.f;
-	float mDuration = 1.f;
-	float mRange = 500.f;
 	
+	float mSpeed = 200.f;
+	// 총알거리
+	float mDistance = 200.f;
+	// 지속시간
+	float mDuration = 5.f;
+	// 범위
+	float mRange = 200.f;
+	
+	// 데미지 시간
+	float mPoisonTime = 1.f;
 
 
 public:
@@ -33,11 +40,14 @@ public:
 	{
 		mSpeed = Speed;
 	}
+	void SetBulletCollisionProfile(const string& Name);
 
 public:
 	virtual bool Init();
-	virtual void Update(float DeltaTime, const FVector3D& HitPoint, class CColliderBase* Dest);
+	virtual void Update(float DeltaTime);
 
 
+private:
+	void PoisonBullet(const FVector3D& HitPoint, class CColliderBase* Dest);
 };
 

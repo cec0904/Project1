@@ -191,7 +191,9 @@ namespace ECollisionChannel
 		Monster,		//2
 		PlayerAttack,	//3
 		MonsterAttack,	//4
+		PlayerPenetrationAttack,
 		End				//5
+
 	};
 }
 

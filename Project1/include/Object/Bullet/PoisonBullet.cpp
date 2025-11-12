@@ -8,6 +8,10 @@
 #include "BulletObject.h"
 #include "../../Component/Collider/ColliderAABB2D.h"
 #include "../../Share/Log/Log.h"
+#include "../../Component/Collider/ColliderOBB2D.h"
+#include "../../Component/Collider/ColliderSphere2D.h"
+
+
 
 CPoisonBullet::CPoisonBullet()
 {
@@ -24,24 +28,34 @@ CPoisonBullet::CPoisonBullet(CPoisonBullet&& Obj)
 CPoisonBullet::~CPoisonBullet()
 {
 }
+void CPoisonBullet::SetBulletCollisionProfile(const string& name)
+{
+	mBody->SetCollisionProfile(name);
+}
 
 bool CPoisonBullet::Init()
 {
 	mRoot = CreateComponent<CStaticMeshComponent>();
 	mMovement = CreateComponent<CMovementComponent>();
+	mBody = CreateComponent<CColliderSphere2D>();
 
 	mRoot->SetMesh("CenterRect");
 	mRoot->SetShader("ColorMeshShader");
 	mRoot->SetWorldScale(50.f, 50.f);
 	SetRootComponent(mRoot);
+	mRoot->AddChild(mBody);
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveAxis(EAxis::Y);
-	mMovement->SetMoveSpeed(500.f);
+	mMovement->SetMoveSpeed(250.f);
+
+	mBody->SetRadius(mRange);
+	mBody->SetCollisionProfile("PlayerPoisonAttack");
+	//mBody->SetCollisionBeginFunc<CPoisonBullet>(this, &CPoisonBullet::PoisonBullet);
 
 	return true;
 }
-void CPoisonBullet::Update(float DeltaTime, const FVector3D& HitPoint, class CColliderBase* Dest)
+void CPoisonBullet::Update(float DeltaTime)
 {
 	CSceneObject::Update(DeltaTime);
 
@@ -49,50 +63,52 @@ void CPoisonBullet::Update(float DeltaTime, const FVector3D& HitPoint, class CCo
 
 	if (mDistance <= 0.f)
 	{
+		//
 		mDuration -= DeltaTime;
 
 		if (mDuration <= 0)
 		{
 			Destroy();
 		}
+		
 
-		// 총알 이동 스탑
 		mMovement->SetEnable(false);
-
-		// 몬스터 리스트 만들기
-		list<CSharedPtr<CMonsterObject>>MonsterList;
-
+		
+		list<CSharedPtr<CMonsterObject>> MonsterList;
 
 		mScene->FindObjectsFromType<CMonsterObject>(MonsterList);
 
-		// 순회 반복자 준비
+		// 순회 반복자
 		auto iter = MonsterList.begin();
 		auto iterEnd = MonsterList.end();
 
-		// 모든 몬스터에 대해서
 		for (; iter != iterEnd; iter++)
 		{
-			// 몬스터 현재 위치
 			FVector3D Pos = (*iter)->GetWorldPosition();
 
-			// 총알의 중심(= 본인 위치) 와의 거리 계산
-			// Vector3D.h, Vector3D.cpp
-			// 몬스터 위치와(Pos) 총알 중심(GetWorldPosition()) 사이의 직선 거리를 구하는 수식
-			float dist = Pos.Distance(GetWorldPosition());
 
+			float dist = Pos.Distance(GetWorldPosition());
 
 			if (dist <= mRange)
 			{
-				FVector3D MoveDir;
+				mPoisonTime += DeltaTime;
+				if (mPoisonTime >= 1)
+				{
+					mPoisonTime = 0.f;
 
-				Dest->GetOwner()->Damage(1.f, this);
-				
-				Destroy();
-
-				MoveDir.Normalize();
-
-				(*iter)->AddWorldPos(MoveDir * DeltaTime);
+					float dmg = (*iter)->Damage(1.f, this);
+					CLog::PrintLog("Bullet is Poisoning Collision", ELogPrintType::All);
+				}
 			}
 		}
+
 	}
+
+	
+}
+
+void CPoisonBullet::PoisonBullet(const FVector3D& HitPoint, CColliderBase* Dest)
+{
+	CLog::PrintLog("Bullet is Poisoning Collision", ELogPrintType::All);
+		Dest->GetOwner()->Damage(1.f, this);
 }

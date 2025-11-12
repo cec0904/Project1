@@ -47,7 +47,7 @@ bool CSceneMain::Init()
 	MonsterPoint->SetImmediateSpawn(false);
 	MonsterPoint->SetSpawnTime(5.f);
 	MonsterPoint->SetDestroySpawnCount(3);
-	MonsterPoint->SetWorldPos(-400.f, 300.f);
+	MonsterPoint->SetWorldPos(400.f, -300.f);
 
 
 	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint2");
@@ -55,7 +55,7 @@ bool CSceneMain::Init()
 	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
 	MonsterPoint->SetImmediateSpawn(false);
 	MonsterPoint->SetSpawnTime(5.f);
-	MonsterPoint->SetWorldPos(400.f, -300.f);
+	MonsterPoint->SetWorldPos(400.f, -100.f);
 
 
 	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint3");
@@ -63,7 +63,7 @@ bool CSceneMain::Init()
 	MonsterPoint->SetSpawnLoopType(EObjectSpawnLoopType::Loop);
 	MonsterPoint->SetImmediateSpawn(false);
 	MonsterPoint->SetSpawnTime(3.5f);
-	MonsterPoint->SetWorldPos(-400.f, -300.f);
+	MonsterPoint->SetWorldPos(400.f, -200.f);
 
 
 	MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint4");
