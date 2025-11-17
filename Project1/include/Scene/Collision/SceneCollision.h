@@ -18,7 +18,7 @@ private:
 	class CScene* mScene = nullptr;
 
 	// 충돌체 인터벌
-	float mInterval = 0.016f;
+	float mInterval = 0.f;
 	float mIntervalTime = 0.f;
 
 public:

@@ -155,7 +155,8 @@ enum class EColliderShape
 {
 	AABB2D,
 	Sphere2D,
-	OBB2D
+	OBB2D,
+	Line2D
 };
 
 
@@ -178,6 +179,11 @@ struct FOBB2D
 
 };
 
+struct FLine2D
+{
+	FVector2D Start;
+	FVector2D End;
+};
 
 //충돌 필터 정보 
 

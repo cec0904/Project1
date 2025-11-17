@@ -2,6 +2,17 @@
 
 #include "../../GameInfo.h"
 
+namespace ECCWResult
+{
+	enum Type
+	{
+		CW = -1,
+		Line,
+		CCW
+	};
+}
+
+
 class CCollision
 {
 public:
@@ -38,6 +49,30 @@ public:
 		class CColliderSphere2D* Src,
 		class CColliderOBB2D* Dest);
 
+	// Line2D to Line2D
+	static bool CollisionLine2DToLine2D(FVector3D& HitPoint,
+		class CColliderLine2D* Src,
+		class CColliderLine2D* Dest);
+
+	// Line2D to AABB2D
+	static bool CollisionLine2DToAABB2D(FVector3D& HitPoint,
+		class CColliderLine2D* Src,
+		class CColliderAABB2D* Dest);
+
+	// Line2D to OBB2D
+	static bool CollisionLine2DToOBB2D(FVector3D& HitPoint,
+		class CColliderLine2D* Src,
+		class CColliderOBB2D* Dest);
+
+	// Line2D to Sphere2D
+	static bool CollisionLine2DToSphere2D(FVector3D& HitPoint,
+		class CColliderLine2D* Src,
+		class CColliderSphere2D* Dest);
+
+
+
+
+	//////////////////////////////////////////////
 	// 연산
 	static bool CollisionAABB2DToAABB2D(FVector3D& HitPoint,
 		const FAABB2D& Src, const FAABB2D& Dest);
@@ -62,6 +97,34 @@ public:
 		float SrcRadius,
 		const FOBB2D& Dest);
 
+
+	/////////////////////////////////////////
+	//라인
+	static bool CollisionLine2DToLine2D(FVector3D& HitPoint,
+		const FLine2D& Src,
+		const FLine2D& Dest);
+
+	static bool CollisionLine2DToAABB2D(FVector3D& HitPoint,
+		const FLine2D& Src,
+		const FAABB2D& Dest);
+
+	static bool CollisionLine2DToOBB2D(FVector3D& HitPoint,
+		const FLine2D& Src,
+		const FOBB2D& Dest);
+
+	static bool CollisionLine2DToSphere2D(FVector3D& HitPoint,
+		const FLine2D& Src,
+		const FVector3D& Center, float Radius);
+
+	//////////////////////////////////////////////
+	// 점 충돌
+	static bool CollisionPointToAABB2D(const FVector2D& Point, const FAABB2D& Info);
+	static bool CollisionPointToOBB2D(const FVector2D& Point, const FOBB2D& Info);
+	static bool CollisionPointToSphere2D(const FVector2D& Point, const FVector2D& Center, float Radius);
+	static bool CollisionPointToLine2D(const FVector2D& Point, const FLine2D& Info);
+
+
+
 private:
 	// 1. 두 중심의 축
 	// 2. 분리축
@@ -82,6 +145,12 @@ private:
 	static FOBB2D CreateOBB2D(const FAABB2D& Info);
 
 
-
+	//라인 검사용 CCW
+	// 점 3개를 넣어주고 점 3개에 대해 CCW 알고리즘을 실행시켜준다.
+	// 시계방향 CW -1 직선 Line 0 반시계방향 CCW 1
+	static ECCWResult::Type CCW2D(const FVector2D& P1, const FVector2D& P2, const FVector2D& P3);
+	static bool PointOnLine2D(const FVector2D& LineStart,
+		const FVector2D& LineEnd,
+		const FVector2D& Point);
 };
 

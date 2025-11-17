@@ -7,6 +7,7 @@
 #include "../../Component/Collider/ColliderAABB2D.h"
 #include "../../Component/Collider/ColliderSphere2D.h"
 #include "../../Component/Collider/ColliderOBB2D.h"
+#include "../../Component/Collider/ColliderLine2D.h"
 
 
 #include "../../Scene/Scene.h"
@@ -53,6 +54,7 @@ bool CPlayerObject::Init()
 	//mBody = CreateComponent<CColliderAABB2D>();
 	// mBody = CreateComponent<CColliderSphere2D>();
 	mBody = CreateComponent<CColliderOBB2D>();
+	mLine = CreateComponent<CColliderLine2D>();
 
 	mMovement = CreateComponent<CMovementComponent>();
 	mCamera = CreateComponent<CCameraComponent>();
@@ -62,7 +64,7 @@ bool CPlayerObject::Init()
 	mRoot->SetShader("ColorMeshShader");
 
 	mRoot->SetWorldPos(0.f, 0.f, 0.f);
-	mRoot->SetWorldScale(100.f, 100.f, 0.f);
+	mRoot->SetWorldScale(100.f, 100.f, 1.f);
 	SetRootComponent(mRoot);
 
 	mRoot->AddChild(mBody);
@@ -70,6 +72,11 @@ bool CPlayerObject::Init()
 	// mBody->SetRadius(50.f);
 	mBody->SetCollisionProfile("Player");
 	
+	mBody->AddChild(mLine);
+	mLine->SetCollisionProfile("Player");
+	mLine->SetLineDistance(300.f);
+	mLine->SetRelativePos(0.f, 50.f);
+
 
 	mMovement->SetUpdateComponent(mRoot);
 	mMovement->SetMoveSpeed(500.f);

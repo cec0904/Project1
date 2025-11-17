@@ -28,9 +28,9 @@ bool CSceneMain::Init()
 		return false;
 	}
 
-	/*CMonsterObject* Monster = CreateObj<CGunnerMonster>("GunnerMonster");
+	CMonsterObject* Monster = CreateObj<CGunnerMonster>("GunnerMonster");
 	Monster->SetWorldPos(-400.f, 300.f);
-	Monster->SetTarget(Player);*/
+	Monster->SetTarget(Player);
 
 	CObjectSpawnPoint* MonsterPoint = CreateObj<CObjectSpawnPoint>("MonsterPoint");
 	MonsterPoint->SetSpawnType(EObjectSpawnType::GunnerMonster);

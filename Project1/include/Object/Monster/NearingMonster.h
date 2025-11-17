@@ -19,6 +19,8 @@ protected:
 	// float mDetecDistance = 0.f;
 	float mDetectAngle =45.f;
 
+	CSharedPtr<class CColliderLine2D> mLine;
+
 
 public:
 	virtual bool Init();

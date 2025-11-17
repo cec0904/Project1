@@ -1,6 +1,8 @@
 ﻿#include "NearingMonster.h"
 #include "../Player/PlayerObject.h"
 #include "../../Scene/Scene.h"
+#include "../../Component/Collider/ColliderLine2D.h"
+#include "../../Component/Collider/ColliderSphere2D.h"
 
 CNearingMonster::CNearingMonster()
 {
@@ -27,6 +29,12 @@ bool CNearingMonster::Init()
 	{
 		return false;
 	}
+
+	mLine = CreateComponent<CColliderLine2D>();
+	mBody->AddChild(mLine);
+	mLine->SetLineDistance(200.f);
+	mLine->SetCollisionProfile("Monster");
+	mLine->SetLineAxis(EAxis::X);
 
 	CPlayerObject* pPlayer = mScene->FindObjectFromName<CPlayerObject>("Player");
 	if (pPlayer)

@@ -101,6 +101,30 @@ bool CMeshManager::Init()
 		return false;
 	}
 
+	// Line 직선
+	// Y 방향
+	FVector3D LineUp[2] =
+	{
+		FVector3D(0.f, 0.f, 0.f),
+		FVector3D(0.f, 1.f, 0.f)
+	};
+
+	if (!CreateMesh("LineUp2D", LineUp, sizeof(FVector3D), 2, D3D11_USAGE_DEFAULT, D3D_PRIMITIVE_TOPOLOGY_LINESTRIP))
+	{
+		return false;
+	}
+	//X축방향 
+	FVector3D LineRight[2] =
+	{
+		FVector3D(0.f, 0.f , 0.f),
+		FVector3D(1.f, 0.f, 0.f)
+	};
+
+	if (!CreateMesh("LineRight2D", LineRight, sizeof(FVector3D), 2, D3D11_USAGE_DEFAULT, D3D_PRIMITIVE_TOPOLOGY_LINESTRIP))
+	{
+		return false;
+	}
+
 
 	return true;
 }
