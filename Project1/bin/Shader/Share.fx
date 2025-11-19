@@ -24,3 +24,21 @@ cbuffer Transform : register(b0)
     matrix gmatWV;      // 월드 * 카메라
     matrix gmatWVP;     // 월드 * 카메라 * 투영
 }
+
+cbuffer Material : register(b1)
+{
+	// 재질 기본 색상
+    float4 gMtrlBaseColor;
+	// 재질 투명도
+    float gMtrlOpacity;
+	// 재질 텍스쳐 가로 크기
+    int gMtrlTextureWidth;
+	// 재질 텍스쳐 세로 크기
+    int gMtrlTextureHeight;
+	// 16 바이트 맞추기용 더미 하나 추가해준다. 
+    float gMtrlEmpty;
+}
+
+SamplerState gBaseSampler : register(s0);
+
+Texture2D gBaseTexture : register(t0);

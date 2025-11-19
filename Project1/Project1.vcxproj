@@ -70,6 +70,7 @@
     <ClCompile Include="include\Shader\ConstantBuffer\Collider\ColliderCBuffer.cpp" />
     <ClCompile Include="include\Shader\ConstantBuffer\ConstantBuffer.cpp" />
     <ClCompile Include="include\Shader\ConstantBuffer\ConstantBufferData.cpp" />
+    <ClCompile Include="include\Shader\ConstantBuffer\Material\MaterialCBuffer.cpp" />
     <ClCompile Include="include\Shader\ConstantBuffer\Transform\TransformCBuffer.cpp" />
     <ClCompile Include="include\Shader\ShaderClass\ColorMeshShader.cpp" />
     <ClCompile Include="include\Shader\ShaderClass\ComputeShader.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="include\Shader\ConstantBuffer\Collider\ColliderCBuffer.h" />
     <ClInclude Include="include\Shader\ConstantBuffer\ConstantBuffer.h" />
     <ClInclude Include="include\Shader\ConstantBuffer\ConstantBufferData.h" />
+    <ClInclude Include="include\Shader\ConstantBuffer\Material\MaterialCBuffer.h" />
     <ClInclude Include="include\Shader\ConstantBuffer\Transform\TransformCBuffer.h" />
     <ClInclude Include="include\Shader\ShaderClass\ColorMeshShader.h" />
     <ClInclude Include="include\Shader\ShaderClass\ComputeShader.h" />

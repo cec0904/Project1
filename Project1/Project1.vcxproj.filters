@@ -124,6 +124,9 @@
     <Filter Include="05.Scene\04.Scene">
       <UniqueIdentifier>{8bf31e04-941a-410b-9958-f1b6c9a36478}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04.Shader\03.ConstantBuffer\03.Material">
+      <UniqueIdentifier>{af0307ad-6e0c-437f-b9dc-e08311497902}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -305,6 +308,9 @@
     </ClCompile>
     <ClCompile Include="include\Asset\Material\MaterialManager.cpp">
       <Filter>03.Asset\03.Material</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ConstantBuffer\Material\MaterialCBuffer.cpp">
+      <Filter>04.Shader\03.ConstantBuffer\03.Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -508,6 +514,9 @@
     </ClInclude>
     <ClInclude Include="include\Asset\Material\MaterialManager.h">
       <Filter>03.Asset\03.Material</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ConstantBuffer\Material\MaterialCBuffer.h">
+      <Filter>04.Shader\03.ConstantBuffer\03.Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

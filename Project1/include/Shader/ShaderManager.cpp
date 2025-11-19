@@ -101,6 +101,9 @@ bool CShaderManager::Init()
         sizeof(FTransformCBufferInfo),
         0,
         EShaderBufferType::Vertex);
+    //머티리얼 용 상수버퍼  
+    CreateConstantBuffer("Material", sizeof(FMaterialCBufferInfo), 1, EShaderBufferType::Pixel);
+
 
     // 충돌체에 사용할 상수버퍼
     CreateConstantBuffer("Collider", 

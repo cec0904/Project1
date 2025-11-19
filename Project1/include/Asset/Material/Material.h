@@ -25,9 +25,7 @@ struct FMaterialTextureInfo
     std::string Name;
     //사용할 텍스쳐
     CSharedPtr<class CTexture> Texture;
-    // 이미지 텍스쳐 같이 쌍으로 들어가야할 데이터가
-    // 샘플러
-    ETextureSamplerType::Type SamplerType = ETextureSamplerType::Linear;
+    
     //텍스쳐를 넣을 레지스터 번호
     int Register = 0;
     // ShaderBufferType 쉐이더 타입도 넣어준다. 
@@ -45,12 +43,33 @@ protected:
     CMaterial();
     ~CMaterial();
 
+private:
+    // 샘플러
+    // 샘플러는 종류마다 만들어서 돌려쓴다!
+    static ID3D11SamplerState* mSampler[ETextureSamplerType::End];
+
+private:
+    // 샘플러 만들기 함수
+    static void SetSampler(ETextureSamplerType::Type Type);
+
 protected:
     //머티리얼의 구성 요소
     // 텍스쳐 리스트 
     std::vector<FMaterialTextureInfo*> mTextureList;
     // 해당 머티리얼을 그리는 픽셀 쉐이더
     ID3D11PixelShader* mPS = nullptr;
+    // 텍스쳐에 추가할 데이터
+    FVector4D mBaseColor = FVector4D::White;
+    // 0 ~ 1 사이의 불투명도를 지정한다.
+    // 0 : 투명   1 : 불투명
+    float mOpacity = 1.f;
+
+    // 머티리얼용 상수버퍼 등록
+    class CMaterialCBuffer* mCBuffer = nullptr;
+
+    // 이미지 텍스쳐 같이 쌍으로 들어가야할 데이터가
+    // 샘플러
+    ETextureSamplerType::Type SamplerType = ETextureSamplerType::Linear;
 
 public:
     //텍스쳐 가져오기
@@ -77,6 +96,11 @@ public:
     void SetPixelShader(const std::string& Name);
     void SetPixelShader(const std::string& Name, const char* EntryName, const TCHAR* FileName);
 
+    //베이스컬러
+    void SetBaseColor(const FVector4D& Color);
+    void SetBaseColor(float r, float g, float b, float a);
 
+    //불투명도
+    void SetOpacity(float Opacity);
 };
 

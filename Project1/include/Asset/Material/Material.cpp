@@ -6,19 +6,72 @@
 #include "../AssetManager.h"
 #include "../../Scene/Asset/SceneAssetManager.h"
 #include "../Texture/TextureManager.h"
+#include "../../Shader/ConstantBuffer/Material/MaterialCBuffer.h"
+#include "../../GameManager/Device/Device.h"
+
+ID3D11SamplerState* CMaterial::mSampler[ETextureSamplerType::End];
 
 CMaterial::CMaterial()
 {
+	mCBuffer = new CMaterialCBuffer;
+	mCBuffer->Init();
 }
 
 CMaterial::~CMaterial()
 {
+	SAFE_DELETE(mCBuffer);
+
 	size_t Size = mTextureList.size();
 
 	for (size_t i = 0; i < Size; ++i)
 	{
 		SAFE_DELETE(mTextureList[i]);
 	}
+}
+
+void CMaterial::SetSampler(ETextureSamplerType::Type Type)
+{
+	D3D11_SAMPLER_DESC Desc = {};
+
+	// MIN : 축소
+	// MAG : 확대
+	// MIP : MipMap 사용하겠다.
+	switch (Type)
+	{
+	case ETextureSamplerType::Point:
+		Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+		break;
+	case ETextureSamplerType::Linear:
+		Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+		break;
+	case ETextureSamplerType::Anisotropic:
+		Desc.Filter = D3D11_FILTER_ANISOTROPIC;
+		break;
+	}
+
+	/*
+		WRAP	: UV 0 ~ 1 을 벗어나면 다시 0 ~ 1 사이로 반복한다.
+		MIRROR	: UV 0 ~ 1 을 벗어나면 거울에 비친것처럼 반전되어 반복한다.
+		CLAMP	: UV 0 ~ 1 을 벗어나면 가장자리 픽셀 색상으로 고정된다.
+	*/
+	Desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+	Desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+	Desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+
+	// LOD 사용 시 필요하다.
+	// 우리는 사용 안할 것이기에 필요없다.
+	Desc.MipLODBias = 0.f;
+	Desc.MaxAnisotropy = 1.f;
+	// 샘플링 비교 함수
+	Desc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+	Desc.MinLOD = -FLT_MAX;
+	Desc.MaxLOD = -FLT_MAX;
+
+	if (FAILED(CDevice::GetInst()->GetDevice()->CreateSamplerState(&Desc, &mSampler[Type])))
+	{
+		return;
+	}
+
 }
 
 //텍스쳐 
@@ -37,6 +90,7 @@ void CMaterial::AddTexture(class CTexture* Texture, int Register, int ShaderBuff
 
 	mTextureList.emplace_back(TexInfo);
 }
+
 
 void CMaterial::AddTexture(const std::string& Name, int Register, int ShaderBufferType, int TextureIndex)
 {
@@ -61,6 +115,7 @@ void CMaterial::AddTexture(const std::string& Name, int Register, int ShaderBuff
 	TexInfo->TextureIndex = TextureIndex;
 
 	//텍스쳐가 사용하는 상수버퍼가 있으면 여기에 작업해준다. 
+	mCBuffer->SetTextureSize(TexInfo->Texture->GetTexture(TextureIndex)->Width, TexInfo->Texture->GetTexture(TextureIndex)->Height);
 
 
 	mTextureList.emplace_back(TexInfo);
@@ -103,7 +158,9 @@ void CMaterial::AddTexture(const std::string& Name, const TCHAR* FileName, int R
 	TexInfo->TextureIndex = TextureIndex;
 
 	//텍스쳐가 사용하는 상수버퍼가 있으면 여기에 작업해준다. 
-
+	mCBuffer->SetTextureSize(
+		TexInfo->Texture->GetTexture(TextureIndex)->Width,
+		TexInfo->Texture->GetTexture(TextureIndex)->Height);
 
 	mTextureList.emplace_back(TexInfo);
 }
@@ -137,4 +194,21 @@ void CMaterial::SetPixelShader(const std::string& Name, const char* EntryName, c
 	}
 
 	mPS = mps->PS;
+}
+void CMaterial::SetBaseColor(const FVector4D& Color)
+{
+	mBaseColor = Color;
+	mCBuffer->SetBaseColor(Color);
+}
+
+void CMaterial::SetBaseColor(float r, float g, float b, float a)
+{
+	mBaseColor = FVector4D(r, g, b, a);
+	mCBuffer->SetBaseColor(mBaseColor);
+}
+
+void CMaterial::SetOpacity(float Opacity)
+{
+	mOpacity = Opacity;
+	mCBuffer->SetOpacity(Opacity);
 }
