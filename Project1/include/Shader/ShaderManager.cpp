@@ -2,6 +2,7 @@
 #include "../Shader/ShaderClass/ColorMeshShader.h"
 #include "ConstantBuffer/ConstantBuffer.h"
 #include "../Shader/ShaderClass/FrameMeshShader.h"
+#include "../GameManager/Device/Device.h"
 
 
 
@@ -13,6 +14,14 @@ CShaderManager::CShaderManager()
 CShaderManager::~CShaderManager()
 {
     // 자원 해제 (ex: mShaderMap, mCBufferMap 정리)
+
+    auto iter = mPixelShaderMap.begin();
+    auto iterEnd = mPixelShaderMap.end();
+
+    for (; iter != iterEnd; iter++)
+    {
+        SAFE_DELETE(iter->second);
+    }
 }
 
 
@@ -100,4 +109,63 @@ bool CShaderManager::Init()
         EShaderBufferType::Pixel);
 
     return true;
+}
+
+bool CShaderManager::LoadPixelShader(const string& Name, const char* EntryName, const TCHAR* FileName)
+{
+    if (FindPixelShader(Name))
+    {
+        return true;
+    }
+
+    // 최종 경로가 나온다.
+    TCHAR FullPath[MAX_PATH] = {};
+    lstrcpy(FullPath, TEXT("../../bin/Shader"));
+    lstrcpy(FullPath, FileName);
+
+    // 컴파일 했는데 에러나오면 여기에 들어옴
+    ID3DBlob* ErrorBlob = nullptr;
+
+    unsigned int Flag = 0;
+#ifdef _DEBUG
+    Flag = D3DCOMPILE_DEBUG;
+#endif // _DEBUG
+
+    FMaterialPixelShader* mps = new FMaterialPixelShader;
+
+    if (FAILED(D3DCompileFromFile(FullPath, nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, EntryName, "ps_5_0", Flag, 0, &mps->Blob, &ErrorBlob)))
+    {
+#ifdef _DEBUG
+        char ErrorText[512] = {};
+        strcpy_s(ErrorText, (const char*)ErrorBlob->GetBufferPointer());
+        strcat_s(ErrorText, "\n");
+        OutputDebugStringA(ErrorText);
+#endif // _DEBUG
+
+        return false;
+    }
+
+    // 컴파일 성공
+    // 성공했다면 쉐이더 객체 만들어주기
+
+    if (FAILED(CDevice::GetInst()->GetDevice()->CreatePixelShader(mps->Blob->GetBufferPointer(), mps->Blob->GetBufferSize(), nullptr, &mps->PS)))
+    {
+        return false;
+    }
+
+    mPixelShaderMap.insert(std::make_pair(Name, mps));
+
+    return true;
+}
+
+const FMaterialPixelShader* CShaderManager::FindPixelShader(const string& Name)
+{
+    auto iter = mPixelShaderMap.find(Name);
+
+    if (iter == mPixelShaderMap.end())
+    {
+        return nullptr;
+    }
+
+    return iter->second;
 }

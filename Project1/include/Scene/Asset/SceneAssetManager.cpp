@@ -5,6 +5,7 @@
 #include "../../Asset/Mesh/Mesh.h"
 #include "../../Asset/Mesh/MeshManager.h"
 #include "../../Asset/Texture/TextureManager.h"
+#include "../../Asset/Texture/Texture.h"
 
 CSceneAssetManager::CSceneAssetManager()
 {
@@ -47,6 +48,60 @@ bool CSceneAssetManager::CreateMesh(const std::string& Name, void* VertexData, i
 	}
 
 	return true;
+}
+
+bool CSceneAssetManager::LoadTexture(const std::string& Name, const TCHAR* FileName)
+{
+	if (!CAssetManager::GetInst()->GetTextureManager()->LoadTexture(Name, FileName))
+	{
+		return false;
+	}
+
+	auto iter = mAssetMap.find(Name);
+
+	if (iter == mAssetMap.end())
+	{
+		mAssetMap.insert(std::make_pair(Name, iter->second));
+	}
+
+	return true;
+}
+
+bool CSceneAssetManager::LoadTextureFullPath(const std::string& Name, const TCHAR* FullPath)
+{
+	if (!CAssetManager::GetInst()->GetTextureManager()->LoadTextureFullPath(Name, FullPath))
+	{
+		return false;
+	}
+
+	auto iter = mAssetMap.find(Name);
+
+	if (iter == mAssetMap.end())
+	{
+		mAssetMap.insert(std::make_pair(Name, iter->second));
+	}
+
+	return true;
+}
+
+class CTexture* CSceneAssetManager::FindTexture(const std::string& Name)
+{
+	auto iter = mAssetMap.find(Name);
+
+	if (iter == mAssetMap.end())
+	{
+		CTexture* Texture = CAssetManager::GetInst()->GetTextureManager()->FindTexture(Name);
+
+		if (!Texture)
+		{
+			return nullptr;
+		}
+
+		mAssetMap.insert(std::make_pair(Name, Texture));
+		return Texture;
+	}
+
+	return dynamic_cast<CTexture*>(iter->second.Get());
 }
 
 class CMesh* CSceneAssetManager::FindMesh(const std::string& Name)

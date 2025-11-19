@@ -4,9 +4,9 @@
 
 
 #ifdef _DEBUG
-#pragma comment(lib, "../Bin/DirectXTex_Debug.lib")
+#pragma comment(lib, "bin/DirectXTex_Debug.lib")
 #else
-#pragma comment(lib, "../Bin/DirectXTex.lib")
+#pragma comment(lib, "bin/DirectXTex.lib")
 #endif
 
 

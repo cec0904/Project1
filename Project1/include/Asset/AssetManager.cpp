@@ -3,6 +3,8 @@
 #include "../Asset/Asset.h"
 #include "Mesh/MeshManager.h"
 #include "Texture/TextureManager.h"
+#include "Material/Material.h"
+#include "Material/MaterialManager.h"
 
 CAssetManager::CAssetManager()
 {
@@ -11,6 +13,8 @@ CAssetManager::CAssetManager()
 CAssetManager::~CAssetManager()
 {
 	SAFE_DELETE(mMeshManager);
+	SAFE_DELETE(mTextureManager);
+	SAFE_DELETE(mMaterialManager);
 }
 
 bool CAssetManager::Init()
@@ -45,6 +49,23 @@ bool CAssetManager::Init()
 	}
 
 	// 이미지 텍스쳐
+	mTextureManager = new CTextureManager;
+
+	if (!mTextureManager->Init())
+	{
+		SAFE_DELETE(mTextureManager);
+		return false;
+	}
+
+	//머티리얼
+	mMaterialManager = new CMaterialManager;
+
+	if (!mMaterialManager->Init())
+	{
+		SAFE_DELETE(mMaterialManager);
+		return false;
+	}
+
 	// 사운드, 이펙트 등 다양한 리소스들을 관리 할 수도 있다.
 
 	return true;

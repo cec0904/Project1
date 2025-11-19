@@ -1,0 +1,54 @@
+#include "MaterialManager.h"
+#include "Material.h"
+
+CMaterialManager::CMaterialManager()
+{
+}
+
+CMaterialManager::~CMaterialManager()
+{
+}
+
+bool CMaterialManager::Init()
+{
+
+	return true;
+}
+
+bool CMaterialManager::CreateMaterial(const std::string& Name)
+{
+	// 생성해야하는데 같은 이름이 있으면 false
+	if (FindMaterial(Name))
+	{
+		return false;
+	}
+
+	CMaterial* Material = new CMaterial;
+
+	Material->SetName(Name);
+
+	mMaterialMap.insert(std::make_pair(Name, Material));
+
+	return true;
+}
+
+class CMaterial* CMaterialManager::FindMaterial(const std::string& Name)
+{
+	auto iter = mMaterialMap.find(Name);
+
+	if (iter == mMaterialMap.end())
+	{
+		return nullptr;
+	}
+	return iter->second;
+}
+
+void CMaterialManager::ReleaseMaterial(class CAsset* Material)
+{
+	auto iter = mMaterialMap.find(Material->GetName());
+
+	if (iter != mMaterialMap.end())
+	{
+		mMaterialMap.erase(iter);
+	}
+}

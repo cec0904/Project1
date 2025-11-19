@@ -1,6 +1,7 @@
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Asset.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Asset.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\AssetManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\AssetManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Material\Material.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Material.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Material\MaterialManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MaterialManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\Mesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Mesh.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\MeshManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MeshManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\StaticMesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\StaticMesh.obj

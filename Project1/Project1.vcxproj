@@ -22,6 +22,7 @@
     <ClCompile Include="include\Asset\Asset.cpp" />
     <ClCompile Include="include\Asset\AssetManager.cpp" />
     <ClCompile Include="include\Asset\Material\Material.cpp" />
+    <ClCompile Include="include\Asset\Material\MaterialManager.cpp" />
     <ClCompile Include="include\Asset\Mesh\Mesh.cpp" />
     <ClCompile Include="include\Asset\Mesh\MeshManager.cpp" />
     <ClCompile Include="include\Asset\Mesh\StaticMesh.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="include\Asset\Asset.h" />
     <ClInclude Include="include\Asset\AssetManager.h" />
     <ClInclude Include="include\Asset\Material\Material.h" />
+    <ClInclude Include="include\Asset\Material\MaterialManager.h" />
     <ClInclude Include="include\Asset\Mesh\Mesh.h" />
     <ClInclude Include="include\Asset\Mesh\MeshManager.h" />
     <ClInclude Include="include\Asset\Mesh\StaticMesh.h" />
