@@ -22,6 +22,9 @@ protected:
 	// 충돌
 	class CSceneCollision* mCollision = nullptr;
 
+	// 에셋
+	class CSceneAssetManager* mAssetManager = nullptr;
+
 	// 오브젝트
 	list<CSharedPtr<class CSceneObject>> mObjList;
 
@@ -52,6 +55,11 @@ public:
 	class CSceneCollision* GetCollision() const
 	{
 		return mCollision;
+	}
+
+	class CSceneAssetManager* GetAssetManager() const
+	{
+		return mAssetManager;
 	}
 
 public:

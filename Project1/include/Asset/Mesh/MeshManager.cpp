@@ -165,3 +165,17 @@ CMesh* CMeshManager::FindMesh(const string& Name)
 
 	return (CMesh*)iter->second.Get();
 }
+
+void CMeshManager::ReleaseMesh(CAsset* Mesh)
+{
+	auto iter = mMeshMap.find(Mesh->GetName());
+
+	if (iter != mMeshMap.end())
+	{
+		// 다른데서 사용하고 있을 때 해당 에셋을 지우면 안되니까
+		if (iter->second->GetRefCount() == 1)
+		{
+			mMeshMap.erase(iter);
+		}
+	}
+}

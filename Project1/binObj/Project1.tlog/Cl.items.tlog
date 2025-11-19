@@ -1,8 +1,11 @@
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Asset.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Asset.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\AssetManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\AssetManager.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Material\Material.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Material.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\Mesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Mesh.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\MeshManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MeshManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Mesh\StaticMesh.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\StaticMesh.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Texture\Texture.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Texture.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Texture\TextureManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TextureManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderAABB2D.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderAABB2D.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderBase.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderBase.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\Collider\ColliderLine2D.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderLine2D.obj
@@ -31,6 +34,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\NearingMonster.cpp;
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\ObjectSpawnPoint.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ObjectSpawnPoint.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\PlayerObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneObject.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Asset\SceneAssetManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneAssetManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\CameraManager\CameraManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CameraManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Collision\CollisionQuadTree.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CollisionQuadTree.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Collision\SceneCollision.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneCollision.obj

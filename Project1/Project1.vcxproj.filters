@@ -115,6 +115,15 @@
     <Filter Include="07.Component\03.Collider\01.2D">
       <UniqueIdentifier>{c7c6c97c-a3b8-486a-ae53-d2b065fe1fd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Asset\02.Texture">
+      <UniqueIdentifier>{fab8f361-e458-40e0-91ca-dbd2f962686f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Asset\03.Material">
+      <UniqueIdentifier>{15765eae-7551-4058-9037-ef9cc607c1ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Scene\04.Scene">
+      <UniqueIdentifier>{8bf31e04-941a-410b-9958-f1b6c9a36478}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -281,6 +290,18 @@
     </ClCompile>
     <ClCompile Include="include\Component\Collider\ColliderLine2D.cpp">
       <Filter>07.Component\03.Collider\01.2D</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Texture\Texture.cpp">
+      <Filter>03.Asset\02.Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Texture\TextureManager.cpp">
+      <Filter>03.Asset\02.Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Scene\Asset\SceneAssetManager.cpp">
+      <Filter>05.Scene\04.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Material\Material.cpp">
+      <Filter>03.Asset\03.Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +488,21 @@
     <ClInclude Include="include\Component\Collider\ColliderLine2D.h">
       <Filter>07.Component\03.Collider\01.2D</Filter>
     </ClInclude>
+    <ClInclude Include="include\Asset\Texture\Texture.h">
+      <Filter>03.Asset\02.Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Texture\DirectXTex.h">
+      <Filter>03.Asset\02.Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Texture\TextureManager.h">
+      <Filter>03.Asset\02.Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene\Asset\SceneAssetManager.h">
+      <Filter>05.Scene\04.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Material\Material.h">
+      <Filter>03.Asset\03.Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">
@@ -485,5 +521,10 @@
     <FxCompile Include="bin\Shader\Share.fx">
       <Filter>04.Shader\01.HLSL</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\Asset\Texture\DirectXTex.inl">
+      <Filter>03.Asset\02.Texture</Filter>
+    </None>
   </ItemGroup>
 </Project>
