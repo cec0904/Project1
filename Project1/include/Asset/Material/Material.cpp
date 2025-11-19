@@ -17,6 +17,42 @@ CMaterial::CMaterial()
 	mCBuffer->Init();
 }
 
+CMaterial::CMaterial(const CMaterial& Material)
+{
+	mCBuffer = new CMaterialCBuffer;
+	mCBuffer->Init();
+
+	mTextureList.clear();
+
+	mPS = Material.mPS;
+	mBaseColor = Material.mBaseColor;
+	mOpacity = Material.mOpacity;
+	mSamplerType = Material.mSamplerType;
+
+	mCBuffer->SetBaseColor(mBaseColor);
+	mCBuffer->SetOpacity(mOpacity);
+
+	size_t Size = Material.mTextureList.size();
+
+	for (size_t i = 0; i < Size; i++)
+	{
+		FMaterialTextureInfo* Info = new FMaterialTextureInfo;
+		*Info = *Material.mTextureList[i];
+		mTextureList.emplace_back(Info);
+	}
+
+	if (!mTextureList.empty())
+	{
+		// 텍스쳐가 사용하는 상수버퍼가 있으면 여기에 작업해준다.
+		mCBuffer->SetTextureSize(
+			mTextureList[0]->Texture->GetTexture(0)->Width,
+			mTextureList[0]->Texture->GetTexture(0)->Height
+			);
+	}
+	mRefCount = 0;
+
+}
+
 CMaterial::~CMaterial()
 {
 	SAFE_DELETE(mCBuffer);
@@ -61,7 +97,7 @@ void CMaterial::SetSampler(ETextureSamplerType::Type Type)
 	// LOD 사용 시 필요하다.
 	// 우리는 사용 안할 것이기에 필요없다.
 	Desc.MipLODBias = 0.f;
-	Desc.MaxAnisotropy = 1.f;
+	Desc.MaxAnisotropy = 1;
 	// 샘플링 비교 함수
 	Desc.ComparisonFunc = D3D11_COMPARISON_NEVER;
 	Desc.MinLOD = -FLT_MAX;
@@ -72,6 +108,14 @@ void CMaterial::SetSampler(ETextureSamplerType::Type Type)
 		return;
 	}
 
+}
+
+void CMaterial::DestroySampler()
+{
+	for (int i = 0; i < ETextureSamplerType::End; i++)
+	{
+		SAFE_RELEASE(mSampler[i]);
+	}
 }
 
 //텍스쳐 
@@ -195,6 +239,10 @@ void CMaterial::SetPixelShader(const std::string& Name, const char* EntryName, c
 
 	mPS = mps->PS;
 }
+void CMaterial::ClearShader()
+{
+	mPS = nullptr;
+}
 void CMaterial::SetBaseColor(const FVector4D& Color)
 {
 	mBaseColor = Color;
@@ -211,4 +259,46 @@ void CMaterial::SetOpacity(float Opacity)
 {
 	mOpacity = Opacity;
 	mCBuffer->SetOpacity(Opacity);
+}
+
+// 그리기 전에 해당 메테리얼 세팅으로 데이터를 넣어준다.
+void CMaterial::SetMaterial()
+{
+	// 상수버퍼 세팅
+	mCBuffer->UpdateBuffer();
+
+	// 샘플러 세팅
+	CDevice::GetInst()->GetContext()->PSSetSamplers(0, 1, &mSampler[mSamplerType]);
+
+	// 픽셀쉐이더 세팅
+	if (mPS)
+	{
+		CDevice::GetInst()->GetContext()->PSSetShader(mPS, nullptr, 0);
+		CDevice::GetInst()->GetContext()->PSSetShader(mPS, nullptr, 0);
+	}
+	
+	size_t TextCount = mTextureList.size();
+
+	for (size_t i = 0; i < TextCount; i++)
+	{
+		mTextureList[i]->Texture->SetShader(mTextureList[i]->Register,
+			mTextureList[i]->ShaderBufferType,
+			mTextureList[i]->TextureIndex
+			);
+	}
+}
+
+void CMaterial::ResetMaterial()
+{
+	size_t TextCount = mTextureList.size();
+
+	for (size_t i = 0; i < TextCount; ++i)
+	{
+		mTextureList[i]->Texture->ResetShader(mTextureList[i]->Register, mTextureList[i]->ShaderBufferType);
+	}
+}
+
+CMaterial* CMaterial::Clone()
+{
+	return new CMaterial(*this);
 }

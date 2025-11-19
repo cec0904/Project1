@@ -42,3 +42,6 @@ cbuffer Material : register(b1)
 SamplerState gBaseSampler : register(s0);
 
 Texture2D gBaseTexture : register(t0);
+//Texture2D gBaseTexture2 : register(t1);
+//Texture2D gBaseTexture3 : register(t2);
+//Texture2D gBaseTexture4 : register(t3);

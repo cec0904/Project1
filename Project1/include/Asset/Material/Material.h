@@ -41,6 +41,7 @@ class CMaterial :
 
 protected:
     CMaterial();
+    CMaterial(const CMaterial& Material);
     ~CMaterial();
 
 private:
@@ -51,6 +52,7 @@ private:
 private:
     // 샘플러 만들기 함수
     static void SetSampler(ETextureSamplerType::Type Type);
+    static void DestroySampler();
 
 protected:
     //머티리얼의 구성 요소
@@ -69,7 +71,7 @@ protected:
 
     // 이미지 텍스쳐 같이 쌍으로 들어가야할 데이터가
     // 샘플러
-    ETextureSamplerType::Type SamplerType = ETextureSamplerType::Linear;
+    ETextureSamplerType::Type mSamplerType = ETextureSamplerType::Linear;
 
 public:
     //텍스쳐 가져오기
@@ -95,6 +97,7 @@ public:
     //쉐이더 가져오기 
     void SetPixelShader(const std::string& Name);
     void SetPixelShader(const std::string& Name, const char* EntryName, const TCHAR* FileName);
+    void ClearShader();
 
     //베이스컬러
     void SetBaseColor(const FVector4D& Color);
@@ -102,5 +105,11 @@ public:
 
     //불투명도
     void SetOpacity(float Opacity);
+
+    // 그리기 용도
+    void SetMaterial();
+    void ResetMaterial();
+
+    CMaterial* Clone();
 };
 

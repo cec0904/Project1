@@ -18,6 +18,10 @@ protected:
 protected:
 	class CTransformCBuffer* mTransformCBuffer;
 
+	// 메테리얼 정보를 임시 버퍼처럼 사용할 컨테이너
+	
+	vector<CSharedPtr<class CMaterial>> mMaterialSlots;
+
 	// 시점 함수
 public:
 	virtual bool Init();

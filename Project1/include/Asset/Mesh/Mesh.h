@@ -19,6 +19,7 @@ struct FMeshSlot
 {
 	// 인덱스 버퍼 : 여러 곳에서 사용할 수 있다.
 	FIndexBuffer IndexBuffer;
+	CSharedPtr<class CMaterial> Material;
 };
 
 class CMesh abstract : public CAsset
@@ -49,6 +50,17 @@ protected:
 
 
 	D3D11_PRIMITIVE_TOPOLOGY mPrimitive;
+public:
+	int GetSlotCount() const
+	{
+		return static_cast<int>(mMeshSlot.size());
+	}
+
+	const FMeshSlot* GetSlot(int SlotIndex) const
+	{
+		return mMeshSlot[SlotIndex];
+	}
+
 
 public:
 	virtual bool CreateMesh(void* VertexData, int Size, int Count, D3D11_USAGE VertexUsage, D3D11_PRIMITIVE_TOPOLOGY Primitiv, void* IndexData = nullptr, int IndexSize = 0, int IndexCount = 0, DXGI_FORMAT Fmt = DXGI_FORMAT_UNKNOWN, D3D11_USAGE IndexUsage = D3D11_USAGE_DEFAULT);
@@ -82,7 +94,7 @@ public:
 
 public:
 	void Render();
-
+	void Render(int SlotIndex);
 
 };
 

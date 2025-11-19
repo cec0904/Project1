@@ -3,6 +3,7 @@
 
 #include "../../Scene/Scene.h"
 #include "../../Scene/CameraManager/CameraManager.h"
+#include "../../Asset/Material/Material.h"
 
 CMeshComponent::CMeshComponent()
 	: CSceneComponent()

@@ -24,6 +24,32 @@ public:
 	void SetMesh(const std::string& Name);
 	void SetMesh(class CMesh* Mesh);
 
+	// 중간에 메테리얼을 변경할 수 있게 함수를 제공한다.
+	void SetMaterial(int SlotIndex, const string Name);
+	void SetMaterial(int SlotIndex, class CMaterial* Material);
+
+	// 텍스쳐 가져오기
+	// Texture 클래스를 바로 넣어서 세팅 해준다.
+	void AddTexture(int SlotIndex, class CTexture* Texture, int Register, int ShaderBufferType = EShaderBufferType::Pixel, int TextureIndex = 0);
+	
+	
+	// Name 으로 찾아와서 텍스쳐를 넣어주는 방법
+	void AddTexture(int SlotIndex, const string& Name, int Register, int ShaderBufferType = EShaderBufferType::Pixel, int TextureIndex = 0);
+
+
+	// 파일 이름으로 텍스쳐 매니저에서 로드 후 추가하기
+	void AddTexture(int SlotIndex, const std::string& Name,
+		const TCHAR* FileName,
+		int Register,
+		int ShaderBufferType = EShaderBufferType::Pixel,
+		int TextureIndex = 0);
+
+	//BaseColor
+	void SetBaseColor(int SlotIndex, float r, float g, float b, float a);
+
+
+	//Opacity
+	void SetOpacity(int SlotIndex, float Opacity);
 
 	//시점 함수 
 public:

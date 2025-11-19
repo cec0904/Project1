@@ -34,5 +34,12 @@ public:
 
 	class CTexture* FindTexture(const string& Name);
 #pragma endregion Texture
+
+#pragma region Material
+	bool CreateMaterial(const string& Name);
+
+	class CMaterial* FindMaterial(const string& Name);
+
+#pragma endregion Material
 };
 

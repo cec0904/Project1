@@ -7,6 +7,7 @@ CMaterialManager::CMaterialManager()
 
 CMaterialManager::~CMaterialManager()
 {
+	CMaterial::DestroySampler();
 }
 
 bool CMaterialManager::Init()

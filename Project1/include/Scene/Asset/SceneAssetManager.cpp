@@ -6,6 +6,8 @@
 #include "../../Asset/Mesh/MeshManager.h"
 #include "../../Asset/Texture/TextureManager.h"
 #include "../../Asset/Texture/Texture.h"
+#include "../../Asset/Material/Material.h"
+#include "../../Asset/Material/MaterialManager.h"
 
 CSceneAssetManager::CSceneAssetManager()
 {
@@ -44,7 +46,8 @@ bool CSceneAssetManager::CreateMesh(const std::string& Name, void* VertexData, i
 
 	if (iter != mAssetMap.end())
 	{
-		mAssetMap.insert(std::make_pair(Name, iter->second));
+		assert(0);
+		//mAssetMap.insert(std::make_pair(Name, iter->second));
 	}
 
 	return true;
@@ -61,7 +64,8 @@ bool CSceneAssetManager::LoadTexture(const std::string& Name, const TCHAR* FileN
 
 	if (iter == mAssetMap.end())
 	{
-		mAssetMap.insert(std::make_pair(Name, iter->second));
+		assert(0);
+		//mAssetMap.insert(std::make_pair(Name, iter->second));
 	}
 
 	return true;
@@ -78,10 +82,51 @@ bool CSceneAssetManager::LoadTextureFullPath(const std::string& Name, const TCHA
 
 	if (iter == mAssetMap.end())
 	{
-		mAssetMap.insert(std::make_pair(Name, iter->second));
+		assert(0);
+		//mAssetMap.insert(std::make_pair(Name, iter->second));
 	}
 
 	return true;
+}
+
+bool CSceneAssetManager::CreateMaterial(const std::string& Name)
+{
+	if (!CAssetManager::GetInst()->GetMaterialManager()->CreateMaterial(Name))
+	{
+		return false;
+	}
+
+	auto iter = mAssetMap.find(Name);
+
+	if (iter == mAssetMap.end())
+	{
+		//일부러 터짐
+		assert(0);
+		//mAssetMap.insert(std::make_pair(Name, iter->second));
+	}
+
+	return true;
+}
+
+class CMaterial* CSceneAssetManager::FindMaterial(const std::string& Name)
+{
+	auto iter = mAssetMap.find(Name);
+
+	if (iter == mAssetMap.end())
+	{
+		CMaterial* Material = CAssetManager::GetInst()->GetMaterialManager()->FindMaterial(Name);
+
+		if (!Material)
+		{
+			return nullptr;
+		}
+
+		mAssetMap.insert(std::make_pair(Name, Material));
+
+		return Material;
+	}
+
+	return dynamic_cast<CMaterial*>(iter->second.Get());
 }
 
 class CTexture* CSceneAssetManager::FindTexture(const std::string& Name)

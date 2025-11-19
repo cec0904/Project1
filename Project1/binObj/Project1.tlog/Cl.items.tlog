@@ -46,6 +46,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\SceneManager.cpp;E:\KDT4_JEC
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Collider\ColliderCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\ConstantBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ConstantBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\ConstantBufferData.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ConstantBufferData.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Material\MaterialCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MaterialCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Transform\TransformCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TransformCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\ColorMeshShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColorMeshShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\ComputeShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ComputeShader.obj
