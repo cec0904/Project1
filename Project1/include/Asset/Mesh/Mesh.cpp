@@ -119,3 +119,34 @@ void CMesh::Render()
 		CDevice::GetInst()->GetContext()->Draw(mVertexBuffer.Count, 0);
 	}
 }
+
+void CMesh::Render(int SlotIndex)
+{
+	// 그려줄 도형 타입을 지정해준다. 
+	CDevice::GetInst()->GetContext()->IASetPrimitiveTopology(mPrimitive);
+
+	//버텍스 버퍼 셋팅 해준다. 
+	UINT stride = mVertexBuffer.Size;
+	UINT Offset = 0;
+	CDevice::GetInst()->GetContext()->IASetVertexBuffers(0, 1, &mVertexBuffer.Buffer, &stride, &Offset);
+
+	//인덱스 버퍼 유무 판단 
+	size_t SlotSize = mMeshSlot.size();
+
+	if (SlotSize > 0)
+	{
+		CDevice::GetInst()->GetContext()->IASetIndexBuffer(mMeshSlot[SlotIndex]->IndexBuffer.Buffer, mMeshSlot[SlotIndex]->IndexBuffer.Fmt, 0);
+
+		//인덱스 참고하여 화면에 도형을 그린다. 
+		// 인덱스 갯수, 인덱스 위치, 버텍스의 시작 위치 
+		CDevice::GetInst()->GetContext()->DrawIndexed(mMeshSlot[SlotIndex]->IndexBuffer.Count, 0, 0);
+
+	}
+	else
+	{
+		// 인덱스 버퍼가 없으므로 그냥 그려줄것이다. 
+		CDevice::GetInst()->GetContext()->IASetIndexBuffer(nullptr, DXGI_FORMAT_UNKNOWN, 0);
+		//정점만 출력해라!
+		CDevice::GetInst()->GetContext()->Draw(mVertexBuffer.Count, 0);
+	}
+}

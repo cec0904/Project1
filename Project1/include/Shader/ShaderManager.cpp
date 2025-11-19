@@ -108,7 +108,7 @@ bool CShaderManager::Init()
     // 충돌체에 사용할 상수버퍼
     CreateConstantBuffer("Collider", 
         sizeof(FColliderCBufferInfo),
-        1,
+        2,
         EShaderBufferType::Pixel);
 
     return true;
