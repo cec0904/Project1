@@ -21,7 +21,9 @@
 
 #include "ProfileManager/ProfileManager.h"
 
-
+//Gameinfo에 extern을 선언해준다.
+//그럼 Gameinfo를 받아간 파일들은 모두 gRootPath를 사용할수있다.
+TCHAR gRootPath[MAX_PATH];
 
 
 bool CGameManager::mLoop = true;

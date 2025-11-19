@@ -15,6 +15,27 @@ CAssetManager::~CAssetManager()
 
 bool CAssetManager::Init()
 {
+	//이런게 있구나 하고 보면 되는거 어디 저장하고나 메모해두고 사용할때마다 찾아서 쓰면된다.
+	//gRootPath 경로를 초기화 해준다.
+	GetModuleFileName(0, gRootPath, MAX_PATH);
+
+	//D:\KDT4\KDT4FrameWork\KDT4Framework\KDT4Framework\Bin\KDT4Framework_Debug.exe
+	// 실행파일부분을 제거하고 폴더 경로만 사용하고싶다. 
+	// D:\KDT4\KDT4FrameWork\KDT4Framework\KDT4Framework\Bin//
+	// '/' 비슷하다 '\\'
+
+	int Length = lstrlen(gRootPath);
+
+	for (int i = Length - 1; i >= 0; --i)
+	{
+		if (gRootPath[i] == '/' || gRootPath[i] == '\\')
+		{
+			// abc\def
+			// 0123456
+			memset(&gRootPath[i + 1], 0, sizeof(TCHAR) * (Length - (i + 1)));
+			break;
+		}
+	}
 	// 메쉬를 관리
 	mMeshManager = new CMeshManager;
 

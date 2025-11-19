@@ -12,6 +12,12 @@ private:
 private:
 	unordered_map<string, CSharedPtr<class CTexture>> mTextureMap;
 
+
+public:
+	// 파일명
+	bool LoadTexture(const string& Name, const TCHAR* FileName);
+	bool LoadTextureFullPath(const string& Name, const TCHAR* FullPath);
+
 public:
 	bool Init();
 

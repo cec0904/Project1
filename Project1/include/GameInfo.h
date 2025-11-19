@@ -12,6 +12,8 @@
 #include <string>
 
 #include "Share/SharedPtr/SharedPtr.h"
+// extern : 선언된 전역변수를 다른곳에서도 사용할 수 있게 해주는 기능이다.
+extern  TCHAR gRootPath[MAX_PATH];
 
 // DX를 사용하기 위한 헤더
 #include <d3d11.h>

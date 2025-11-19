@@ -9,6 +9,51 @@ CTextureManager::~CTextureManager()
 {
 }
 
+// 파일 이름 중복이 없어야 한다.
+bool CTextureManager::LoadTexture(const string& Name, const TCHAR* FileName)
+{
+	CTexture* Texture = FindTexture(Name);
+
+	if (Texture)
+	{
+		return true;
+	}
+
+	Texture = new CTexture;
+
+	if (!Texture->LoadTexture(FileName))
+	{
+		SAFE_DELETE(Texture);
+		return false;
+	}
+
+	mTextureMap.insert(std::make_pair(Name, Texture));
+
+	return true;
+}
+
+bool CTextureManager::LoadTextureFullPath(const string& Name, const TCHAR* FullPath)
+{
+	CTexture* Texture = FindTexture(Name);
+
+	if (Texture)
+	{
+		return true;
+	}
+
+	Texture = new CTexture;
+
+	if (!Texture->LoadTextureFullPath(FullPath))
+	{
+		SAFE_DELETE(Texture);
+		return false;
+	}
+
+	mTextureMap.insert(std::make_pair(Name, Texture));
+
+	return true;
+}
+
 bool CTextureManager::Init()
 {
 
