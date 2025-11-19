@@ -8,6 +8,8 @@
 #include "ColliderSphere2D.h"
 #include "../../Share/Log/Log.h"
 
+
+
 CColliderLine2D::CColliderLine2D()
 {
 	mColliderType = EColliderType::Collider2D;
@@ -171,15 +173,13 @@ bool CColliderLine2D::Collision(FVector3D& HitPoint, CColliderBase* Dest)
 	switch (Dest->GetColliderShape())
 	{
 	case EColliderShape::AABB2D:
-		//return CCollision::CollisionAABB2DToAABB2D(HitPoint, this, (CColliderLine2D*)Dest);
+		return CCollision::CollisionLine2DToAABB2D(HitPoint, this, (CColliderAABB2D*)Dest);
 	case EColliderShape::Sphere2D:
-		//return CCollision::CollisionAABB2DToSphere2D(HitPoint, this, (CColliderSphere2D*)Dest);
+		return CCollision::CollisionLine2DToSphere2D(HitPoint, this, (CColliderSphere2D*)Dest);
 	case EColliderShape::OBB2D:
-		//return CCollision::CollisionAABB2DToOBB2D(HitPoint, this, (CColliderOBB2D*)Dest);
-		break;
+		return CCollision::CollisionLine2DToOBB2D(HitPoint, this, (CColliderOBB2D*)Dest);
 	case EColliderShape::Line2D:
 		return CCollision::CollisionLine2DToLine2D(HitPoint, this, (CColliderLine2D*)Dest);
-		break;
 	}
 	return false;
 }

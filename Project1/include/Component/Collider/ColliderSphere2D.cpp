@@ -5,6 +5,7 @@
 #include "../../Asset/Mesh/MeshManager.h"
 #include "ColliderAABB2D.h"
 #include "ColliderOBB2D.h"
+#include "ColliderLine2D.h"
 
 CColliderSphere2D::CColliderSphere2D()
 {

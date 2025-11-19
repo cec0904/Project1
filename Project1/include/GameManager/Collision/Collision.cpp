@@ -520,7 +520,7 @@ bool CCollision::CollisionLine2DToLine2D(FVector3D& HitPoint, const FLine2D& Src
 		float Ry = C.y - A.y;
 
 		// 3. 행렬식 (D, Determinant) 계산
-		// 행렬식이 0이면 해가 하나있다. 
+		// 행렬식이 0이 아니면
 		float Determinant = V1x * V2y - V1y * V2x;
 
 		// U를 대체할
@@ -627,7 +627,7 @@ bool CCollision::CollisionLine2DToAABB2D(FVector3D& HitPoint, const FLine2D& Src
 
 			float Dist = Src.Start.Distance(v);
 
-			if (Dist == -1.f)
+			if (resultDist == -1.f)
 			{
 				HitResult = v;
 				resultDist = Dist;
@@ -721,7 +721,7 @@ bool CCollision::CollisionLine2DToOBB2D(FVector3D& HitPoint, const FLine2D& Src,
 
 			float Dist = Src.Start.Distance(v);
 
-			if (Dist == -1.f)
+			if (resultDist == -1.f)
 			{
 				HitResult = v;
 				resultDist = Dist;
@@ -745,7 +745,81 @@ bool CCollision::CollisionLine2DToOBB2D(FVector3D& HitPoint, const FLine2D& Src,
 
 bool CCollision::CollisionLine2DToSphere2D(FVector3D& HitPoint, const FLine2D& Src, const FVector3D& Center, float Radius)
 {
-	return false;
+	// 선의 방향 D
+	FVector2D Dir = Src.End - Src.Start;
+
+
+	// 선의 길이 t
+	float LineLength = Dir.Length();
+
+	Dir.Normalize();
+
+
+	//원의 방정식
+	FVector2D Center2D;
+	Center2D.x = Center.x;
+	Center2D.y = Center.y;
+	// 직선의 시작지점 - 원의 중심 : M = S - C
+	FVector2D M = Src.Start - Center2D;
+
+	// at^2 + bt + c;
+	float b = 2.f * M.Dot(Dir);
+	float c = M.Dot(M) - Radius * Radius;
+
+	//판별식
+	float Det = b * b - 4.f * c;
+	// 양수 : 근이 2개		0 : 근이 하나		음수 : 허수
+	if (Det < 0.f)
+	{
+		return false;
+	}
+
+	// 근의 공식을 이용해서
+	// 충돌 지점을 구해야 한다. 
+	//근의 공식 =  (-B +- 루트(B^2 - 4AC)) / 2A
+	// 우리는 A가 1이니까
+	// (-B +- 루트(B^2 - 4C)) / 2
+
+	//근의 공식 + -값을 각각 구해준다.
+	float t1, t2;
+	//sqrt 루트 
+	float det = sqrtf(Det);
+
+
+	t1 = (-b + det) / 2.f;
+	t2 = (-b - det) / 2.f;
+
+	if (t1 < 0.f && t2 < 0.f)
+	{
+		return false;
+	}
+
+	bool result = false;
+
+	if (t1 > 0.f && t1 < LineLength ||
+		t2 > 0.f && t2 < LineLength)
+	{
+		result = true;
+	}
+
+	//시작 지점에서 누가 더 가까운가
+	if (result)
+	{
+		// 1 < 2  
+		float HitDist = t1 < t2 ? t1 : t2;
+
+		//충돌하고나서 거리가 음수가 아닌가?
+		if (HitDist < 0.f)
+		{
+			// -0.1  > -0.9 
+			HitDist = t1 > t2 ? t1 : t2;
+		}
+
+		HitPoint.x = Src.Start.x + Dir.x * HitDist;
+		HitPoint.y = Src.Start.y + Dir.y * HitDist;
+	}
+
+	return result;
 }
 
 bool CCollision::CollisionPointToAABB2D(const FVector2D& Point, const FAABB2D& Info)
