@@ -62,6 +62,7 @@ bool CPlayerObject::Init()
 
 	mRoot->SetMesh("CenterTexRect");
 	mRoot->AddTexture(0, "BonoBono", TEXT("Texture/BonoBono.png"), 0);
+	mRoot->SetOpacity(0, 0.5f);
 	//mRoot->SetShader("ColorMeshShader");
 
 	mRoot->SetWorldPos(0.f, 0.f, 0.f);

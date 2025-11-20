@@ -134,8 +134,8 @@ bool CShaderManager::LoadPixelShader(const string& Name, const char* EntryName, 
 
     // 최종 경로가 나온다.
     TCHAR FullPath[MAX_PATH] = {};
-    lstrcpy(FullPath, TEXT("../../bin/Shader"));
-    lstrcpy(FullPath, FileName);
+    lstrcpy(FullPath, TEXT("bin/Shader/"));
+    lstrcat(FullPath, FileName);
 
     // 컴파일 했는데 에러나오면 여기에 들어옴
     ID3DBlob* ErrorBlob = nullptr;

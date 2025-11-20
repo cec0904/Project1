@@ -59,6 +59,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="include\Object\SceneObject.cpp" />
+    <ClCompile Include="include\Render\BlendState.cpp" />
+    <ClCompile Include="include\Render\RenderManager.cpp" />
+    <ClCompile Include="include\Render\RenderState.cpp" />
+    <ClCompile Include="include\Render\RenderStateManager.cpp" />
     <ClCompile Include="include\Scene\Asset\SceneAssetManager.cpp" />
     <ClCompile Include="include\Scene\CameraManager\CameraManager.cpp" />
     <ClCompile Include="include\Scene\Collision\CollisionQuadTree.cpp" />
@@ -129,6 +133,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="include\Object\SceneObject.h" />
+    <ClInclude Include="include\Render\BlendState.h" />
+    <ClInclude Include="include\Render\RenderManager.h" />
+    <ClInclude Include="include\Render\RenderState.h" />
+    <ClInclude Include="include\Render\RenderStateManager.h" />
     <ClInclude Include="include\Scene\Asset\SceneAssetManager.h" />
     <ClInclude Include="include\Scene\CameraManager\CameraManager.h" />
     <ClInclude Include="include\Scene\Collision\CollisionQuadTree.h" />

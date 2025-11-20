@@ -21,6 +21,10 @@
 
 #include "ProfileManager/ProfileManager.h"
 
+#include "../Render/RenderManager.h"
+#include "../Render/RenderState.h"
+#include "../Render/RenderStateManager.h"
+
 //Gameinfo에 extern을 선언해준다.
 //그럼 Gameinfo를 받아간 파일들은 모두 gRootPath를 사용할수있다.
 TCHAR gRootPath[MAX_PATH];
@@ -70,6 +74,12 @@ bool CGameManager::Init(HINSTANCE hInst)
 	if (!CDevice::GetInst()->Init(mhWnd, 1280, 720, true))
 	{
 		MessageBox(nullptr, L"Device Init Failed", L"Error", MB_OK);
+		return false;
+	}
+
+	// Render 매니저
+	if (!CRenderManager::GetInst()->Init())
+	{
 		return false;
 	}
 	
@@ -177,7 +187,22 @@ void CGameManager::Render(float DeltaTime)
 	CDevice::GetInst()->ClearDepthStencil(1.f, 0);
 	CDevice::GetInst()->SetTarget();
 
+	// 출력
+	// 블랜드스테이트 세팅
+	CRenderState* AlphaBlend = CRenderManager::GetInst()->GetStateManager()->FindState("AlphaBlend");
+
+	if (AlphaBlend)
+	{
+		AlphaBlend->SetState();
+	}
+
 	CSceneManager::GetInst()->Render();
+
+	//블렌드 스테이트 회수 
+	if (AlphaBlend)
+	{
+		AlphaBlend->ResetState();
+	}
 
 	CDevice::GetInst()->Render();
 }
