@@ -60,8 +60,9 @@ bool CPlayerObject::Init()
 	mCamera = CreateComponent<CCameraComponent>();
 	mRotation = CreateComponent<CRotationComponent>();
 
-	mRoot->SetMesh("CenterRect");
-	mRoot->SetShader("ColorMeshShader");
+	mRoot->SetMesh("CenterTexRect");
+	mRoot->AddTexture(0, "BonoBono", TEXT("Texture/BonoBono.png"), 0);
+	//mRoot->SetShader("ColorMeshShader");
 
 	mRoot->SetWorldPos(0.f, 0.f, 0.f);
 	mRoot->SetWorldScale(100.f, 100.f, 1.f);

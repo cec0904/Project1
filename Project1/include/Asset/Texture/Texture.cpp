@@ -20,6 +20,12 @@ CTexture::CTexture()
 
 CTexture::~CTexture()
 {
+	size_t Size = mTextureList.size();
+
+	for (size_t i = 0; i < Size; i++)
+	{
+		SAFE_DELETE(mTextureList[i]);
+	}
 }
 
 bool CTexture::LoadTexture(const TCHAR* FileName)

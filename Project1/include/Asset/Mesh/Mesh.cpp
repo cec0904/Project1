@@ -1,5 +1,7 @@
 ﻿#include "Mesh.h"
 #include "../../GameManager/Device/Device.h"
+#include "../AssetManager.h"
+#include "../Material/MaterialManager.h"
 
 CMesh::CMesh()
 {
@@ -44,6 +46,9 @@ bool CMesh::CreateMesh(void* VertexData, int Size, int Count, D3D11_USAGE Vertex
 			SAFE_DELETE(Slot);
 			return false;
 		}
+
+		Slot->Material = CAssetManager::GetInst()->GetMaterialManager()->FindMaterial("DefaultMaterial");
+
 		mMeshSlot.push_back(Slot);
 	}
 

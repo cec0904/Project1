@@ -261,6 +261,11 @@ void CMaterial::SetOpacity(float Opacity)
 	mCBuffer->SetOpacity(Opacity);
 }
 
+void CMaterial::SetSamplerType(ETextureSamplerType::Type SamplerType)
+{
+	mSamplerType = SamplerType;
+}
+
 // 그리기 전에 해당 메테리얼 세팅으로 데이터를 넣어준다.
 void CMaterial::SetMaterial()
 {

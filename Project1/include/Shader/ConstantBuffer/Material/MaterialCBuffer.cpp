@@ -2,6 +2,8 @@
 
 CMaterialCBuffer::CMaterialCBuffer()
 {
+	mData.Opacity = 1.f;
+	mData.BaseColor = FVector4D::White;
 }
 
 CMaterialCBuffer::CMaterialCBuffer(const CMaterialCBuffer& Data)

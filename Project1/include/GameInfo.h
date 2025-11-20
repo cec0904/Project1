@@ -105,6 +105,21 @@ struct FIndexBuffer
 	}
 };
 
+// 텍스쳐 사각형
+struct FVertexTexture
+{
+	FVector3D Pos;
+	FVector2D UV;
+
+	FVertexTexture() = default;
+	FVertexTexture(float x, float y, float z, float u, float v)
+		: Pos(x, y, z),
+		UV(u, v)
+	{
+	}
+};
+
+
 // 정점의 정보를 저장하는 구조체
 struct FVertexColor
 {

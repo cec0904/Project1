@@ -33,7 +33,7 @@ bool CSceneAssetManager::Init()
 	return true;
 }
 
-bool CSceneAssetManager::CreateMesh(const std::string& Name, void* VertexData, int Size, int Count,
+bool CSceneAssetManager::CreateMesh(const string& Name, void* VertexData, int Size, int Count,
 	D3D11_USAGE VertexUsage, D3D11_PRIMITIVE_TOPOLOGY Primitiv, void* IndexData, int IndexSize, int IndexCount,
 	DXGI_FORMAT Fmt, D3D11_USAGE IndexUsage)
 {
@@ -46,14 +46,14 @@ bool CSceneAssetManager::CreateMesh(const std::string& Name, void* VertexData, i
 
 	if (iter != mAssetMap.end())
 	{
-		assert(0);
-		//mAssetMap.insert(std::make_pair(Name, iter->second));
+		
+		mAssetMap.insert(make_pair(Name, iter->second));
 	}
 
 	return true;
 }
 
-bool CSceneAssetManager::LoadTexture(const std::string& Name, const TCHAR* FileName)
+bool CSceneAssetManager::LoadTexture(const string& Name, const TCHAR* FileName)
 {
 	if (!CAssetManager::GetInst()->GetTextureManager()->LoadTexture(Name, FileName))
 	{
@@ -64,14 +64,14 @@ bool CSceneAssetManager::LoadTexture(const std::string& Name, const TCHAR* FileN
 
 	if (iter == mAssetMap.end())
 	{
-		assert(0);
-		//mAssetMap.insert(std::make_pair(Name, iter->second));
+		
+		mAssetMap.insert(make_pair(Name, iter->second));
 	}
 
 	return true;
 }
 
-bool CSceneAssetManager::LoadTextureFullPath(const std::string& Name, const TCHAR* FullPath)
+bool CSceneAssetManager::LoadTextureFullPath(const string& Name, const TCHAR* FullPath)
 {
 	if (!CAssetManager::GetInst()->GetTextureManager()->LoadTextureFullPath(Name, FullPath))
 	{
@@ -82,14 +82,14 @@ bool CSceneAssetManager::LoadTextureFullPath(const std::string& Name, const TCHA
 
 	if (iter == mAssetMap.end())
 	{
-		assert(0);
-		//mAssetMap.insert(std::make_pair(Name, iter->second));
+		
+		mAssetMap.insert(make_pair(Name, iter->second));
 	}
 
 	return true;
 }
 
-bool CSceneAssetManager::CreateMaterial(const std::string& Name)
+bool CSceneAssetManager::CreateMaterial(const string& Name)
 {
 	if (!CAssetManager::GetInst()->GetMaterialManager()->CreateMaterial(Name))
 	{
@@ -101,14 +101,14 @@ bool CSceneAssetManager::CreateMaterial(const std::string& Name)
 	if (iter == mAssetMap.end())
 	{
 		//일부러 터짐
-		assert(0);
-		//mAssetMap.insert(std::make_pair(Name, iter->second));
+		//assert(0);
+		mAssetMap.insert(make_pair(Name, iter->second));
 	}
 
 	return true;
 }
 
-class CMaterial* CSceneAssetManager::FindMaterial(const std::string& Name)
+class CMaterial* CSceneAssetManager::FindMaterial(const string& Name)
 {
 	auto iter = mAssetMap.find(Name);
 
@@ -121,7 +121,7 @@ class CMaterial* CSceneAssetManager::FindMaterial(const std::string& Name)
 			return nullptr;
 		}
 
-		mAssetMap.insert(std::make_pair(Name, Material));
+		mAssetMap.insert(make_pair(Name, Material));
 
 		return Material;
 	}
@@ -129,7 +129,7 @@ class CMaterial* CSceneAssetManager::FindMaterial(const std::string& Name)
 	return dynamic_cast<CMaterial*>(iter->second.Get());
 }
 
-class CTexture* CSceneAssetManager::FindTexture(const std::string& Name)
+class CTexture* CSceneAssetManager::FindTexture(const string& Name)
 {
 	auto iter = mAssetMap.find(Name);
 
@@ -142,14 +142,14 @@ class CTexture* CSceneAssetManager::FindTexture(const std::string& Name)
 			return nullptr;
 		}
 
-		mAssetMap.insert(std::make_pair(Name, Texture));
+		mAssetMap.insert(make_pair(Name, Texture));
 		return Texture;
 	}
 
 	return dynamic_cast<CTexture*>(iter->second.Get());
 }
 
-class CMesh* CSceneAssetManager::FindMesh(const std::string& Name)
+class CMesh* CSceneAssetManager::FindMesh(const string& Name)
 {
 	auto iter = mAssetMap.find(Name);
 
@@ -162,7 +162,7 @@ class CMesh* CSceneAssetManager::FindMesh(const std::string& Name)
 			return nullptr;
 		}
 
-		mAssetMap.insert(std::make_pair(Name, Mesh));
+		mAssetMap.insert(make_pair(Name, Mesh));
 		return Mesh;
 	}
 

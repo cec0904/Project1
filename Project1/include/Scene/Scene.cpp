@@ -12,10 +12,10 @@ CScene::CScene()
 
 CScene::~CScene()
 {
+	SAFE_DELETE(mAssetManager);
 	SAFE_DELETE(mInput);
 	SAFE_DELETE(mCameraManager);
 	SAFE_DELETE(mCollision);
-	SAFE_DELETE(mAssetManager);
 }
 
 bool CScene::Init()

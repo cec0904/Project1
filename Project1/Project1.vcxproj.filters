@@ -127,6 +127,9 @@
     <Filter Include="04.Shader\03.ConstantBuffer\03.Material">
       <UniqueIdentifier>{af0307ad-6e0c-437f-b9dc-e08311497902}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04.Shader\03.StaticMeshShader">
+      <UniqueIdentifier>{c09f3171-5bdf-4ddb-976a-61deaf051cbe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\main.cpp">
@@ -311,6 +314,9 @@
     </ClCompile>
     <ClCompile Include="include\Shader\ConstantBuffer\Material\MaterialCBuffer.cpp">
       <Filter>04.Shader\03.ConstantBuffer\03.Material</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\StaticMeshShader.cpp">
+      <Filter>04.Shader\03.StaticMeshShader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -518,6 +524,9 @@
     <ClInclude Include="include\Shader\ConstantBuffer\Material\MaterialCBuffer.h">
       <Filter>04.Shader\03.ConstantBuffer\03.Material</Filter>
     </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\StaticMeshShader.h">
+      <Filter>04.Shader\03.StaticMeshShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">
@@ -534,6 +543,9 @@
       <Filter>04.Shader\01.HLSL</Filter>
     </FxCompile>
     <FxCompile Include="bin\Shader\Share.fx">
+      <Filter>04.Shader\01.HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="bin\Shader\Mesh.fx">
       <Filter>04.Shader\01.HLSL</Filter>
     </FxCompile>
   </ItemGroup>

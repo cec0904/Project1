@@ -13,8 +13,8 @@ CAssetManager::CAssetManager()
 CAssetManager::~CAssetManager()
 {
 	SAFE_DELETE(mMeshManager);
-	SAFE_DELETE(mTextureManager);
 	SAFE_DELETE(mMaterialManager);
+	SAFE_DELETE(mTextureManager);
 }
 
 bool CAssetManager::Init()
@@ -40,6 +40,16 @@ bool CAssetManager::Init()
 			break;
 		}
 	}
+	// 메테리얼
+	mMaterialManager = new CMaterialManager;
+
+	if (!mMaterialManager->Init())
+	{
+		SAFE_DELETE(mMaterialManager);
+		return false;
+	}
+
+
 	// 메쉬를 관리
 	mMeshManager = new CMeshManager;
 
@@ -57,14 +67,7 @@ bool CAssetManager::Init()
 		return false;
 	}
 
-	//머티리얼
-	mMaterialManager = new CMaterialManager;
-
-	if (!mMaterialManager->Init())
-	{
-		SAFE_DELETE(mMaterialManager);
-		return false;
-	}
+	
 
 	// 사운드, 이펙트 등 다양한 리소스들을 관리 할 수도 있다.
 

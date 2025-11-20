@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "../../GameInfo.h"
 #include "../Asset.h"
+#include "../Material/Material.h"
 
 /*
 	메쉬는

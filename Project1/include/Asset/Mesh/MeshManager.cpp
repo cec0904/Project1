@@ -125,6 +125,24 @@ bool CMeshManager::Init()
 		return false;
 	}
 
+	// 텍스쳐를 그려주는 사각형 메시
+	FVertexTexture CenterTexRect[4] =
+	{
+		//좌상
+		FVertexTexture(-0.5f, 0.5f, 0.f, 0.f, 0.f),
+		//우상
+		FVertexTexture(0.5f, 0.5f, 0.f, 1.f, 0.f),
+		//좌하
+		FVertexTexture(-0.5f, -0.5f, 0.f, 0.f, 1.f),
+		//우하 
+		FVertexTexture(0.5f, -0.5f, 0.f, 1.f, 1.f)
+	};
+
+	if (!CreateMesh("CenterTexRect", CenterTexRect, sizeof(FVertexTexture), 4, D3D11_USAGE_DEFAULT, D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST, RectIdx, sizeof(unsigned short), 6, DXGI_FORMAT_R16_UINT))
+	{
+		return false;
+	}
+
 
 	return true;
 }
