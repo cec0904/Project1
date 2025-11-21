@@ -12,19 +12,20 @@ bool CSpriteShader::Init()
 {
 	// 쉐이더 불러오기
 	// 정점 쉐이더
-	if (!LoadVertexShader("FrameMeshVS", TEXT("ColorMesh.fx")))
+	if (!LoadVertexShader("SpriteVS", TEXT("Sprite.fx")))
 	{
 		return false;
 	}
 
 	// 펙셀 쉐이더
-	if (!LoadPixelShader("FrameMeshPS", TEXT("ColorMesh.fx")))
+	if (!LoadPixelShader("SpritePS", TEXT("Sprite.fx")))
 	{
 		return false;
 	}
 
 	//레이아웃 정보 만들어주기
 	AddInputLayoutDesc("POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0);
+	AddInputLayoutDesc("TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 8, D3D11_INPUT_PER_VERTEX_DATA, 0);
 
 	if (!CreateInputLayout())
 	{

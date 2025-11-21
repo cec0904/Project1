@@ -26,6 +26,7 @@ CSpriteComponent::CSpriteComponent(CSpriteComponent&& Com)
 
 CSpriteComponent::~CSpriteComponent()
 {
+	SAFE_DELETE(mSpriteCBuffer);
 }
 
 void CSpriteComponent::SetShader(const string& Name)
@@ -105,7 +106,7 @@ bool CSpriteComponent::Init()
 
 	SetShader("SpriteShader");
 
-	//SpriteRect
+	// SpriteRect
 	// Sprite이미지는 Mesh 고정해서 사용할것이다. 
 	if (mScene)
 	{

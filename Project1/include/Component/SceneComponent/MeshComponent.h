@@ -16,7 +16,7 @@ protected:
 	virtual ~CMeshComponent();
 
 protected:
-	class CTransformCBuffer* mTransformCBuffer;
+	// class CTransformCBuffer* mTransformCBuffer;
 
 	// 메테리얼 정보를 임시 버퍼처럼 사용할 컨테이너
 	

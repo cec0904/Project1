@@ -18,6 +18,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Component\NonSceneComponent\Rotati
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\SceneComponent\CameraComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CameraComponent.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\SceneComponent\MeshComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MeshComponent.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\SceneComponent\SceneComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneComponent.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Component\SceneComponent\SpriteComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SpriteComponent.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Component\SceneComponent\StaticMeshComponent.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\StaticMeshComponent.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\GameManager\Collision\Collision.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Collision.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\GameManager\Device\Device.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Device.obj
@@ -51,12 +52,14 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Collider\Col
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\ConstantBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ConstantBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\ConstantBufferData.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ConstantBufferData.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Material\MaterialCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\MaterialCBuffer.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\SpriteCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SpriteCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Transform\TransformCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\TransformCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\ColorMeshShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColorMeshShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\ComputeShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ComputeShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\FrameMeshShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\FrameMeshShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\GraphicShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\GraphicShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\Shader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Shader.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\SpriteShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SpriteShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderClass\StaticMeshShader.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\StaticMeshShader.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ShaderManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ShaderManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Share\Log\Log.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Log.obj

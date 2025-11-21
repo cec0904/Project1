@@ -33,5 +33,9 @@ public:
 	{
 		mData.matProj = matProj;
 	}
+	void SetPivot(const FVector3D& Pivot)
+	{
+		mData.Pivot = Pivot;
+	}
 };
 

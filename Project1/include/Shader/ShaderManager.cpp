@@ -131,7 +131,6 @@ bool CShaderManager::Init()
         3,
         EShaderBufferType::Pixel);
 
-   
 
     return true;
 }

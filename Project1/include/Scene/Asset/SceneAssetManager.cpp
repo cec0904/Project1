@@ -65,7 +65,7 @@ bool CSceneAssetManager::LoadTexture(const string& Name, const TCHAR* FileName)
 	if (iter == mAssetMap.end())
 	{
 		
-		mAssetMap.insert(make_pair(Name, iter->second));
+		mAssetMap.insert(make_pair(Name,CAssetManager::GetInst()->GetTextureManager()->FindTexture(Name)));
 	}
 
 	return true;

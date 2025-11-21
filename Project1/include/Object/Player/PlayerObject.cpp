@@ -63,8 +63,9 @@ bool CPlayerObject::Init()
 	mRotation = CreateComponent<CRotationComponent>();
 
 	//mRoot->SetMesh("CenterTexRect");
-	mRoot->SetTexture(0, "BonoBono", TEXT("Texture/BonoBono.png"), 0);
+	mRoot->SetTexture("BonoBono", TEXT("Texture/BonoBono.png"), 0);
 	mRoot->SetTint(1.f, 1.f, 1.f);
+	mRoot->SetPivot(0.5f, 0.5f);
 	mRoot->SetOpacity(1.f);
 	//mRoot->SetShader("ColorMeshShader");
 
@@ -95,22 +96,28 @@ bool CPlayerObject::Init()
 
 	// 위성 만들기
 	mRotationPivot = CreateComponent<CSceneComponent>();
-	mSub = CreateComponent<CStaticMeshComponent>();
-	mSub1 = CreateComponent<CStaticMeshComponent>();
+	mSub = CreateComponent<CSpriteComponent>();
+	mSub1 = CreateComponent<CSpriteComponent>();
 
 	mRoot->AddChild(mRotationPivot);
 	mRotationPivot->AddChild(mSub);
 	mRotationPivot->AddChild(mSub1);
 
 	// 위성1
-	mSub->SetMesh("CenterRect");
-	mSub->SetShader("ColorMeshShader");
+	mSub->SetTexture("BonoBono");
+	mSub->SetTint(1.f, 1.f, 1.f);
+	mSub->SetPivot(0.5f, 0.5f);
+	mSub->SetOpacity(1.f);
+
 	mSub->SetRelativePos(-mSkill4Range, 0.f, 0.f);
 	mSub->SetRelativeScale(0.5f, 0.5f, 1.f);
 
 	// 위성2
-	mSub1->SetMesh("CenterRect");
-	mSub1->SetShader("ColorMeshShader");
+	mSub1->SetTexture("BonoBono");
+	mSub1->SetTint(1.f, 1.f, 1.f);
+	mSub1->SetPivot(0.5f, 0.5f);
+	mSub1->SetOpacity(1.f);
+
 	mSub1->SetRelativePos(mSkill4Range, 0.f, 0.f);
 	mSub1->SetRelativeScale(0.5f, 0.5f, 1.f);
 

@@ -12,6 +12,9 @@
     <ContentFile>
       <FullPath>E:\KDT4_JEC\Windows\Project1\Project1\bin\Mesh.cso</FullPath>
     </ContentFile>
+    <ContentFile>
+      <FullPath>E:\KDT4_JEC\Windows\Project1\Project1\bin\Sprite.cso</FullPath>
+    </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />

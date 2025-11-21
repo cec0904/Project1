@@ -1,8 +1,10 @@
 ﻿#include "SceneComponent.h"
 #include "../../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
 #include "../../Scene/Scene.h"
+#include "../../Scene/CameraManager/CameraManager.h"
 #include "../../Asset/Texture/Texture.h"
 #include "../../Asset/Texture/TextureManager.h"
+
 
 
 CSceneComponent::CSceneComponent()
@@ -228,6 +230,18 @@ void CSceneComponent::Render()
 		(*iter)->Render();
 		iter++;
 	}
+
+	mTransformCBuffer->SetWorldMatrix(mmatWorld);
+	FMatrix matView, matProj;
+
+	matView = mScene->GetCameraManager()->GetViewMatrix();
+	matProj = mScene->GetCameraManager()->GetProjMatrix();
+
+	mTransformCBuffer->SetViewMatrix(matView);
+	mTransformCBuffer->SetProjMatrix(matProj);
+	mTransformCBuffer->SetPivot(mPivot);
+
+	mTransformCBuffer->UpdateBuffer();
 
 }
 void CSceneComponent::PostRender()

@@ -27,7 +27,8 @@ protected:
 	CSharedPtr<class CColliderLine2D> mLine;
 
 	CSharedPtr<class CSceneComponent> mRotationPivot;
-	CSharedPtr<class CStaticMeshComponent> mSub;
+	CSharedPtr<class CSpriteComponent> mSub;
+	//CSharedPtr<class CStaticMeshComponent> mSub;
 
 	// MovementComponent
 	CSharedPtr<class CMovementComponent> mMovement;
@@ -42,7 +43,8 @@ protected:
 
 	//실습1 
 	//위성 반대편 방향에 하나더 출력해보기 
-	CSharedPtr<class CStaticMeshComponent> mSub1;
+	CSharedPtr<class CSpriteComponent> mSub1;
+	//CSharedPtr<class CStaticMeshComponent> mSub1;
 
 	// 총알용 오브젝트 
 	//스킬 1
