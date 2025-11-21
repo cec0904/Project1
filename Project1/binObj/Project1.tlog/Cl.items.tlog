@@ -35,6 +35,10 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\NearingMonster.cpp;
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Monster\ObjectSpawnPoint.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ObjectSpawnPoint.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\Player\PlayerObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\PlayerObject.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Object\SceneObject.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneObject.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Render\BlendState.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\BlendState.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Render\RenderManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\RenderManager.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Render\RenderState.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\RenderState.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Render\RenderStateManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\RenderStateManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Asset\SceneAssetManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneAssetManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\CameraManager\CameraManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CameraManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Collision\CollisionQuadTree.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\CollisionQuadTree.obj
