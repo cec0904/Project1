@@ -1,21 +1,32 @@
 ﻿#include "SceneComponent.h"
+#include "../../Shader/ConstantBuffer/Transform/TransformCBuffer.h"
+#include "../../Scene/Scene.h"
+#include "../../Asset/Texture/Texture.h"
+#include "../../Asset/Texture/TextureManager.h"
+
 
 CSceneComponent::CSceneComponent()
 {
+	mTransformCBuffer = new CTransformCBuffer;
+	mTransformCBuffer->Init();
 }
 
 CSceneComponent::CSceneComponent(const CSceneComponent& Com)
 	: CComponent(Com)
 {
+	mTransformCBuffer = Com.mTransformCBuffer->Clone();
 }
 
 CSceneComponent::CSceneComponent(CSceneComponent&& Com)
 	: CComponent(Com)
 {
+	mTransformCBuffer = Com.mTransformCBuffer;
+	Com.mTransformCBuffer = nullptr;
 }
 
 CSceneComponent::~CSceneComponent()
 {
+	SAFE_DELETE(mTransformCBuffer);
 	size_t Size = mChildList.size();
 	for (size_t i = 0; i < Size; i++)
 	{
@@ -26,7 +37,9 @@ CSceneComponent::~CSceneComponent()
 void CSceneComponent::AddChild(CSceneComponent* Child)
 {
 	Child->mParent = this;
+	// 자식으로 추가해준다.
 	mChildList.emplace_back(Child);
+	// 자식의 트랜스폼을 계산해준다.
 	Child->ComputeTransform();
 }
 

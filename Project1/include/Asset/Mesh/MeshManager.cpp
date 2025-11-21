@@ -144,6 +144,28 @@ bool CMeshManager::Init()
 	}
 
 
+
+
+
+	///////////////////////////////////////////////////
+	// SpriteMesh
+	FVertexTexture SpriteRect[4] =
+	{
+		//좌상
+		FVertexTexture(0.f, 1.f, 0.f, 0.f, 0.f),
+		//우상
+		FVertexTexture(1.f, 1.f, 0.f, 1.f, 0.f),
+		//좌하
+		FVertexTexture(0.f, 0.f, 0.f, 0.f, 1.f),
+		//우하 
+		FVertexTexture(1.f, 0.f, 0.f, 1.f, 1.f)
+	};
+
+	if (!CreateMesh("SpriteRect", SpriteRect, sizeof(FVertexTexture), 4, D3D11_USAGE_DEFAULT, D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST, RectIdx, sizeof(unsigned short), 6, DXGI_FORMAT_R16_UINT))
+	{
+		return false;
+	}
+
 	return true;
 }
 

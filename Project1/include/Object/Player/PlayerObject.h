@@ -20,7 +20,8 @@ protected:
 	virtual ~CPlayerObject();
 
 protected:
-	CSharedPtr<class CStaticMeshComponent> mRoot;
+	//CSharedPtr<class CStaticMeshComponent> mRoot;
+	CSharedPtr<class CSpriteComponent> mRoot;
 	CSharedPtr<class CColliderOBB2D> mBody;
 	//CSharedPtr<class CColliderSphere2D> mBody;
 	CSharedPtr<class CColliderLine2D> mLine;

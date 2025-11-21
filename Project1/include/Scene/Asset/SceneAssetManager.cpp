@@ -102,7 +102,7 @@ bool CSceneAssetManager::CreateMaterial(const string& Name)
 	{
 		//일부러 터짐
 		//assert(0);
-		mAssetMap.insert(make_pair(Name, iter->second));
+		mAssetMap.insert(make_pair(Name, CAssetManager::GetInst()->GetMaterialManager()->FindMaterial(Name)));
 	}
 
 	return true;

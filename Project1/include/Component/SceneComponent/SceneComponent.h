@@ -36,6 +36,8 @@ public:
 
 	// Transform 관련 정보를 SceneComponent 가 가지고 있게 할 것이다.
 protected:
+	class CTransformCBuffer* mTransformCBuffer;
+
 	//상대좌표 월드(절대)좌표 
 	//상대 크기 회전 위치 
 	FVector3D mRelativeScale = FVector3D(1.f, 1.f, 1.f);
@@ -46,6 +48,10 @@ protected:
 	FVector3D mWorldScale = FVector3D(1.f, 1.f, 1.f);
 	FVector3D mWorldRot;
 	FVector3D mWorldPos;
+
+	// Pivot
+	FVector3D mPivot;
+
 
 	//변환행렬
 	FMatrix mmatScale;
@@ -117,7 +123,38 @@ public:
 	{
 		return mWorldPos;
 	}
+	//18일차 Pivot
+	const FVector3D& GetPivot() const
+	{
+		return mPivot;
+	}
 
+public:
+	void SetPivot(const FVector3D& Pivot)
+	{
+		mPivot = Pivot;
+	}
+
+	void SetPivot(const FVector2D& Pivot)
+	{
+		mPivot.x = Pivot.x;
+		mPivot.y = Pivot.y;
+	}
+
+	void SetPivot(float x, float y, float z)
+	{
+		mPivot.x = x;
+		mPivot.y = y;
+		mPivot.z = z;
+	}
+
+	void SetPivot(float x, float y)
+	{
+		mPivot.x = x;
+		mPivot.y = y;
+	}
+
+public:
 
 	//Setter
 	//상대 좌표 

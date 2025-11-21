@@ -8,21 +8,21 @@
 CMeshComponent::CMeshComponent()
 	: CSceneComponent()
 {
-	mTransformCBuffer = new CTransformCBuffer;
-	mTransformCBuffer->Init();
+	/*mTransformCBuffer = new CTransformCBuffer;
+	mTransformCBuffer->Init();*/
 }
 
 CMeshComponent::CMeshComponent(const CMeshComponent& Com)
 	: CSceneComponent(Com)
 {
-	mTransformCBuffer = Com.mTransformCBuffer->Clone();
+	//mTransformCBuffer = Com.mTransformCBuffer->Clone();
 }
 
 CMeshComponent::CMeshComponent(CMeshComponent&& Com)
 	: CSceneComponent(Com)
 {
-	mTransformCBuffer = Com.mTransformCBuffer;
-	Com.mTransformCBuffer = nullptr;
+	/*mTransformCBuffer = Com.mTransformCBuffer;
+	Com.mTransformCBuffer = nullptr;*/
 }
 
 CMeshComponent::~CMeshComponent()
@@ -64,19 +64,19 @@ void CMeshComponent::Render()
 {
 	CSceneComponent::Render();
 
-	mTransformCBuffer->SetWorldMatrix(mmatWorld);
+	//mTransformCBuffer->SetWorldMatrix(mmatWorld);
 
-	FMatrix matView, matProj;
-	matView = mScene->GetCameraManager()->GetViewMatrix();
-	matProj = mScene->GetCameraManager()->GetProjMatrix();
+	//FMatrix matView, matProj;
+	//matView = mScene->GetCameraManager()->GetViewMatrix();
+	//matProj = mScene->GetCameraManager()->GetProjMatrix();
 
-	mTransformCBuffer->SetViewMatrix(matView);
-	mTransformCBuffer->SetProjMatrix(matProj);
+	//mTransformCBuffer->SetViewMatrix(matView);
+	//mTransformCBuffer->SetProjMatrix(matProj);
 
 	/*FMatrix matProj = DirectX::XMMatrixPerspectiveFovLH(DirectX::XMConvertToRadians(90.f), 1280.f / 720.f, 0.5f, 1000.f);
 	mTransformCBuffer->SetProjMatrix(matProj);*/
 
-	mTransformCBuffer->UpdateBuffer();
+	//mTransformCBuffer->UpdateBuffer();
 }
 void CMeshComponent::PostRender()
 {

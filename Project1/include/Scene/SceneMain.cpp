@@ -5,6 +5,8 @@
 #include "../Object/Monster/GunnerMonster.h"
 #include "../Object/Monster/NearingMonster.h"
 #include "../Object/Monster/ObjectSpawnPoint.h"
+#include "../Asset/Material/Material.h"
+#include "../Scene/Asset/SceneAssetManager.h"
 
 CSceneMain::CSceneMain()
 {
@@ -20,6 +22,14 @@ bool CSceneMain::Init()
 	{
 		return false;
 	}
+
+	// 사용할 메테리얼 미리 만든다
+	mAssetManager->CreateMaterial("Monster1");
+
+	CMaterial* material = mAssetManager->FindMaterial("Monster1");
+	material->SetPixelShader("DefaultMaterialShader");
+	material->SetSamplerType(ETextureSamplerType::Linear);
+	material->AddTexture("Monster1", TEXT("Texture/Porori.png"), 0);
 
 	CPlayerObject* Player = CreateObj<CPlayerObject>("Player");
 

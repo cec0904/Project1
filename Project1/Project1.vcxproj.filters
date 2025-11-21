@@ -127,14 +127,23 @@
     <Filter Include="04.Shader\03.ConstantBuffer\03.Material">
       <UniqueIdentifier>{af0307ad-6e0c-437f-b9dc-e08311497902}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04.Shader\03.StaticMeshShader">
-      <UniqueIdentifier>{c09f3171-5bdf-4ddb-976a-61deaf051cbe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="08.Render">
       <UniqueIdentifier>{1ca007a1-36b1-405d-8333-981a8779def3}</UniqueIdentifier>
     </Filter>
     <Filter Include="08.Render\01.RenderState">
       <UniqueIdentifier>{6754d67e-5406-4316-b560-bb4f5e1b5f2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\02.Shader Class\04.Sprite">
+      <UniqueIdentifier>{9b729321-888d-4de8-8f2f-e058c1bfd0ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\02.Shader Class\03.StaticMeshShader">
+      <UniqueIdentifier>{c09f3171-5bdf-4ddb-976a-61deaf051cbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\03.ConstantBuffer\04.Sprite">
+      <UniqueIdentifier>{528ef897-4008-4a3a-b226-64eec946cc9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.Component\01.SceneComponent\03.Sprite">
+      <UniqueIdentifier>{bac0fc12-3a89-4ec2-9166-31023e71f761}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -322,7 +331,7 @@
       <Filter>04.Shader\03.ConstantBuffer\03.Material</Filter>
     </ClCompile>
     <ClCompile Include="include\Shader\ShaderClass\StaticMeshShader.cpp">
-      <Filter>04.Shader\03.StaticMeshShader</Filter>
+      <Filter>04.Shader\02.Shader Class\03.StaticMeshShader</Filter>
     </ClCompile>
     <ClCompile Include="include\Render\RenderManager.cpp">
       <Filter>08.Render</Filter>
@@ -335,6 +344,15 @@
     </ClCompile>
     <ClCompile Include="include\Render\RenderStateManager.cpp">
       <Filter>08.Render\01.RenderState</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ShaderClass\SpriteShader.cpp">
+      <Filter>04.Shader\02.Shader Class\04.Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ConstantBuffer\SpriteCBuffer.cpp">
+      <Filter>04.Shader\03.ConstantBuffer\04.Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Component\SceneComponent\SpriteComponent.cpp">
+      <Filter>07.Component\01.SceneComponent\03.Sprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -543,7 +561,7 @@
       <Filter>04.Shader\03.ConstantBuffer\03.Material</Filter>
     </ClInclude>
     <ClInclude Include="include\Shader\ShaderClass\StaticMeshShader.h">
-      <Filter>04.Shader\03.StaticMeshShader</Filter>
+      <Filter>04.Shader\02.Shader Class\03.StaticMeshShader</Filter>
     </ClInclude>
     <ClInclude Include="include\Render\RenderManager.h">
       <Filter>08.Render</Filter>
@@ -556,6 +574,15 @@
     </ClInclude>
     <ClInclude Include="include\Render\RenderStateManager.h">
       <Filter>08.Render\01.RenderState</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ShaderClass\SpriteShader.h">
+      <Filter>04.Shader\02.Shader Class\04.Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ConstantBuffer\SpriteCBuffer.h">
+      <Filter>04.Shader\03.ConstantBuffer\04.Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component\SceneComponent\SpriteComponent.h">
+      <Filter>07.Component\01.SceneComponent\03.Sprite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -576,6 +603,9 @@
       <Filter>04.Shader\01.HLSL</Filter>
     </FxCompile>
     <FxCompile Include="bin\Shader\Mesh.fx">
+      <Filter>04.Shader\01.HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="bin\Shader\Sprite.fx">
       <Filter>04.Shader\01.HLSL</Filter>
     </FxCompile>
   </ItemGroup>

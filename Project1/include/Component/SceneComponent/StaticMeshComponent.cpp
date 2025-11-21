@@ -9,6 +9,7 @@
 #include "../../Scene/Asset/SceneAssetManager.h"
 #include "../../Asset/Material/Material.h"
 #include "../../Asset/Material/MaterialManager.h"
+#include "SpriteComponent.h"
 
 CStaticMeshComponent::CStaticMeshComponent()
 	: CMeshComponent()
@@ -29,6 +30,8 @@ CStaticMeshComponent::~CStaticMeshComponent()
 {
 }
 
+
+
 void CStaticMeshComponent::SetShader(const std::string& Name)
 {
 	mShader = CShaderManager::GetInst()->FindShader(Name);
@@ -38,6 +41,8 @@ void CStaticMeshComponent::SetShader(CShader* Shader)
 {
 	mShader = Shader;
 }
+
+
 
 void CStaticMeshComponent::SetMesh(const std::string& Name)
 {

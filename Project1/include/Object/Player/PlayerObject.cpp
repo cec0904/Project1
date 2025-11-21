@@ -18,6 +18,7 @@
 #include "../Bullet/TalonR.h"
 #include "../Bullet/GravityBullet.h"
 #include "../Bullet/PoisonBullet.h"
+#include "../../Component/SceneComponent/SpriteComponent.h"
 
 
 
@@ -50,7 +51,8 @@ bool CPlayerObject::Init()
 
 	// 컴포넌트 하나 등록해줄것이다.
 
-	mRoot = CreateComponent<CStaticMeshComponent>();
+	//mRoot = CreateComponent<CStaticMeshComponent>();
+	mRoot = CreateComponent<CSpriteComponent>();
 	//mBody = CreateComponent<CColliderAABB2D>();
 	// mBody = CreateComponent<CColliderSphere2D>();
 	mBody = CreateComponent<CColliderOBB2D>();
@@ -60,9 +62,10 @@ bool CPlayerObject::Init()
 	mCamera = CreateComponent<CCameraComponent>();
 	mRotation = CreateComponent<CRotationComponent>();
 
-	mRoot->SetMesh("CenterTexRect");
-	mRoot->AddTexture(0, "BonoBono", TEXT("Texture/BonoBono.png"), 0);
-	mRoot->SetOpacity(0, 0.5f);
+	//mRoot->SetMesh("CenterTexRect");
+	mRoot->SetTexture(0, "BonoBono", TEXT("Texture/BonoBono.png"), 0);
+	mRoot->SetTint(1.f, 1.f, 1.f);
+	mRoot->SetOpacity(1.f);
 	//mRoot->SetShader("ColorMeshShader");
 
 	mRoot->SetWorldPos(0.f, 0.f, 0.f);

@@ -23,6 +23,8 @@ cbuffer Transform : register(b0)
     matrix gmatProj;    //투영(프로젝션) 행렬
     matrix gmatWV;      // 월드 * 카메라
     matrix gmatWVP;     // 월드 * 카메라 * 투영
+    float gPivot;       // 피봇
+    float gTransformEmpty;
 }
 
 cbuffer Material : register(b1)

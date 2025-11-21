@@ -171,8 +171,8 @@ void CMaterial::AddTexture(const std::string& Name, const TCHAR* FileName, int R
 {
 	FMaterialTextureInfo* TexInfo = new FMaterialTextureInfo;
 
-	//Texture 정보를 찾아온다.
-	//머티리얼 꼭 Scene이 있을때 생성된다고 보장이 없다.
+	// Texture 정보를 찾아온다.
+	// 메테리얼 꼭 Scene이 있을때 생성된다고 보장이 없다.
 	if (mScene)
 	{
 		//Scene->SceneAssetManager 통해서

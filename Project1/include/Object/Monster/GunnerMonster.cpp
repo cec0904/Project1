@@ -2,6 +2,7 @@
 #include "../Bullet/BulletObject.h"
 #include "../../Scene/Scene.h"
 #include "../Player/PlayerObject.h"
+#include "../../Component/SceneComponent/StaticMeshComponent.h"
 
 
 CGunnerMonster::CGunnerMonster()
@@ -29,6 +30,11 @@ bool CGunnerMonster::Init()
 	{
 		return false;
 	}
+
+	mRoot->SetMesh("CenterTexRect");
+	mRoot->SetMaterial(0, "Monster1");
+	mRoot->SetShader("StaticMeshShader");
+	mRoot->SetOpacity(0, 1.f);
 
 	SetTarget(mScene->FindObjectFromType<CPlayerObject>());
 

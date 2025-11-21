@@ -73,7 +73,8 @@ bool CDevice::Init(HWND hWnd, unsigned int Width, unsigned int Height, bool Wind
 	SwapDesc.BufferDesc.Height = Height;
 
 	// 버퍼의 픽셀 포멧
-	SwapDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	//SwapDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	SwapDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
 
 	// 주사율
 	// 화면 출력시 몇 번 그려질 건지
