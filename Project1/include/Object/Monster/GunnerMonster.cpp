@@ -3,6 +3,7 @@
 #include "../../Scene/Scene.h"
 #include "../Player/PlayerObject.h"
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
+#include "../../Component/SceneComponent/SpriteComponent.h"
 
 
 CGunnerMonster::CGunnerMonster()
@@ -31,10 +32,13 @@ bool CGunnerMonster::Init()
 		return false;
 	}
 
-	mRoot->SetMesh("CenterTexRect");
+	/*mRoot->SetMesh("CenterTexRect");
 	mRoot->SetMaterial(0, "Monster1");
 	mRoot->SetShader("StaticMeshShader");
-	mRoot->SetOpacity(0, 1.f);
+	mRoot->SetOpacity(0, 1.f);*/
+
+	mRoot->SetTexture("MonsterTex");
+	mRoot->SetPivot(0.5f, 0.5f);
 
 	SetTarget(mScene->FindObjectFromType<CPlayerObject>());
 

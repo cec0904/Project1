@@ -121,9 +121,6 @@
     <Filter Include="03.Asset\03.Material">
       <UniqueIdentifier>{15765eae-7551-4058-9037-ef9cc607c1ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05.Scene\04.Scene">
-      <UniqueIdentifier>{8bf31e04-941a-410b-9958-f1b6c9a36478}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04.Shader\03.ConstantBuffer\03.Material">
       <UniqueIdentifier>{af0307ad-6e0c-437f-b9dc-e08311497902}</UniqueIdentifier>
     </Filter>
@@ -144,6 +141,24 @@
     </Filter>
     <Filter Include="07.Component\01.SceneComponent\03.Sprite">
       <UniqueIdentifier>{bac0fc12-3a89-4ec2-9166-31023e71f761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Scene\04.Asset">
+      <UniqueIdentifier>{8bf31e04-941a-410b-9958-f1b6c9a36478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Asset\04.Animation">
+      <UniqueIdentifier>{57d86ae9-c62b-476b-b9a5-16dc6bfa732a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Asset\05.Sound">
+      <UniqueIdentifier>{64c4b46c-b0d4-49f5-9d95-a8019e9b705d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Shader\03.ConstantBuffer\05.Animation">
+      <UniqueIdentifier>{af92db9f-fe53-4bef-b46c-2d9eddb3f3bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09.Animation">
+      <UniqueIdentifier>{07edaeb9-4246-4bd8-97fe-50de98e02c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="10.UI">
+      <UniqueIdentifier>{4b2086cf-94cd-4a92-8e53-ded96891e675}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -319,7 +334,7 @@
       <Filter>03.Asset\02.Texture</Filter>
     </ClCompile>
     <ClCompile Include="include\Scene\Asset\SceneAssetManager.cpp">
-      <Filter>05.Scene\04.Scene</Filter>
+      <Filter>05.Scene\04.Asset</Filter>
     </ClCompile>
     <ClCompile Include="include\Asset\Material\Material.cpp">
       <Filter>03.Asset\03.Material</Filter>
@@ -353,6 +368,15 @@
     </ClCompile>
     <ClCompile Include="include\Component\SceneComponent\SpriteComponent.cpp">
       <Filter>07.Component\01.SceneComponent\03.Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Shader\ConstantBuffer\Animation2DCBuffer.cpp">
+      <Filter>04.Shader\03.ConstantBuffer\05.Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Animation\Animation2DData.cpp">
+      <Filter>03.Asset\04.Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Asset\Animation\Animation2DManager.cpp">
+      <Filter>03.Asset\04.Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -549,7 +573,7 @@
       <Filter>03.Asset\02.Texture</Filter>
     </ClInclude>
     <ClInclude Include="include\Scene\Asset\SceneAssetManager.h">
-      <Filter>05.Scene\04.Scene</Filter>
+      <Filter>05.Scene\04.Asset</Filter>
     </ClInclude>
     <ClInclude Include="include\Asset\Material\Material.h">
       <Filter>03.Asset\03.Material</Filter>
@@ -583,6 +607,15 @@
     </ClInclude>
     <ClInclude Include="include\Component\SceneComponent\SpriteComponent.h">
       <Filter>07.Component\01.SceneComponent\03.Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Shader\ConstantBuffer\Animation2DCBuffer.h">
+      <Filter>04.Shader\03.ConstantBuffer\05.Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Animation\Animation2DData.h">
+      <Filter>03.Asset\04.Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Asset\Animation\Animation2DManager.h">
+      <Filter>03.Asset\04.Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -22,6 +22,8 @@ protected:
 
 	vector<CSharedPtr<class CComponent>> mNonComponentList;
 
+	vector<CSharedPtr<class CComponent>> mSceneComponentList;
+
 	// NonSceneComponent
 	vector<CSharedPtr<class CComponent>> mNonSceneComponent;
 
@@ -78,6 +80,7 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 	virtual CSceneObject* Clone();
+	virtual void Destroy() override;
 	
 
 public:
@@ -106,6 +109,10 @@ public:
 		if (!Com)
 		{
 			mNonSceneComponent.emplace_back(Component);
+		}
+		else
+		{
+			mSceneComponentList.emplace_back(Component);
 		}
 
 		return Component;

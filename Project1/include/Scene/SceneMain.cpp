@@ -29,7 +29,7 @@ bool CSceneMain::Init()
 	CMaterial* material = mAssetManager->FindMaterial("Monster1");
 	material->SetPixelShader("DefaultMaterialShader");
 	material->SetSamplerType(ETextureSamplerType::Linear);
-	material->AddTexture("Monster1", TEXT("Texture/Porori.png"), 0);
+	material->AddTexture("MonsterTex", TEXT("Texture/Porori.png"), 0);
 
 	CPlayerObject* Player = CreateObj<CPlayerObject>("Player");
 

@@ -3,6 +3,7 @@
 #include "../../Scene/Scene.h"
 #include "../../Component/Collider/ColliderLine2D.h"
 #include "../../Component/Collider/ColliderSphere2D.h"
+#include "../../Component/SceneComponent/SpriteComponent.h"
 
 CNearingMonster::CNearingMonster()
 {
@@ -29,6 +30,9 @@ bool CNearingMonster::Init()
 	{
 		return false;
 	}
+
+	mRoot->SetTexture("Monster2Tex", TEXT("Texture/nuguri.png"));
+	mRoot->SetPivot(0.5f, 0.5f);
 
 	mLine = CreateComponent<CColliderLine2D>();
 	mBody->AddChild(mLine);

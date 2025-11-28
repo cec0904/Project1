@@ -189,20 +189,22 @@ void CGameManager::Render(float DeltaTime)
 
 	// 출력
 	// 블랜드스테이트 세팅
-	CRenderState* AlphaBlend = CRenderManager::GetInst()->GetStateManager()->FindState("AlphaBlend");
+	// CRenderState* AlphaBlend = CRenderManager::GetInst()->GetStateManager()->FindState("AlphaBlend");
 
-	if (AlphaBlend)
-	{
-		AlphaBlend->SetState();
-	}
+	// if (AlphaBlend)
+	// {
+	// 	AlphaBlend->SetState();
+	// }
 
 	CSceneManager::GetInst()->Render();
 
+	CRenderManager::GetInst()->Render();
+
 	//블렌드 스테이트 회수 
-	if (AlphaBlend)
-	{
-		AlphaBlend->ResetState();
-	}
+	// if (AlphaBlend)
+	// {
+	// 	AlphaBlend->ResetState();
+	// }
 
 	CDevice::GetInst()->Render();
 }

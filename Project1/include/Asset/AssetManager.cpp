@@ -5,6 +5,7 @@
 #include "Texture/TextureManager.h"
 #include "Material/Material.h"
 #include "Material/MaterialManager.h"
+#include "Animation/Animation2DManager.h"
 
 CAssetManager::CAssetManager()
 {
@@ -12,6 +13,7 @@ CAssetManager::CAssetManager()
 }
 CAssetManager::~CAssetManager()
 {
+	SAFE_DELETE(mAnimation2DManager);
 	SAFE_DELETE(mMeshManager);
 	SAFE_DELETE(mMaterialManager);
 	SAFE_DELETE(mTextureManager);
@@ -67,6 +69,14 @@ bool CAssetManager::Init()
 		return false;
 	}
 
+	// 애니메이션
+	mAnimation2DManager = new CAnimation2DManager;
+
+	if (!mAnimation2DManager->Init())
+	{
+		SAFE_DELETE(mAnimation2DManager);
+		return false;
+	}
 	
 
 	// 사운드, 이펙트 등 다양한 리소스들을 관리 할 수도 있다.
@@ -84,6 +94,12 @@ void CAssetManager::ReleaseAsset(CAsset* Asset)
 		break;
 	case EAssetType::Texture:
 		mTextureManager->ReleaseTexture(Asset);
+		break;
+	case EAssetType::Material:
+		mMaterialManager->ReleaseMaterial(Asset);
+		break;
+	case EAssetType::Animation2D:
+		mAnimation2DManager->ReleaseAnimation(Asset);
 		break;
 	}
 }

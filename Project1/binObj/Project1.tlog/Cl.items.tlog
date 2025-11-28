@@ -1,3 +1,5 @@
+E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Animation\Animation2DData.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Animation2DData.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Animation\Animation2DManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Animation2DManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Asset.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Asset.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\AssetManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\AssetManager.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Asset\Material\Material.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Material.obj
@@ -48,6 +50,7 @@ E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Input\Input.cpp;E:\KDT4_JEC\
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\Scene.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Scene.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\SceneMain.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneMain.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Scene\SceneManager.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\SceneManager.obj
+E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Animation2DCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\Animation2DCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\Collider\ColliderCBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ColliderCBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\ConstantBuffer.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ConstantBuffer.obj
 E:\KDT4_JEC\Windows\Project1\Project1\include\Shader\ConstantBuffer\ConstantBufferData.cpp;E:\KDT4_JEC\Windows\Project1\Project1\binObj\ConstantBufferData.obj

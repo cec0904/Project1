@@ -278,7 +278,9 @@ struct FCollisionProfile
 enum class EAssetType
 {
 	Mesh,
-	Texture
+	Texture,
+	Material,
+	Animation2D
 };
 
 // 랜더 스테이트 타입
@@ -291,3 +293,27 @@ namespace ERenderStateType
 		DepthStencil
 	};
 }
+
+// SceneComponent가 그려질지 여부를 선택한다.
+enum class EComponentRender
+{
+	None,
+	Render
+};
+
+// 렌더 정렬 타입
+enum class ERenderSortType
+{
+	None,
+	Y,
+	Alpha
+	// 추가적으로 만들고 싶은 정렬이 있으면 여기에 등록하면 된다.
+
+};
+
+// 애니메이션 텍스쳐 타입
+enum class EAnimationTextureType
+{
+	SpriteSheet,
+	Frame
+};

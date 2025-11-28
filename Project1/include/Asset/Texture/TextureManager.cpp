@@ -8,7 +8,11 @@ CTextureManager::CTextureManager()
 CTextureManager::~CTextureManager()
 {
 }
+bool CTextureManager::Init()
+{
 
+	return true;
+}
 // 파일 이름 중복이 없어야 한다.
 bool CTextureManager::LoadTexture(const string& Name, const TCHAR* FileName)
 {
@@ -27,7 +31,7 @@ bool CTextureManager::LoadTexture(const string& Name, const TCHAR* FileName)
 		return false;
 	}
 
-	mTextureMap.insert(std::make_pair(Name, Texture));
+	mTextureMap.insert(make_pair(Name, Texture));
 
 	return true;
 }
@@ -49,18 +53,77 @@ bool CTextureManager::LoadTextureFullPath(const string& Name, const TCHAR* FullP
 		return false;
 	}
 
-	mTextureMap.insert(std::make_pair(Name, Texture));
+	mTextureMap.insert(make_pair(Name, Texture));
 
 	return true;
 }
 
-bool CTextureManager::Init()
+bool CTextureManager::LoadTexture(const string& Name, const vector<const TCHAR*>& FileName)
 {
+	CTexture* Texture = FindTexture(Name);
+
+	if (Texture)
+	{
+		return true;
+	}
+
+	Texture = new CTexture;
+	if (!Texture->LoadTexture(FileName))
+	{
+		SAFE_DELETE(Texture);
+		return false;
+	}
+
+	mTextureMap.insert(make_pair(Name, Texture));
 
 	return true;
 }
 
-class CTexture* CTextureManager::FindTexture(const std::string& Name)
+bool CTextureManager::LoadTextureFullPath(const string& Name, const vector<const TCHAR*>& FullPath)
+{
+	CTexture* Texture = FindTexture(Name);
+	if (Texture)
+	{
+		return true;
+	}
+
+	Texture = new CTexture;
+	if (!Texture->LoadTextureFullPath(FullPath))
+	{
+		SAFE_DELETE(Texture);
+		return false;
+	}
+
+	mTextureMap.insert(make_pair(Name, Texture));
+
+	return true;
+}
+
+bool CTextureManager::LoadTexture(const string& Name, const TCHAR* FileName, const TCHAR* Ext, int Count)
+{
+	CTexture* Texture = FindTexture(Name);
+
+	if (Texture)
+	{
+		return true;
+	}
+
+	Texture = new CTexture;
+
+	if (!Texture->LoadTexture(FileName, Ext, Count))
+	{
+		SAFE_DELETE(Texture);
+		return false;
+	}
+
+	mTextureMap.insert(make_pair(Name, Texture));
+
+	return true;
+}
+
+
+
+class CTexture* CTextureManager::FindTexture(const string& Name)
 {
 	auto iter = mTextureMap.find(Name);
 

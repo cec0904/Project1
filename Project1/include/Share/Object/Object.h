@@ -35,7 +35,7 @@ public:
 public:
 	virtual void AddRef();
 	virtual void Release();
-	void Destroy();
+	virtual void Destroy();
 	void SetEnable(bool Enable)
 	{
 		mEnable = Enable;

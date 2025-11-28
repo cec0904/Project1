@@ -3,6 +3,7 @@
 #include "../../Component/SceneComponent/StaticMeshComponent.h"
 #include "../../Component/Collider/ColliderAABB2D.h"
 #include "../../Share/Log/Log.h"
+#include "../../Component/SceneComponent/SpriteComponent.h"
 
 CBulletObject::CBulletObject()
 	:CSceneObject()
@@ -31,13 +32,13 @@ bool CBulletObject::Init()
 {
 	CSceneObject::Init();
 
-	mRoot = CreateComponent<CStaticMeshComponent>();
+	mRoot = CreateComponent<CSpriteComponent>();
 	mBody = CreateComponent<CColliderAABB2D>();
 	mMovement = CreateComponent<CMovementComponent>();
 
 
-	mRoot->SetMesh("CenterRect");
-	mRoot->SetShader("ColorMeshShader");
+	mRoot->SetTexture("Wallnut");
+	mRoot->SetPivot(0.5f, 0.5f);
 	mRoot->SetWorldScale(0.5f, 0.5f, 1.f);
 
 	SetRootComponent(mRoot);

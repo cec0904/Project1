@@ -4,7 +4,7 @@
 #include "../../Scene/CameraManager/CameraManager.h"
 #include "../../Asset/Texture/Texture.h"
 #include "../../Asset/Texture/TextureManager.h"
-
+#include "../../Render/RenderManager.h"
 
 
 CSceneComponent::CSceneComponent()
@@ -51,11 +51,29 @@ bool CSceneComponent::Init()
 	{
 		return false;
 	}
+
+	// 내가 그려질 타입이냐 ?
+	if (mRenderType == EComponentRender::Render)
+	{
+		CRenderManager::GetInst()->AddRenderList(this);
+	}
+
 	return true;
 }
 
 bool CSceneComponent::Init(const char* FileName)
 {
+	if (!CComponent::Init(FileName))
+	{
+		return false;
+	}
+
+	// 내가 그려질 타입이냐 ?
+	if (mRenderType == EComponentRender::Render)
+	{
+		CRenderManager::GetInst()->AddRenderList(this);
+	}
+
 	return true;
 }
 void CSceneComponent::PreUpdate(float DeltaTime)
@@ -182,7 +200,7 @@ void CSceneComponent::PreRender()
 	//			   크기   *    자전  *     이동
 	mmatWorld = mmatScale * mmatRot * mmatTranslate;
 
-	vector<CSharedPtr<CSceneComponent>>::iterator iter;
+	/*vector<CSharedPtr<CSceneComponent>>::iterator iter;
 	vector<CSharedPtr<CSceneComponent>>::iterator iterEnd = mChildList.end();
 
 	for (iter = mChildList.begin(); iter != iterEnd;)
@@ -202,14 +220,14 @@ void CSceneComponent::PreRender()
 		}
 		(*iter)->PreRender();
 		iter++;
-	}
+	}*/
 
 }
 void CSceneComponent::Render()
 {
 	CComponent::Render();
 
-	vector<CSharedPtr<CSceneComponent>>::iterator iter;
+	/*vector<CSharedPtr<CSceneComponent>>::iterator iter;
 	vector<CSharedPtr<CSceneComponent>>::iterator iterEnd = mChildList.end();
 
 	for (iter = mChildList.begin(); iter != iterEnd;)
@@ -241,14 +259,14 @@ void CSceneComponent::Render()
 	mTransformCBuffer->SetProjMatrix(matProj);
 	mTransformCBuffer->SetPivot(mPivot);
 
-	mTransformCBuffer->UpdateBuffer();
+	mTransformCBuffer->UpdateBuffer();*/
 
 }
 void CSceneComponent::PostRender()
 {
 	CComponent::PostRender();
 
-	vector<CSharedPtr<CSceneComponent>>::iterator iter;
+	/*vector<CSharedPtr<CSceneComponent>>::iterator iter;
 	vector<CSharedPtr<CSceneComponent>>::iterator iterEnd = mChildList.end();
 
 	for (iter = mChildList.begin(); iter != iterEnd;)
@@ -268,7 +286,7 @@ void CSceneComponent::PostRender()
 		}
 		(*iter)->PostRender();
 		iter++;
-	}
+	}*/
 
 }
 

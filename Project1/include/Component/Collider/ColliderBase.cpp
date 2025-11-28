@@ -16,6 +16,10 @@
 
 CColliderBase::CColliderBase()
 {
+#ifdef _DEBUG
+	mRenderType = EComponentRender::Render;
+#endif // _DEBUG
+
 }
 CColliderBase::CColliderBase(const CColliderBase& Com)
 	: CSceneComponent(Com)

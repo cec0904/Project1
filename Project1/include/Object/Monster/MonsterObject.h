@@ -13,7 +13,8 @@ protected:
 	virtual ~CMonsterObject();
 
 protected:
-	CSharedPtr<class CStaticMeshComponent> mRoot;
+	//CSharedPtr<class CStaticMeshComponent> mRoot;
+	CSharedPtr<class CSpriteComponent> mRoot;
 	CSharedPtr<CSceneObject> mTarget;
 	//CSharedPtr<class CColliderOBB2D> mBody;
 	CSharedPtr<class CColliderSphere2D> mBody;

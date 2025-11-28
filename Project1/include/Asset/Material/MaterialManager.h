@@ -18,7 +18,7 @@ public:
 
 	bool CreateMaterial(const std::string& Name);
 	class CMaterial* FindMaterial(const std::string& Name);
-	void ReleaseMaterial(class CAsset* Texture);
+	void ReleaseMaterial(class CAsset* Material);
 
 
 };

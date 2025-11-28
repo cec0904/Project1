@@ -89,6 +89,57 @@ bool CSceneAssetManager::LoadTextureFullPath(const string& Name, const TCHAR* Fu
 	return true;
 }
 
+bool CSceneAssetManager::LoadTexture(const string& Name, const vector<const TCHAR*>& FileName)
+{
+	if (!CAssetManager::GetInst()->GetTextureManager()->LoadTexture(Name, FileName))
+	{
+	return false;
+
+	}
+	auto iter = mAssetMap.find(Name);
+	if (iter == mAssetMap.end())
+	{
+		mAssetMap.insert(make_pair(Name, CAssetManager::GetInst()->GetTextureManager()->FindTexture(Name)));
+	}
+	return true;
+}
+
+bool CSceneAssetManager::LoadTextureFullPath(const string& Name, const vector<const TCHAR*>& FullPath)
+{
+	if (!CAssetManager::GetInst()->GetTextureManager()->LoadTexture(Name, FullPath))
+	{
+		return false;
+	}
+
+	auto iter = mAssetMap.find(Name);
+
+	if (iter == mAssetMap.end())
+	{
+		mAssetMap.insert(make_pair(Name, CAssetManager::GetInst()->GetTextureManager()->FindTexture(Name)));
+
+	}
+
+	return true;
+}
+
+bool CSceneAssetManager::LoadTexture(const string& Name, const TCHAR* FileName, const TCHAR* Ext, int Count)
+{
+	if (!CAssetManager::GetInst()->GetTextureManager()->LoadTexture(Name, FileName, Ext, Count))
+	{
+		return false;
+	}
+
+	auto iter = mAssetMap.find(Name);
+
+	if (iter == mAssetMap.end())
+	{
+		mAssetMap.insert(make_pair(Name, CAssetManager::GetInst()->GetTextureManager()->FindTexture(Name)));
+
+	}
+
+	return true;
+}
+
 bool CSceneAssetManager::CreateMaterial(const string& Name)
 {
 	if (!CAssetManager::GetInst()->GetMaterialManager()->CreateMaterial(Name))

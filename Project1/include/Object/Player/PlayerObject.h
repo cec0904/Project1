@@ -24,7 +24,7 @@ protected:
 	CSharedPtr<class CSpriteComponent> mRoot;
 	CSharedPtr<class CColliderOBB2D> mBody;
 	//CSharedPtr<class CColliderSphere2D> mBody;
-	CSharedPtr<class CColliderLine2D> mLine;
+	//CSharedPtr<class CColliderLine2D> mLine;
 
 	CSharedPtr<class CSceneComponent> mRotationPivot;
 	CSharedPtr<class CSpriteComponent> mSub;

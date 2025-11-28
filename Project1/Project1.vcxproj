@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\Asset\Animation\Animation2DData.cpp" />
+    <ClCompile Include="include\Asset\Animation\Animation2DManager.cpp" />
     <ClCompile Include="include\Asset\Asset.cpp" />
     <ClCompile Include="include\Asset\AssetManager.cpp" />
     <ClCompile Include="include\Asset\Material\Material.cpp" />
@@ -72,6 +74,7 @@
     <ClCompile Include="include\Scene\Scene.cpp" />
     <ClCompile Include="include\Scene\SceneMain.cpp" />
     <ClCompile Include="include\Scene\SceneManager.cpp" />
+    <ClCompile Include="include\Shader\ConstantBuffer\Animation2DCBuffer.cpp" />
     <ClCompile Include="include\Shader\ConstantBuffer\Collider\ColliderCBuffer.cpp" />
     <ClCompile Include="include\Shader\ConstantBuffer\ConstantBuffer.cpp" />
     <ClCompile Include="include\Shader\ConstantBuffer\ConstantBufferData.cpp" />
@@ -93,6 +96,8 @@
     <ClCompile Include="include\Vector4D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Asset\Animation\Animation2DData.h" />
+    <ClInclude Include="include\Asset\Animation\Animation2DManager.h" />
     <ClInclude Include="include\Asset\Asset.h" />
     <ClInclude Include="include\Asset\AssetManager.h" />
     <ClInclude Include="include\Asset\Material\Material.h" />
@@ -149,6 +154,7 @@
     <ClInclude Include="include\Scene\Scene.h" />
     <ClInclude Include="include\Scene\SceneMain.h" />
     <ClInclude Include="include\Scene\SceneManager.h" />
+    <ClInclude Include="include\Shader\ConstantBuffer\Animation2DCBuffer.h" />
     <ClInclude Include="include\Shader\ConstantBuffer\CBufferContainer.h" />
     <ClInclude Include="include\Shader\ConstantBuffer\Collider\ColliderCBuffer.h" />
     <ClInclude Include="include\Shader\ConstantBuffer\ConstantBuffer.h" />

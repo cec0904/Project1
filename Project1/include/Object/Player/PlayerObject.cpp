@@ -56,7 +56,7 @@ bool CPlayerObject::Init()
 	//mBody = CreateComponent<CColliderAABB2D>();
 	// mBody = CreateComponent<CColliderSphere2D>();
 	mBody = CreateComponent<CColliderOBB2D>();
-	mLine = CreateComponent<CColliderLine2D>();
+	// mLine = CreateComponent<CColliderLine2D>();
 
 	mMovement = CreateComponent<CMovementComponent>();
 	mCamera = CreateComponent<CCameraComponent>();
@@ -78,10 +78,10 @@ bool CPlayerObject::Init()
 	// mBody->SetRadius(50.f);
 	mBody->SetCollisionProfile("Player");
 	
-	mBody->AddChild(mLine);
+	/*mBody->AddChild(mLine);
 	mLine->SetCollisionProfile("Player");
 	mLine->SetLineDistance(300.f);
-	mLine->SetRelativePos(0.f, 50.f);
+	mLine->SetRelativePos(0.f, 50.f);*/
 
 
 	mMovement->SetUpdateComponent(mRoot);
@@ -104,8 +104,8 @@ bool CPlayerObject::Init()
 	mRotationPivot->AddChild(mSub1);
 
 	// 위성1
-	mSub->SetTexture("BonoBono");
-	mSub->SetTint(1.f, 1.f, 1.f);
+	mSub->SetTexture("Wallnumt", TEXT("Texture/Wallnut.png"));
+	mSub->SetTint(0.f, 0.f, 1.f);
 	mSub->SetPivot(0.5f, 0.5f);
 	mSub->SetOpacity(1.f);
 
@@ -113,8 +113,8 @@ bool CPlayerObject::Init()
 	mSub->SetRelativeScale(0.5f, 0.5f, 1.f);
 
 	// 위성2
-	mSub1->SetTexture("BonoBono");
-	mSub1->SetTint(1.f, 1.f, 1.f);
+	mSub1->SetTexture("Wallnut");
+	mSub1->SetTint(1.f, 0.f, 0.f);
 	mSub1->SetPivot(0.5f, 0.5f);
 	mSub1->SetOpacity(1.f);
 

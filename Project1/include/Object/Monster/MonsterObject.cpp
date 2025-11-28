@@ -7,6 +7,7 @@
 #include "../../Component/Collider/ColliderOBB2D.h"
 #include "../../Share/Log/Log.h"
 #include "../Monster/ObjectSpawnPoint.h"
+#include "../../Component/SceneComponent/SpriteComponent.h"
 
 
 
@@ -80,12 +81,16 @@ bool CMonsterObject::Init()
 		return false;
 	}
 
-	mRoot = CreateComponent<CStaticMeshComponent>();
+	//mRoot = CreateComponent<CStaticMeshComponent>();
+	mRoot = CreateComponent<CSpriteComponent>();
 	//mBody = CreateComponent<CColliderOBB2D>();
 	mBody = CreateComponent<CColliderSphere2D>();
 
-	mRoot->SetMesh("CenterRect");
-	mRoot->SetShader("ColorMeshShader");
+	/*mRoot->SetMesh("CenterRect");
+	mRoot->SetShader("ColorMeshShader");*/
+
+	mRoot->SetTexture("Monster1");
+	mRoot->SetPivot(0.5f, 0.5f);
 	mRoot->SetWorldScale(100.f, 100.f);
 
 	SetRootComponent(mRoot);
