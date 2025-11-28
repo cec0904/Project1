@@ -378,6 +378,12 @@
     <ClCompile Include="include\Asset\Animation\Animation2DManager.cpp">
       <Filter>03.Asset\04.Animation</Filter>
     </ClCompile>
+    <ClCompile Include="include\Animation\Animation2DSequence.cpp">
+      <Filter>09.Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Animation\Animation2D.cpp">
+      <Filter>09.Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\GameManager\Device\Device.h">
@@ -616,6 +622,12 @@
     </ClInclude>
     <ClInclude Include="include\Asset\Animation\Animation2DManager.h">
       <Filter>03.Asset\04.Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Animation\Animation2D.h">
+      <Filter>09.Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Animation\Animation2DSequence.h">
+      <Filter>09.Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
